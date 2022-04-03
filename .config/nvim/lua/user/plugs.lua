@@ -1,5 +1,5 @@
 
-local packer = require("packersetup").init()
+local packer = require("user.packerinit")
 
 -- Install your plugins here
 return packer.startup(function(use)
