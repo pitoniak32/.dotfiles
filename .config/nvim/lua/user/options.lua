@@ -21,5 +21,5 @@ o.updatetime = 50
 o.colorcolumn = "80"
 o.signcolumn = "yes"
 
-vim.cmd [[highlight Normal guibg=none]]
+-- vim.cmd [[highlight Normal guibg=none]]
 vim.cmd [[set iskeyword+=-]]
