@@ -22,7 +22,9 @@ local general_keymaps = function()
 
     general_keymap("n", "<S-l>", ":bnext<CR>", default_opts)
     general_keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
--- Insert Mode Maps
+    general_keymap("n", "<leader>bd", ":Bdelete<CR>", default_opts)
+
+    -- Insert Mode Maps
     general_keymap("i", "jj", "<ESC>", default_opts)
 
     -- Visual Mode Maps
