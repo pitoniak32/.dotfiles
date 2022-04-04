@@ -75,7 +75,7 @@ M.on_attach = function(client, bufnr)
   end
 
   -- Key mappings defined in central file to avoid conflicts
-  require("user.globalkeymaps").lsp_keymaps(bufnr)
+  require("user.keymaps").lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
 
