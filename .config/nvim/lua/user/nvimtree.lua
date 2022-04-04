@@ -4,7 +4,7 @@ vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
   git = {
-    unstaged = "",
+    unstaged = "●",
     staged = "S",
     unmerged = "",
     renamed = "➜",
@@ -109,7 +109,7 @@ nvim_tree.setup {
   -- disable_window_picker = 0,
   -- root_folder_modifier = ":t",
   show_icons = {
-    git = 1,
+
     folders = 1,
     files = 1,
     folder_arrows = 1,
