@@ -8,7 +8,12 @@ local general_keymaps = function()
     vim.g.maplocalleader = " "
 
     -- Normal Mode Maps
-    general_keymap("n", "<leader>e", ":Lex 15<CR>", default_opts)
+    general_keymap("n", "<leader>e", ":NvimTreeToggle <CR>", default_opts)
+
+    general_keymap("n", "<C-h>", "<C-w>h", default_opts)
+    general_keymap("n", "<C-j>", "<C-w>j", default_opts)
+    general_keymap("n", "<C-k>", "<C-w>k", default_opts)
+    general_keymap("n", "<C-l>", "<C-w>l", default_opts)
 
     general_keymap("n", "<C-S-Up>", ":resize -2<CR>", default_opts)
     general_keymap("n", "<C-S-Down>", ":resize +2<CR>", default_opts)

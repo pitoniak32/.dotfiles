@@ -10,7 +10,13 @@ return packer.startup(function(use)
     use "ThePrimeagen/harpoon"
     use "rcarriga/nvim-notify"
     use { "michaelb/sniprun", run = "bash ./install.sh" }
-    use {"akinsho/toggleterm.nvim"}
+    use "akinsho/toggleterm.nvim"
+    use 'akinsho/bufferline.nvim'
+    use "moll/vim-bbye"
+
+    -- Nvim Tree
+    use 'kyazdani42/nvim-tree.lua'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- Colorschemes
     use "morhetz/gruvbox"

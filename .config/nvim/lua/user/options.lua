@@ -21,5 +21,7 @@ o.updatetime = 50
 o.colorcolumn = "80"
 o.signcolumn = "yes"
 
+o.mouse="nv"
+
 -- vim.cmd [[highlight Normal guibg=none]]
 vim.cmd [[set iskeyword+=-]]
