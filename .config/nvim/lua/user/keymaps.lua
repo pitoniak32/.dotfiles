@@ -22,7 +22,9 @@ local general_keymaps = function()
 
     general_keymap("n", "<S-l>", ":bnext<CR>", default_opts)
     general_keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
-    general_keymap("n", "<leader>bd", ":Bdelete<CR>", default_opts)
+    general_keymap("n", "<leader>q", ":Bdelete<CR>", default_opts)
+
+    general_keymap("n", "gb", ":GitBlameToggle<CR>", default_opts)
 
     -- Insert Mode Maps
     general_keymap("i", "jj", "<ESC>", default_opts)
@@ -57,7 +59,6 @@ local lsp_keymaps = function(bufnr)
     lsp_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', lsp_default_opts)
     lsp_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', lsp_default_opts)
     lsp_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts)
-    lsp_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", lsp_default_opts)
     -- lsp_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     -- lsp_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     -- lsp_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)

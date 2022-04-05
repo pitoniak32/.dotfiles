@@ -59,7 +59,7 @@ bufferline.setup {
     offsets = {{
         filetype = "NvimTree",
         text = "",
-        padding = 1, 
+        padding = 1,
     }},
     show_buffer_icons = true,
     show_buffer_close_icons = true,
