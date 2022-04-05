@@ -42,6 +42,7 @@ local key_maps = {
         { "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
         { "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
     },
+    -- Add table for nvim-tree
     lsp = {
         { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
         { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
