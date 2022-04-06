@@ -53,12 +53,13 @@ return packer.startup(function(use)
     use "akinsho/toggleterm.nvim"
     use 'akinsho/bufferline.nvim'
     use "moll/vim-bbye"
-
     use "lewis6991/gitsigns.nvim"
     use "f-person/git-blame.nvim"
     use "ruifm/gitlinker.nvim"
     use "mattn/vim-gist"
     use "mattn/webapi-vim"
+    use "JoosepAlviste/nvim-ts-context-commentstring"
+    use "numToStr/Comment.nvim"
 
     -- Nvim Tree
     use 'kyazdani42/nvim-tree.lua'
@@ -105,7 +106,6 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
     use { "p00f/nvim-ts-rainbow" }
-    use "JoosepAlviste/nvim-ts-context-commentstring"
     use "nvim-treesitter/playground"
     use "romgrk/nvim-treesitter-context"
     use "mizlan/iswap.nvim"

@@ -23,7 +23,7 @@ o.signcolumn = "yes"
 
 o.mouse="nv"
 
--- Transparency -- 
+-- Transparency
 vim.cmd [[highlight Normal ctermbg=none guibg=none]]
 vim.cmd [[highlight NormalNC guibg=none]]
 vim.cmd [[highlight NvimTreeNormal guibg=none]]
