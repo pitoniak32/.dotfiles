@@ -31,7 +31,5 @@ vim.cmd [[highlight NvimTreeNormalNC guibg=none]]
 vim.cmd [[highlight SignColumn guibg=none]]
 vim.cmd [[highlight TelescopeNormal guibg=none]]
 vim.cmd [[highlight TelescopeBorder guibg=none]]
-vim.cmd [[highlight BufferLineFill guibg=none]]
-
 
 vim.cmd [[set iskeyword+=-]]
