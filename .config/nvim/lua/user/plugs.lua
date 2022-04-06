@@ -44,13 +44,14 @@ return packer.startup(function(use)
     -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
     use 'nvim-telescope/telescope.nvim'
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "ThePrimeagen/harpoon"
     use "rcarriga/nvim-notify"
     use { "michaelb/sniprun", run = "bash ./install.sh" }
-    use "akinsho/toggleterm.nvim"
+    use { "akinsho/toggleterm.nvim", branch="main"}
     use 'akinsho/bufferline.nvim'
     use "moll/vim-bbye"
     use "lewis6991/gitsigns.nvim"
@@ -69,7 +70,7 @@ return packer.startup(function(use)
     use "morhetz/gruvbox"
     use 'folke/tokyonight.nvim'
 
-    -- cmp plugins
+    -- Completions
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions

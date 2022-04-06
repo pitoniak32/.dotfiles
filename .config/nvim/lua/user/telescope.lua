@@ -2,6 +2,8 @@ require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
+    prompt_prefix = " ",
+    selection_caret = " ",
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -28,3 +30,4 @@ require('telescope').setup{
     -- please take a look at the readme of the extension you want to configure
   }
 }
+require('telescope').load_extension('fzf')

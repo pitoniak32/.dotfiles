@@ -23,6 +23,9 @@ o.signcolumn = "yes"
 
 o.mouse="nv"
 
+-- Adding - to what defines a contiguous word
+vim.cmd [[set iskeyword+=-]]
+
 -- Transparency
 vim.cmd [[highlight Normal ctermbg=none guibg=none]]
 vim.cmd [[highlight NormalNC guibg=none]]
@@ -32,4 +35,8 @@ vim.cmd [[highlight SignColumn guibg=none]]
 vim.cmd [[highlight TelescopeNormal guibg=none]]
 vim.cmd [[highlight TelescopeBorder guibg=none]]
 
-vim.cmd [[set iskeyword+=-]]
+-- Line Number Custom Highlights
+vim.cmd [[highlight LineNrAbove ctermfg=11 guifg=#3b4261]]
+vim.cmd [[highlight LineNrBelow ctermfg=11 guifg=#3b4261]]
+vim.cmd [[highlight LineNr guifg=#96f1ff]]
+

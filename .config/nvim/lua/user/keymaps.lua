@@ -29,7 +29,7 @@ local key_maps = {
         { "n", "gb", ":GitBlameToggle<CR>", general_default_opts },
         { "n", "<leader>e", ":NvimTreeToggle <CR>", general_default_opts },
 
-        { "n", "<leader>f", ":lua require'telescope.builtin'.find_files()<CR>", general_default_opts},
+        { "n", "<leader>ff", ":lua require'telescope.builtin'.find_files()<CR>", general_default_opts},
         { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts},
         { "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts},
 
@@ -56,14 +56,14 @@ local key_maps = {
         { "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lsp_default_opts },
         { "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", lsp_default_opts },
         { "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", lsp_default_opts },
-        { "n", "<leader>of", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
+        { "n", "<leader>fd", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
         { "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', lsp_default_opts },
         { "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', lsp_default_opts },
         { "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
         -- { "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts },
         -- { "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts },
-        -- { "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts },
-    },
+        -- { "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts},
+    }
 }
 
 local general_keymaps = function()
