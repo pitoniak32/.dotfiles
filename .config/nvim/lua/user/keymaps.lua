@@ -29,6 +29,10 @@ local key_maps = {
         { "n", "gb", ":GitBlameToggle<CR>", general_default_opts },
         { "n", "<leader>e", ":NvimTreeToggle <CR>", general_default_opts },
 
+        { "n", "<leader>f", ":lua require'telescope.builtin'.find_files()<CR>", general_default_opts},
+        { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts},
+        { "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts},
+
         -- Insert Mode Maps
         { "i", "jj", "<ESC>", general_default_opts },
 
@@ -52,7 +56,7 @@ local key_maps = {
         { "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lsp_default_opts },
         { "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", lsp_default_opts },
         { "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", lsp_default_opts },
-        { "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
+        { "n", "<leader>of", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
         { "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', lsp_default_opts },
         { "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', lsp_default_opts },
         { "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
