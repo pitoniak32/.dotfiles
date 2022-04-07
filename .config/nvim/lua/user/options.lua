@@ -25,6 +25,7 @@ o.mouse="nv"
 
 -- Adding - to what defines a contiguous word
 vim.cmd [[set iskeyword+=-]]
+vim.cmd [[set inccommand=split]]
 
 -- Transparency
 vim.cmd [[highlight Normal ctermbg=none guibg=none]]
