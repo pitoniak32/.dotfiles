@@ -35,6 +35,9 @@ vim.cmd [[highlight SignColumn guibg=none]]
 vim.cmd [[highlight TelescopeNormal guibg=none]]
 vim.cmd [[highlight TelescopeBorder guibg=none]]
 
+-- Telescope prompt color
+vim.cmd [[highlight TelescopePromptPrefix guifg=#96f1ff]]
+
 -- Line Number Custom Highlights
 vim.cmd [[highlight LineNrAbove ctermfg=11 guifg=#3b4261]]
 vim.cmd [[highlight LineNrBelow ctermfg=11 guifg=#3b4261]]
