@@ -28,13 +28,13 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set inccommand=split]]
 
 -- Transparency
-vim.cmd [[highlight Normal ctermbg=none guibg=none]]
-vim.cmd [[highlight NormalNC guibg=none]]
-vim.cmd [[highlight NvimTreeNormal guibg=none]]
-vim.cmd [[highlight NvimTreeNormalNC guibg=none]]
-vim.cmd [[highlight SignColumn guibg=none]]
-vim.cmd [[highlight TelescopeNormal guibg=none]]
-vim.cmd [[highlight TelescopeBorder guibg=none]]
+-- vim.cmd [[highlight Normal ctermbg=none guibg=none]]
+-- vim.cmd [[highlight NormalNC guibg=none]]
+-- vim.cmd [[highlight NvimTreeNormal guibg=none]]
+-- vim.cmd [[highlight NvimTreeNormalNC guibg=none]]
+-- vim.cmd [[highlight SignColumn guibg=none]]
+-- vim.cmd [[highlight TelescopeNormal guibg=none]]
+-- vim.cmd [[highlight TelescopeBorder guibg=none]]
 
 -- Telescope prompt color
 vim.cmd [[highlight TelescopePromptPrefix guifg=#96f1ff]]
