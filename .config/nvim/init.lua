@@ -1,4 +1,5 @@
 require "user.colorscheme"
+require "user.telescope"
 require "user.options"
 require "user.keymaps"
 require "user.completion"
@@ -12,5 +13,5 @@ require "user.gitsigns"
 require "user.gitlinker"
 require "user.gitblame"
 require "user.lsp"
-require "user.telescope"
 require "user.comment"
+

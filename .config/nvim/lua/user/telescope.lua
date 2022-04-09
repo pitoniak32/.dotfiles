@@ -1,3 +1,6 @@
+
+local actions = require("telescope.actions")
+
 require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
@@ -7,10 +10,12 @@ require('telescope').setup{
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
-        -- actions.which_key shows the mappings for your picker,
-        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["<C-h>"] = "which_key"
-      }
+        ["<C-h>"] = "which_key",
+      },
+      n = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        ["<C-h>"] = "which_key",
+      },
     }
   },
   pickers = {
@@ -21,6 +26,19 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    -- buffers = {
+    --     mappings = {
+    --         n = {
+    --             ["C-d"] = 
+    --         },
+    --     },
+    -- },
+    buffers = {
+      attach_mappings = function(_, map)
+        map("i", "<c-b>", actions.delete_buffer)
+        return true
+      end
+    }
   },
   extensions = {
     -- Your extension configuration goes here:
@@ -30,4 +48,5 @@ require('telescope').setup{
     -- please take a look at the readme of the extension you want to configure
   }
 }
+
 require('telescope').load_extension('fzf')

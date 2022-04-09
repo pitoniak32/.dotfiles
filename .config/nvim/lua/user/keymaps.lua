@@ -49,9 +49,6 @@ local key_maps = {
     -- Add table for nvim-tree
     lsp = {
         { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
-        { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
-        { "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lsp_default_opts },
-        { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
         { "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lsp_default_opts },
         { "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lsp_default_opts },
         { "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", lsp_default_opts },
