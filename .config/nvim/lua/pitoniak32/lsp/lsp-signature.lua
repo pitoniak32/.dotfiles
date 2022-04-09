@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local icons = require "user.icons"
+local icons = require "pitoniak32.icons"
 
 local cfg = {
   debug = false, -- set to true to enable debug logging

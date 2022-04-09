@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  local icons = require "user.icons"
+  local icons = require "pitoniak32.icons"
   local signs = {
     { name = "DiagnosticSignError", text = icons.diagnostics.Error },
     { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
@@ -74,7 +74,7 @@ M.on_attach = function(client, bufnr)
   end
 
   -- Key mappings defined in central file to avoid conflicts
-  require("user.keymaps").lsp_keymaps(bufnr)
+  require("pitoniak32.keymaps").lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
 
@@ -117,6 +117,6 @@ function M.remove_augroup(name)
   end
 end
 
--- vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
+-- vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("pitoniak32.lsp.handlers").toggle_format_on_save()' ]]
 
 return M
