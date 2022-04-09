@@ -15,7 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   print "Installing packer close and reopen Neovim..."
   vim.cmd [[packadd packer.nvim]]
 end
-
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
@@ -85,7 +84,7 @@ return packer.startup(function(use)
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- LSP
-    use "christianchiarulli/nvim-lspconfig" -- enable LSP
+    use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
@@ -97,6 +96,7 @@ return packer.startup(function(use)
         cmd = "TroubleToggle",
     }
     use "RRethy/vim-illuminate"
+    use({"ckipp01/stylua-nvim", run = "cargo install stylua"})
 
     -- Java
     use "mfussenegger/nvim-jdtls"
@@ -117,46 +117,3 @@ return packer.startup(function(use)
         require("packer").sync()
     end
 end)
-
-    -- Commented out plugin options
-
-    -- use "numToStr/Comment.nvim"
-    -- use "kyazdani42/nvim-web-devicons"
-    -- use "kyazdani42/nvim-tree.lua"
-    -- use "tamago324/lir.nvim"
-    -- use "akinsho/bufferline.nvim"
-    -- use "moll/vim-bbye"
-    -- use "nvim-lualine/lualine.nvim"
-    -- use "akinsho/toggleterm.nvim"
-    -- use "ahmedkhalf/project.nvim"
-    -- use "lewis6991/impatient.nvim"
-    -- use "lukas-reineke/indent-blankline.nvim"
-    -- use "goolord/alpha-nvim"
-    -- use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-    -- use "folke/which-key.nvim"
-    -- use "unblevable/quick-scope"
-    -- use "phaazon/hop.nvim"
-    -- use "andymass/vim-matchup"
-    -- use "nacro90/numb.nvim"
-    -- use "monaqa/dial.nvim"
-    -- use "norcalli/nvim-colorizer.lua"
-    -- use "windwp/nvim-spectre"
-    -- use "folke/zen-mode.nvim"
-    -- use "karb94/neoscroll.nvim"
-    -- use "folke/todo-comments.nvim"
-    -- use "kevinhwang91/nvim-bqf"
-    -- use "MattesGroeger/vim-bookmarks"
-    -- use "lunarvim/vim-solidity"
-    -- use "Mephistophiles/surround.nvim"
-    -- use "tpope/vim-repeat"
-    -- use "Shatur/neovim-session-manager"
-    -- use "tversteeg/registers.nvim"
-    -- use "metakirby5/codi.vim"
-    -- use "nyngwang/NeoZoom.lua"
-    -- use "SmiteshP/nvim-gps"
-    -- use {
-    --  "iamcco/markdown-preview.nvim",
-    --  run = "cd app && npm install",
-    --  ft = "markdown",
-    -- }
-    -- use "b0o/SchemaStore.nvim"
