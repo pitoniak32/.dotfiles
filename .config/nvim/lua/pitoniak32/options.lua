@@ -31,13 +31,17 @@ vim.cmd([[set inccommand=split]])
 require("pitoniak32.lsp.handlers").enable_format_on_save()
 
 -- Transparency
-vim.cmd [[highlight Normal ctermbg=none guibg=none]]
-vim.cmd [[highlight NormalNC guibg=none]]
-vim.cmd [[highlight NvimTreeNormal guibg=none]]
-vim.cmd [[highlight NvimTreeNormalNC guibg=none]]
-vim.cmd [[highlight SignColumn guibg=none]]
-vim.cmd [[highlight TelescopeNormal guibg=none]]
-vim.cmd [[highlight TelescopeBorder guibg=none]]
+vim.cmd([[highlight Normal ctermbg=none guibg=none]])
+vim.cmd([[highlight NormalNC guibg=none]])
+vim.cmd([[highlight NvimTreeNormal guibg=none]])
+vim.cmd([[highlight NvimTreeNormalNC guibg=none]])
+vim.cmd([[highlight SignColumn guibg=none]])
+vim.cmd([[highlight TelescopeNormal guibg=none]])
+vim.cmd([[highlight TelescopeBorder guibg=none]])
+
+vim.cmd([[highlight FloatBorder guibg=none]])
+vim.cmd([[highlight BufferLineGroupLabel guibg=none]])
+vim.cmd([[highlight NormalFloat guibg=none]])
 
 -- Telescope prompt color
 vim.cmd([[highlight TelescopePromptPrefix guifg=#96f1ff]])

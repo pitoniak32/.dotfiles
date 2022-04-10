@@ -71,6 +71,7 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use("morhetz/gruvbox")
 	use("folke/tokyonight.nvim")
+	use("tjdevries/colorbuddy.nvim")
 
 	-- Completions
 	use("hrsh7th/nvim-cmp") -- The completion plugin

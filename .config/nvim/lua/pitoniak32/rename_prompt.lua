@@ -1,5 +1,7 @@
 M = {}
 
+-- vim.lsp.util.open_floating_preview({ "test" }, "", {})
+
 M.rename = function()
 	local orginal_pos = vim.api.nvim_win_get_cursor(0)
 
@@ -16,7 +18,7 @@ M.rename = function()
 		col = 0,
 		width = 16,
 		height = 1,
-		-- border = "single",
+		border = "single",
 	})
 
 	-- Put the user into insert mode inside the window

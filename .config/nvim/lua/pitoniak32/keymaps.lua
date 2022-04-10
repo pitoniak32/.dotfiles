@@ -65,6 +65,8 @@ local key_maps = {
 	},
 }
 
+vim.cmd([[cnoreabbrev HR vert bo h]])
+
 local general_keymaps = function()
 	for _, value in pairs(key_maps.general) do
 		general_keymap(value[1], value[2], value[3], value[4])
