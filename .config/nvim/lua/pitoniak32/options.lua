@@ -28,7 +28,7 @@ vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set inccommand=split]])
 
 -- formatting on save
-require("pitoniak32.lsp.handlers").enable_format_on_save()
+-- require("pitoniak32.lsp.handlers").enable_format_on_save()
 
 -- Transparency
 vim.cmd([[highlight Normal ctermbg=none guibg=none]])

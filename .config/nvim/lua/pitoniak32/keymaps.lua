@@ -1,11 +1,11 @@
 local general_default_opts = { noremap = true, silent = true }
 local lsp_default_opts = { noremap = true, silent = true }
 
-local general_keymap = vim.api.nvim_set_keymap
+local general_map = vim.api.nvim_set_keymap
 local lsp_keymap = vim.api.nvim_buf_set_keymap
 
 -- Remap leader
-general_keymap("", "<Space>", "<Nop>", general_default_opts)
+general_map("", "<Space>", "<Nop>", general_default_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -33,9 +33,6 @@ local key_maps = {
 		{ "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
 		{ "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
-		-- Insert Mode Maps
-		{ "i", "jj", "<ESC>", general_default_opts },
-
 		-- Visual Mode Maps
 		{ "v", "<", "<gv", general_default_opts },
 		{ "v", ">", ">gv", general_default_opts },
@@ -49,7 +46,7 @@ local key_maps = {
 	-- Add table for nvim-tree
 	lsp = {
 		-- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", lsp_default_opts },
-		{ "n", "<leader>cr", "<cmd>lua require('pitoniak32.rename_prompt').rename()<CR>", lsp_default_opts },
+		{ "n", "<leader>rn", "<cmd>lua require('pitoniak32.rename_prompt').rename()<CR>", lsp_default_opts },
 		{ "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
 		{ "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lsp_default_opts },
 		{ "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lsp_default_opts },
@@ -60,8 +57,8 @@ local key_maps = {
 		{ "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', lsp_default_opts },
 		{ "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", lsp_default_opts },
 		{ "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", lsp_default_opts },
+		{ "n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", lsp_default_opts },
 		-- { "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts },
-		-- { "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts},
 	},
 }
 
@@ -69,7 +66,7 @@ vim.cmd([[cnoreabbrev HR vert bo h]])
 
 local general_keymaps = function()
 	for _, value in pairs(key_maps.general) do
-		general_keymap(value[1], value[2], value[3], value[4])
+		general_map(value[1], value[2], value[3], value[4])
 	end
 	-- vim.api.nvim_create_autocmd("BuffEnter", { command = "echo 'Hello'" })
 end
