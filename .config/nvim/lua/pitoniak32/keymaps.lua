@@ -9,9 +9,11 @@ general_map("", "<Space>", "<Nop>", general_default_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+general_map("n", "<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", general_default_opts)
+
 local key_maps = {
 	general = {
-  -- Normal Mode Maps
+		-- Normal Mode Maps
 		{ "n", "<C-h>", "<C-w>h", general_default_opts },
 		{ "n", "<C-j>", "<C-w>j", general_default_opts },
 		{ "n", "<C-k>", "<C-w>k", general_default_opts },
@@ -37,27 +39,27 @@ local key_maps = {
 		{ "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
 		{ "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
-  -- Insert Mode Maps
+		-- Insert Mode Maps
 
-    -- Move line
-    { "i", "<C-j>", "<ESC>:m .+1<CR>==", general_default_opts },
-    { "i", "<C-k>", "<ESC>:m .-2<CR>==", general_default_opts },
+		-- Move line
+		{ "i", "<C-j>", "<ESC>:m .+1<CR>==", general_default_opts },
+		{ "i", "<C-k>", "<ESC>:m .-2<CR>==", general_default_opts },
 
-    -- Undo Breakpoints
+		-- Undo Breakpoints
 		{ "i", ",", ",<c-g>u", general_default_opts },
 		{ "i", ".", ".<c-g>u", general_default_opts },
 		{ "i", "!", "!<c-g>u", general_default_opts },
 		{ "i", "?", "?<c-g>u", general_default_opts },
 
-  -- Visual Mode Maps
+		-- Visual Mode Maps
 		{ "v", "<", "<gv", general_default_opts },
 		{ "v", ">", ">gv", general_default_opts },
 
-    -- Move Block
+		-- Move Block
 		{ "v", "J", ":m '>+1<CR>gv=gv", general_default_opts },
 		{ "v", "K", ":m '<-2<CR>gv=gv", general_default_opts },
 
-  -- Visual Block Mode Maps
+		-- Visual Block Mode Maps
 		{ "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
 		{ "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
 	},
