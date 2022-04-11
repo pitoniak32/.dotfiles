@@ -11,7 +11,7 @@ vim.g.maplocalleader = " "
 
 local key_maps = {
 	general = {
-		-- Normal Mode Maps
+  -- Normal Mode Maps
 		{ "n", "<C-h>", "<C-w>h", general_default_opts },
 		{ "n", "<C-j>", "<C-w>j", general_default_opts },
 		{ "n", "<C-k>", "<C-w>k", general_default_opts },
@@ -29,11 +29,19 @@ local key_maps = {
 		{ "n", "gb", ":GitBlameToggle<CR>", general_default_opts },
 		{ "n", "<leader>e", ":NvimTreeToggle <CR>", general_default_opts },
 
+		{ "n", "<leader>gs", ":G<CR>", general_default_opts },
+		{ "n", "<leader>gj", ":diffget //3<CR>", general_default_opts },
+		{ "n", "<leader>gf", ":diffget //2<CR>", general_default_opts },
+
 		{ "n", "<leader>ff", ":lua require'telescope.builtin'.find_files()<CR>", general_default_opts },
 		{ "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
 		{ "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
-    -- Insert Mode Maps
+  -- Insert Mode Maps
+
+    -- Move line
+    { "i", "<C-j>", "<ESC>:m .+1<CR>==", general_default_opts },
+    { "i", "<C-k>", "<ESC>:m .-2<CR>==", general_default_opts },
 
     -- Undo Breakpoints
 		{ "i", ",", ",<c-g>u", general_default_opts },
@@ -41,14 +49,19 @@ local key_maps = {
 		{ "i", "!", "!<c-g>u", general_default_opts },
 		{ "i", "?", "?<c-g>u", general_default_opts },
 
-		-- Visual Mode Maps
+  -- Visual Mode Maps
 		{ "v", "<", "<gv", general_default_opts },
 		{ "v", ">", ">gv", general_default_opts },
 
-		-- Visual Block Mode Maps
+    -- Move Block
+		{ "v", "J", ":m '>+1<CR>gv=gv", general_default_opts },
+		{ "v", "K", ":m '<-2<CR>gv=gv", general_default_opts },
+
+  -- Visual Block Mode Maps
 		{ "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
 		{ "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
 	},
+
 	-- Add table for nvim-tree
 	lsp = {
 		-- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", lsp_default_opts },
