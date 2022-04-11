@@ -23,6 +23,8 @@ o.signcolumn = "yes"
 
 o.mouse = "nv"
 
+o.showmode = false
+
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set inccommand=split]])
@@ -46,7 +48,8 @@ vim.cmd([[highlight NormalFloat guibg=none]])
 -- Telescope prompt color
 vim.cmd([[highlight TelescopePromptPrefix guifg=#96f1ff]])
 
--- Line Number Custom Highlights
-vim.cmd([[highlight LineNrAbove ctermfg=11 guifg=#3b4261]])
-vim.cmd([[highlight LineNrBelow ctermfg=11 guifg=#3b4261]])
-vim.cmd([[highlight LineNr guifg=#96f1ff]])
+
+vim.cmd([[highlight LineNr guifg=#5eacd3]])
+vim.cmd([[highlight qfFileName guifg=#aed75f]])
+
+vim.cmd([[highlight TelescopeBorder guifg=#5eacd3]])

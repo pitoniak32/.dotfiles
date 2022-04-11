@@ -33,11 +33,17 @@ local key_maps = {
 		{ "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
 		{ "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
+    -- Insert Mode Maps
+
+    -- Undo Breakpoints
+		{ "i", ",", ",<c-g>u", general_default_opts },
+		{ "i", ".", ".<c-g>u", general_default_opts },
+		{ "i", "!", "!<c-g>u", general_default_opts },
+		{ "i", "?", "?<c-g>u", general_default_opts },
+
 		-- Visual Mode Maps
 		{ "v", "<", "<gv", general_default_opts },
 		{ "v", ">", ">gv", general_default_opts },
-
-		{ "v", "p", '"_P', general_default_opts },
 
 		-- Visual Block Mode Maps
 		{ "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
