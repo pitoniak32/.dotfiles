@@ -1,0 +1,71 @@
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+	return
+end
+
+local kind_icons = require("pitoniak32.icons").kind
+
+cmp.setup({
+	mapping = {
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }), -- cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+		-- Accept currently selected item. If none selected, `select` first item.
+		-- Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+	},
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.menu = ({
+				nvim_lua = "[NVIM_API]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[SNIP]",
+				buffer = "[BUF]",
+				path = "[PATH]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
+	sources = {
+		{ name = "nvim_lua" },
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
+	},
+	confirm_opts = {
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = false,
+	},
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
+	experimental = {
+		ghost_text = true,
+		native_menu = false,
+	},
+})
+
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+	print("CMP: failed to import cmp_nvim_lsp.")
+	return
+end
+
+M = {}
+
+M.update_capabilities = function(capabilities)
+	cmp_nvim_lsp.update_capabilities(capabilities)
+end
+
+return M
