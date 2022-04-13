@@ -3,9 +3,17 @@ if not cmp_status_ok then
 	return
 end
 
-local kind_icons = require("pitoniak32.icons").kind
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+	return
+end
 
 cmp.setup({
+	snippit = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
 	mapping = {
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -25,7 +33,7 @@ cmp.setup({
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.kind = string.format("%s", require("pitoniak32.icons").kind[vim_item.kind])
 			vim_item.menu = ({
 				nvim_lua = "[NVIM_API]",
 				nvim_lsp = "[LSP]",
@@ -55,17 +63,3 @@ cmp.setup({
 		native_menu = false,
 	},
 })
-
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	print("CMP: failed to import cmp_nvim_lsp.")
-	return
-end
-
-M = {}
-
-M.update_capabilities = function(capabilities)
-	cmp_nvim_lsp.update_capabilities(capabilities)
-end
-
-return M

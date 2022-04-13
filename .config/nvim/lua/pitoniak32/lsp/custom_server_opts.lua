@@ -1,4 +1,4 @@
-local typescript = {
+local tsserver = {
 	on_attach = function(default_on_attach)
 		return function(client, bufnr)
 			if default_on_attach then
@@ -53,7 +53,7 @@ local pyright = {
 M = {}
 
 M.servers = {
-	tsserver = typescript,
+	tsserver = tsserver,
 	sumneko_lua = sumneko_lua,
 	pyright = pyright,
 }
