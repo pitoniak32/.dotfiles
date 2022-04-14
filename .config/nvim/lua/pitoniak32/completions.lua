@@ -9,7 +9,7 @@ if not snip_status_ok then
 end
 
 cmp.setup({
-	snippit = {
+	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
 		end,
