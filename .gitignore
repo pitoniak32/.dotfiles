@@ -1,3 +1,4 @@
 .config/*
+!.config/alacritty/
 !.config/nvim/
 .config/nvim/plugin/
