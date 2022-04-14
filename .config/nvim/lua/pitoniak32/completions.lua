@@ -15,15 +15,15 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-    ["<CR>"] = cmp.config.disable,
-    ["<C-s>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.config.disable,
+		["<C-s>"] = cmp.mapping.confirm({ select = true }),
 		["<C-y>"] = function(fallback)
-      if cmp.visible() then
+			if cmp.visible() then
 				cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
+			else
+				fallback()
+			end
+		end,
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -53,8 +53,8 @@ cmp.setup({
 		select = true,
 	},
 	window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	view = {
 		entries = "native",
