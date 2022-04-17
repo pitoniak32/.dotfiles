@@ -8,6 +8,11 @@ if not snip_status_ok then
 	return
 end
 
+local lspkind_status_ok, lspkind = pcall(require, "lspkind")
+if not lspkind_status_ok then
+	return
+end
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -26,27 +31,24 @@ cmp.setup({
 		end,
 	}),
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s", require("pitoniak32.icons").kind[vim_item.kind])
-			vim_item.menu = ({
+		format = lspkind.cmp_format({
+			with_text = true,
+			menu = {
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVIM_API]",
 				luasnip = "[SNIP]",
 				path = "[PATH]",
 				buffer = "[BUF]",
-			})[entry.source.name]
-			return vim_item
-		end,
+			},
+		}),
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 	}, {
-		{ name = "buffer" },
-		{ name = "path" },
+		{ name = "buffer", keyword_length = 4 },
+		{ name = "path", keyword_length = 4 },
 	}),
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

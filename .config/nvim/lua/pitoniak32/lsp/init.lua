@@ -1,8 +1,3 @@
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
-end
-
 local lsp_custom_opts_ok, lsp_custom_opts = pcall(require, "pitoniak32.lsp.custom_server_opts")
 if not lsp_custom_opts_ok then
 	print("LSP: error when requiring custom options.")
@@ -27,20 +22,21 @@ if not completion_status_ok then
 	return
 end
 
+local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not lsp_installer_status_ok then
+	return
+end
+
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
 
--- Table of configured language servers.
-local servers = lsp_custom_opts.servers
+lsp_installer.on_server_ready(function(server)
+	local custom_server_opts = lsp_custom_opts.servers[server.name]
 
-local setup_server = function(server, server_custom_config)
-	lspconfig[server].setup(vim.tbl_deep_extend("force", server_custom_config, {
-		on_attach = server_custom_config.on_attach(lsp_default_handlers.default_attach),
+	local opts = vim.tbl_deep_extend("force", {
+		on_attach = lsp_default_handlers.default_attach,
 		capabilities = updated_capabilities,
-	}))
-end
+	}, custom_server_opts or {})
 
--- setup all defined lsps
-for server, config in pairs(servers) do
-	setup_server(server, config)
-end
+	server:setup(opts)
+end)

@@ -1,22 +1,16 @@
 local tsserver = {
-	on_attach = function(default_on_attach)
-		return function(client, bufnr)
-			if default_on_attach then
-				default_on_attach(client, bufnr)
-			end
-			client.resolved_capabilities.document_formatting = false
-		end
-	end,
+	on_attach = function(client, bufnr)
+    require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+  end
 }
 
 local sumneko_lua = {
-	on_attach = function(default_on_attach)
-		return function(client, bufnr)
-			default_on_attach(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
-		end
-	end,
+	on_attach = function(client, bufnr)
+    require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
 	settings = {
 		Lua = {
 			runtime = {
@@ -38,13 +32,13 @@ local sumneko_lua = {
 	},
 }
 
-local pyright = {
-	on_attach = function(default_on_attach)
-		return function(client, bufnr)
-			default_on_attach(client, bufnr)
-		end
-	end,
-}
+-- local pyright = {
+-- 	on_attach = function(default_on_attach)
+-- 		return function(client, bufnr)
+-- 			default_on_attach(client, bufnr)
+-- 		end
+-- 	end,
+-- }
 
 -- if client.name == "html" or client.name == "jdt.ls" then
 --   client.resolved_capabilities.document_formatting = false
@@ -55,7 +49,7 @@ M = {}
 M.servers = {
 	tsserver = tsserver,
 	sumneko_lua = sumneko_lua,
-	pyright = pyright,
+	-- pyright = pyright,
 }
 
 return M
