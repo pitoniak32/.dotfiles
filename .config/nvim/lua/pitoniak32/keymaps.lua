@@ -39,6 +39,8 @@ local key_maps = {
     { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
     { "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
+    { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
+
     -- Insert Mode Maps
 
     -- Move line
@@ -62,9 +64,6 @@ local key_maps = {
     -- Visual Block Mode Maps
     { "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
     { "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
-
-    -- Command maps
-    -- { "c", "help", "vert bo h", general_default_opts },
   },
 
   -- Add table for nvim-tree
