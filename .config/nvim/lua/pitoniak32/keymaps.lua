@@ -62,6 +62,9 @@ local key_maps = {
     -- Visual Block Mode Maps
     { "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
     { "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
+
+    -- Command maps
+    -- { "c", "help", "vert bo h", general_default_opts },
   },
 
   -- Add table for nvim-tree
@@ -83,7 +86,7 @@ local key_maps = {
   },
 }
 
-vim.cmd([[cnoreabbrev HR vert bo h]])
+vim.cmd([[cnoreabbrev help vert bo h]])
 
 vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("pitoniak32.format_cmds").toggle_format_on_save()' ]])
 

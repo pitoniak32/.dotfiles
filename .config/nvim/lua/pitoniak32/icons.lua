@@ -92,10 +92,10 @@ if vim.fn.has "mac" == 1 then
       Calendar = "",
     },
     diagnostics = {
-      Error = "",
-      Warning = "",
+      Error = "E",
+      Warning = "W",
       Information = "",
-      Question = "",
+      Question = "?",
       Hint = "",
     },
     misc = {
