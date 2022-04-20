@@ -41,13 +41,14 @@ vim.cmd([[highlight SignColumn guibg=none]])
 vim.cmd([[highlight TelescopeNormal guibg=none]])
 vim.cmd([[highlight TelescopeBorder guibg=none]])
 
-vim.cmd([[highlight FloatBorder guibg=none]])
-vim.cmd([[highlight BufferLineGroupLabel guibg=none]])
-vim.cmd([[highlight NormalFloat guibg=none]])
+-- Git Gutter Signs Transparency
+vim.cmd([[highlight GruvboxRedSign guibg=none]])
+vim.cmd([[highlight GruvboxGreenSign guibg=none]])
+vim.cmd([[highlight GruvboxRedSign guibg=none]])
+vim.cmd([[highlight GruvboxAquaSign guibg=none]])
 
 -- Telescope prompt color
 vim.cmd([[highlight TelescopePromptPrefix guifg=#96f1ff]])
-
 
 vim.cmd([[highlight LineNr guifg=#5eacd3]])
 vim.cmd([[highlight qfFileName guifg=#aed75f]])
