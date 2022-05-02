@@ -39,19 +39,19 @@ local key_maps = {
     { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
     { "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
-    { "n", "<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", general_default_opts },
+    { "n", "<leader>ma", ":lua require'harpoon.mark'.add_file()<CR>", general_default_opts },
 
     { "n", "<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", general_default_opts },
 
-    { "n", "<leader>a", ":lua require'harpoon.ui'.nav_file(1)<CR>", general_default_opts },
-    { "n", "<leader>s", ":lua require'harpoon.ui'.nav_file(2)<CR>", general_default_opts },
-    { "n", "<leader>d", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
-    { "n", "<leader>f", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
+    { "n", "<leader><leader>a", ":lua require'harpoon.ui'.nav_file(1)<CR>", general_default_opts },
+    { "n", "<leader><leader>s", ":lua require'harpoon.ui'.nav_file(2)<CR>", general_default_opts },
+    { "n", "<leader><leader>d", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
+    { "n", "<leader><leader>f", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
 
-    { "n", "<C-t>", ":lua require'harpoon.cmd-ui'.toggle_quick_menu()<CR>", general_default_opts },
+    -- { "n", "<C-t>", ":lua require'harpoon.cmd-ui'.toggle_quick_menu()<CR>", general_default_opts },
 
-    { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
-    { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
+    -- { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
+    -- { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
 
     { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
 
