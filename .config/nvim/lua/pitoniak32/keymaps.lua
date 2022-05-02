@@ -28,7 +28,7 @@ local key_maps = {
     { "n", "<S-h>", ":bprevious<CR>", general_default_opts },
     { "n", "<leader>q", ":Bdelete<CR>", general_default_opts },
 
-    { "n", "gb", ":GitBlameToggle<CR>", general_default_opts },
+    { "n", "<leader>gb", ":GitBlameToggle<CR>", general_default_opts },
     { "n", "<leader>e", ":NvimTreeToggle <CR>", general_default_opts },
 
     { "n", "<leader>gs", ":G<CR>", general_default_opts },
