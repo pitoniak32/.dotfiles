@@ -43,10 +43,10 @@ local key_maps = {
 
     { "n", "<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", general_default_opts },
 
-    { "n", "<leader><leader>a", ":lua require'harpoon.ui'.nav_file(1)<CR>", general_default_opts },
-    { "n", "<leader><leader>s", ":lua require'harpoon.ui'.nav_file(2)<CR>", general_default_opts },
-    { "n", "<leader><leader>d", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
-    { "n", "<leader><leader>f", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
+    { "n", "<leader><leader>a", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
+    { "n", "<leader><leader>s", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
+    { "n", "<leader><leader>d", ":lua require'harpoon.ui'.nav_file(2)<CR>", general_default_opts },
+    { "n", "<leader><leader>f", ":lua require'harpoon.ui'.nav_file(1)<CR>", general_default_opts },
 
     -- { "n", "<C-t>", ":lua require'harpoon.cmd-ui'.toggle_quick_menu()<CR>", general_default_opts },
 
