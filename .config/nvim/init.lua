@@ -1,5 +1,6 @@
 require("pitoniak32.colorscheme")
 require("pitoniak32.telescope")
+require("pitoniak32.harpoon")
 require("pitoniak32.options")
 require("pitoniak32.keymaps")
 require("pitoniak32.term")

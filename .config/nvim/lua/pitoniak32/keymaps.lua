@@ -39,6 +39,20 @@ local key_maps = {
     { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
     { "n", "<leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
+    { "n", "<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", general_default_opts },
+
+    { "n", "<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", general_default_opts },
+
+    { "n", "<leader>a", ":lua require'harpoon.ui'.nav_file(1)<CR>", general_default_opts },
+    { "n", "<leader>s", ":lua require'harpoon.ui'.nav_file(2)<CR>", general_default_opts },
+    { "n", "<leader>d", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
+    { "n", "<leader>f", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
+
+    { "n", "<C-t>", ":lua require'harpoon.cmd-ui'.toggle_quick_menu()<CR>", general_default_opts },
+
+    { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
+    { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
+
     { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
 
     -- Insert Mode Maps
@@ -69,7 +83,7 @@ local key_maps = {
   -- Add table for nvim-tree
   lsp = {
     -- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", lsp_default_opts },
-    { "n", "<leader>rn", "<cmd>lua require('pitoniak32.rename_prompt').rename()<CR>", lsp_default_opts },
+    { "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", lsp_default_opts },
     { "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp_default_opts },
     { "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lsp_default_opts },
     { "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lsp_default_opts },
