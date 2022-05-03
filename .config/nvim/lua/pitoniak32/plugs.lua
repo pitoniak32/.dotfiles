@@ -54,7 +54,8 @@ return packer.startup(function(use)
 	use("moll/vim-bbye")
 	use("lewis6991/gitsigns.nvim")
 	use("f-person/git-blame.nvim")
-	use("tpope/vim-fugitive") use("ruifm/gitlinker.nvim")
+	use("tpope/vim-fugitive")
+	use("ruifm/gitlinker.nvim")
 	use("mattn/vim-gist")
 	use("mattn/webapi-vim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
@@ -64,6 +65,7 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use("tpope/vim-surround")
+  use("vim-test/vim-test")
 	-- use('tjdevries/express_line.nvim')
 
 	-- Nvim Tree

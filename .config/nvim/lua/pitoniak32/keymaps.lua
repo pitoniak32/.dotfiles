@@ -52,6 +52,7 @@ local key_maps = {
 
     -- { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
     -- { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
+    { "n", "<leader><leader>t", ":TestNearest<CR>", general_default_opts },
 
     { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
 

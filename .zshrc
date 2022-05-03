@@ -10,8 +10,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-#bindkey -v
-
 eval "$(pyenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
