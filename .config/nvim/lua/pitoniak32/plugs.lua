@@ -39,82 +39,60 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
-	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
+  -- Necessary Plugins
+	use("wbthomason/packer.nvim")
+	use("nvim-lua/plenary.nvim")
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("ThePrimeagen/harpoon")
-	use("rcarriga/nvim-notify")
-	use({ "michaelb/sniprun", run = "bash ./install.sh" })
-	use({ "akinsho/toggleterm.nvim", branch = "main" })
-	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
-	use("lewis6991/gitsigns.nvim")
-	use("f-person/git-blame.nvim")
-	use("tpope/vim-fugitive")
-	use("ruifm/gitlinker.nvim")
-	use("mattn/vim-gist")
-	use("mattn/webapi-vim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("numToStr/Comment.nvim")
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
 	use("tpope/vim-surround")
-  use("vim-test/vim-test")
-	-- use('tjdevries/express_line.nvim')
-
-	-- Nvim Tree
-	use("kyazdani42/nvim-tree.lua")
-	use("kyazdani42/nvim-web-devicons")
-
-	-- Colorschemes
 	use("morhetz/gruvbox")
-	use("folke/tokyonight.nvim")
-	use("tjdevries/colorbuddy.nvim")
-
-	-- Completions
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("saadparwaiz1/cmp_luasnip")
 	use("onsails/lspkind-nvim")
-
-	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
-
-	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("simrat39/symbols-outline.nvim")
-	use("ray-x/lsp_signature.nvim")
-	use("RRethy/vim-illuminate")
-	use({ "ckipp01/stylua-nvim", run = "cargo install stylua" })
-
-	-- Java
-	use("mfussenegger/nvim-jdtls")
-
-	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("nvim-treesitter/nvim-treesitter-angular")
-	use({ "p00f/nvim-ts-rainbow" })
 	use("nvim-treesitter/playground")
 	use("romgrk/nvim-treesitter-context")
-	use("mizlan/iswap.nvim")
+	use({ "ckipp01/stylua-nvim", run = "cargo install stylua" })
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
+  -- Quality Of Life Enhancements
+	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+	use("moll/vim-bbye")
+	use("tpope/vim-fugitive")
+	use("numToStr/Comment.nvim")
+  use("JoosepAlviste/nvim-ts-context-commentstring")
+  use("vim-test/vim-test")
+	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use({ "akinsho/toggleterm.nvim", branch = "main" })
+  use("kyazdani42/nvim-tree.lua")
+
+  -- Visual Enhancements
+	use("akinsho/bufferline.nvim")
+	use("lewis6991/gitsigns.nvim")
+	use("f-person/git-blame.nvim")
+	use("kyazdani42/nvim-web-devicons")
+	use("folke/tokyonight.nvim")
+	use({ "p00f/nvim-ts-rainbow" })
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+
+  -- Questionably Keeping
+	use("ray-x/lsp_signature.nvim")
+	use("RRethy/vim-illuminate")
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

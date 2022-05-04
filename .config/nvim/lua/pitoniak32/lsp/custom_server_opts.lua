@@ -2,7 +2,12 @@ local tsserver = {
 	on_attach = function(client, bufnr)
     require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
-  end
+  end,
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = "relative"
+    },
+  },
 }
 
 local sumneko_lua = {
