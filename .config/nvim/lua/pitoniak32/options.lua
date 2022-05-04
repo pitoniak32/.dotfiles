@@ -20,10 +20,10 @@ o.scrolloff = 8
 o.updatetime = 50
 -- o.colorcolumn = "80"
 o.signcolumn = "yes"
-
 o.mouse = "nv"
-
 o.showmode = false
+
+-- vim.cmd([["set formatoptions-=cro"]])
 
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])

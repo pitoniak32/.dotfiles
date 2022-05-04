@@ -3,6 +3,13 @@ if not status_ok then
   return
 end
 
+require("nvim-treesitter.configs").setup({
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  }
+})
+
 comment.setup {
   pre_hook = function(ctx)
     local U = require "Comment.utils"
