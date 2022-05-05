@@ -9,6 +9,8 @@ general_map("", "<Space>", "<Nop>", general_default_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- LUASNIP KEY_MAPS ARE DEFINED IN LUASNIP.
+
 general_map("n", "<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", general_default_opts)
 
 local key_maps = {
@@ -41,7 +43,7 @@ local key_maps = {
 
     { "n", "<leader>ma", ":lua require'harpoon.mark'.add_file()<CR>", general_default_opts },
 
-    { "n", "<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", general_default_opts },
+    { "n", "<C-e>", ":lua require'telescope'.extensions.harpoon.marks()<CR>", general_default_opts },
 
     { "n", "<leader><leader>a", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
     { "n", "<leader><leader>s", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
@@ -52,7 +54,10 @@ local key_maps = {
 
     -- { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
     -- { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
-    { "n", "<leader><leader>t", ":TestNearest<CR>", general_default_opts },
+    -- { "n", "<leader><leader>t", ":TestNearest<CR>", general_default_opts },
+    { "n", "<leader>tn", ":TestNearest -strategy=neovim<CR>", general_default_opts },
+    { "n", "<leader>tl", ":TestLast -strategy=neovim<CR>", general_default_opts },
+    { "n", "<leader>tv", ":TestVisit<CR>", general_default_opts },
 
     { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
 
