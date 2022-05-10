@@ -1,21 +1,21 @@
 local tsserver = {
 	on_attach = function(client, bufnr)
-    require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-  end,
-  init_options = {
-    preferences = {
-      importModuleSpecifierPreference = "relative"
-    },
-  },
+		require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+	end,
+	init_options = {
+		preferences = {
+			importModuleSpecifierPreference = "relative",
+		},
+	},
 }
 
 local sumneko_lua = {
 	on_attach = function(client, bufnr)
-    require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-  end,
+		require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+	end,
 	settings = {
 		Lua = {
 			runtime = {
@@ -54,7 +54,7 @@ M = {}
 M.servers = {
 	tsserver = tsserver,
 	sumneko_lua = sumneko_lua,
-	-- pyright = pyright,
+	pyright = {},
 }
 
 return M
