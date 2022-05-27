@@ -22,21 +22,28 @@ if not completion_status_ok then
 	return
 end
 
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+	return
+end
+
 local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not lsp_installer_status_ok then
 	return
 end
 
+lsp_installer.setup({})
+
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
 
-lsp_installer.on_server_ready(function(server)
-	local custom_server_opts = lsp_custom_opts.servers[server.name]
+for name, server in pairs(lsp_custom_opts.servers) do
+	local custom_server_opts = server
 
 	local opts = vim.tbl_deep_extend("force", {
 		on_attach = lsp_default_handlers.default_attach,
 		capabilities = updated_capabilities,
 	}, custom_server_opts or {})
 
-	server:setup(opts)
-end)
+	lspconfig[name].setup(opts)
+end

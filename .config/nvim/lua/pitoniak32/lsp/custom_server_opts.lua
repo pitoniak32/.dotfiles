@@ -54,7 +54,7 @@ M = {}
 M.servers = {
 	tsserver = tsserver,
 	sumneko_lua = sumneko_lua,
-	-- pyright = pyright,
+	pyright = {},
 }
 
 return M

@@ -37,7 +37,7 @@ local key_maps = {
     { "n", "<leader>gj", ":diffget //3<CR>", general_default_opts },
     { "n", "<leader>gf", ":diffget //2<CR>", general_default_opts },
 
-    { "n", "<leader>ff", ":lua require'telescope.builtin'.find_files()<CR>", general_default_opts },
+    { "n", "<leader>ff", ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>", general_default_opts },
     { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
     { "n", "<leader><leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
