@@ -41,7 +41,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 M = {}
 
 M.default_attach = function(client, bufnr)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     local status_ok, illuminate = pcall(require, "illuminate")
     if not status_ok then
       return

@@ -1,7 +1,7 @@
 local tsserver = {
 	on_attach = function(client, bufnr)
     require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
   end,
   init_options = {
     preferences = {
@@ -13,8 +13,8 @@ local tsserver = {
 local sumneko_lua = {
 	on_attach = function(client, bufnr)
     require("pitoniak32.lsp.default_handlers").default_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
   end,
 	settings = {
 		Lua = {
@@ -46,7 +46,7 @@ local sumneko_lua = {
 -- }
 
 -- if client.name == "html" or client.name == "jdt.ls" then
---   client.resolved_capabilities.document_formatting = false
+--   client.server_capabilities.document_formatting = false
 -- end
 
 M = {}
