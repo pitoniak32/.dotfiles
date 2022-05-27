@@ -1,3 +1,6 @@
 .config/*
+.config/ranger/colorschemes/
 !.config/nvim/
+!.config/ranger/
+!.config/skhd/
 .config/nvim/plugin/
