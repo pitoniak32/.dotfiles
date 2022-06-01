@@ -26,8 +26,6 @@ local key_maps = {
     { "n", "<C-S-Left>", ":vertical resize -2<CR>", general_default_opts },
     { "n", "<C-S-Right>", ":vertical resize +2<CR>", general_default_opts },
 
-    { "n", "<S-l>", ":bnext<CR>", general_default_opts },
-    { "n", "<S-h>", ":bprevious<CR>", general_default_opts },
     { "n", "<leader>q", ":Bdelete<CR>", general_default_opts },
 
     { "n", "<leader>gb", ":GitBlameToggle<CR>", general_default_opts },

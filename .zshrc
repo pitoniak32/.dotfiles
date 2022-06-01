@@ -16,7 +16,6 @@ eval "$(pyenv init -)"
 
 export PATH="/Users/davidpi/.local/bin/:$PATH"
 
-export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -26,3 +25,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"
+
+export EDITOR=nvim
