@@ -75,6 +75,7 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
   use({ "akinsho/toggleterm.nvim", branch = "main" })
   use("kyazdani42/nvim-tree.lua")
+  use("vimwiki/vimwiki")
 
   -- Visual Enhancements
 	use("akinsho/bufferline.nvim")

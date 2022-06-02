@@ -18,15 +18,16 @@ o.errorbells = false
 o.termguicolors = true
 o.scrolloff = 8
 o.updatetime = 50
--- o.colorcolumn = "80"
 o.signcolumn = "yes"
 o.mouse = "nv"
 o.showmode = false
 
+-- vimwiki
+vim.g.vimwiki_list = {{path = '~/.vimwiki/vimwiki/'}}
+
+
 -- winbar formatting
 o.winbar = "%=%m %f"
-
--- vim.cmd([["set formatoptions-=cro"]])
 
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])
@@ -45,12 +46,6 @@ vim.cmd([[highlight NvimTreeNormalNC guibg=none]])
 vim.cmd([[highlight SignColumn guibg=none]])
 vim.cmd([[highlight TelescopeNormal guibg=none]])
 vim.cmd([[highlight TelescopeBorder guibg=none]])
-
--- Git Gutter Signs Transparency
-vim.cmd([[highlight GruvboxRedSign guibg=none]])
-vim.cmd([[highlight GruvboxGreenSign guibg=none]])
-vim.cmd([[highlight GruvboxRedSign guibg=none]])
-vim.cmd([[highlight GruvboxAquaSign guibg=none]])
 
 -- Telescope prompt color
 vim.cmd([[highlight TelescopePromptPrefix guifg=#96f1ff]])
