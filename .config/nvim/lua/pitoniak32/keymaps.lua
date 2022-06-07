@@ -59,6 +59,8 @@ local key_maps = {
 
     { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
 
+    { "n", "<leader>sp", ":setlocal spell!<CR>", general_default_opts },
+
     -- Insert Mode Maps
 
     -- Move line

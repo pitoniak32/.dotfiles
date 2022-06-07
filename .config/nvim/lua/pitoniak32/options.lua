@@ -25,6 +25,9 @@ o.showmode = false
 -- vimwiki
 vim.g.vimwiki_list = {{path = '~/.vimwiki/vimwiki/'}}
 
+-- Auto saving and loading views
+-- vim.api.nvim_create_autocmd("BufWinLeave", { pattern = "*.*", command = "mkview" })
+-- vim.api.nvim_create_autocmd("BufWinEnter", { pattern = "*.*", command = "silent loadview" })
 
 -- winbar formatting
 o.winbar = "%=%m %f"
