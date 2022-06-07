@@ -15,7 +15,7 @@ source $ZSH/oh-my-zsh.sh
 eval "$(pyenv init -)"
 
 export PATH="/Users/davidpi/.local/bin/:$PATH"
-
+export JDTLS_HOME="/Users/davidpi/.local/share/nvim/lsp_servers/jdtls"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
