@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use({ "akinsho/toggleterm.nvim", branch = "main" })
   use("kyazdani42/nvim-tree.lua")
   use("vimwiki/vimwiki")
+  use('mfussenegger/nvim-jdtls')
 
   -- Visual Enhancements
 	use("akinsho/bufferline.nvim")
