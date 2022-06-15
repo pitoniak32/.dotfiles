@@ -13,4 +13,6 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 tmux new-window -t '=_vimwiki' -n 'vimwiki'
+tmux set-option -t '=_vimwiki:=vimwiki' status off
 tmux send-keys -t '=_vimwiki:=vimwiki' 'nvim -c VimwikiIndex' C-m
+

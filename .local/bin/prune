@@ -1,0 +1,31 @@
+#!/bin/bash
+
+fp_master='master'
+
+result=$(git diff origin/master --name-only | cut -d "/" -f1,2 | uniq)
+
+contains_root_changes=$(echo $result | grep namespaces)
+
+echo $contains_root_changes
+
+CHECKOUT_DIRS="/"
+ROOT_CHANGE=""
+for NAMESPACE in $result; do
+  if [[ "$NAMESPACE" == *"namespaces"* ]]; then
+    CHECKOUT_DIRS+="${NAMESPACE}/ " 
+  else
+    echo "root change detected."
+  fi
+done
+
+# Add setting folder to sparse-checkout directories 
+CHECKOUT_DIRS="${CHECKOUT_DIRS} /settings/"
+
+if [[ $ROOT_CHANGE == "" ]]; then
+  echo "enabled."
+  git sparse-checkout set --cone true $CHECKOUT_DIRS
+else
+  echo "disabled."
+  git sparse-checkout disable
+fi
+
