@@ -23,11 +23,8 @@ o.mouse = "nv"
 o.showmode = false
 
 -- vimwiki
-vim.g.vimwiki_list = {{path = '~/.vimwiki/vimwiki/'}}
+vim.g.vimwiki_list = { { path = "~/.vimwiki/vimwiki/" } }
 
--- Auto saving and loading views
--- vim.api.nvim_create_autocmd("BufWinLeave", { pattern = "*.*", command = "mkview" })
--- vim.api.nvim_create_autocmd("BufWinEnter", { pattern = "*.*", command = "silent loadview" })
 
 -- winbar formatting
 o.winbar = "%=%m %f"
@@ -35,9 +32,6 @@ o.winbar = "%=%m %f"
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set inccommand=split]])
-
--- formatting on save
-require("pitoniak32.format_cmds")
 
 vim.cmd([[let g:test#neovim#term_position="vert botright"]])
 

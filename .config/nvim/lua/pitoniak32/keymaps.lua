@@ -16,11 +16,6 @@ general_map("n", "<leader><leader>x", ":lua require'pitoniak32.globals'.save_and
 local key_maps = {
   general = {
     -- Normal Mode Maps
-    { "n", "<C-h>", "<C-w>h", general_default_opts },
-    { "n", "<C-j>", "<C-w>j", general_default_opts },
-    { "n", "<C-k>", "<C-w>k", general_default_opts },
-    { "n", "<C-l>", "<C-w>l", general_default_opts },
-
     { "n", "<C-S-Up>", ":resize -2<CR>", general_default_opts },
     { "n", "<C-S-Down>", ":resize +2<CR>", general_default_opts },
     { "n", "<C-S-Left>", ":vertical resize -2<CR>", general_default_opts },
@@ -57,15 +52,11 @@ local key_maps = {
     { "n", "<leader>tl", ":TestLast -strategy=neovim<CR>", general_default_opts },
     { "n", "<leader>tv", ":TestVisit<CR>", general_default_opts },
 
-    { "n", "<leader>caw", "<C-S-w><C-S-o>", general_default_opts },
-
     { "n", "<leader>sp", ":setlocal spell!<CR>", general_default_opts },
 
-    -- Insert Mode Maps
-
     -- Move line
-    { "i", "<C-j>", "<ESC>:m .+1<CR>==", general_default_opts },
     { "i", "<C-k>", "<ESC>:m .-2<CR>==", general_default_opts },
+    { "i", "<C-j>", "<ESC>:m .+1<CR>==", general_default_opts },
 
     -- Undo Breakpoints
     { "i", ",", ",<c-g>u", general_default_opts },
