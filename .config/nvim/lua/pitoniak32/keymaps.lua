@@ -34,7 +34,7 @@ local key_maps = {
     { "n", "<leader>gf", ":lua require'telescope.builtin'.git_files()<CR>", general_default_opts },
     { "n", "<leader><leader>lg", ":lua require'telescope.builtin'.live_grep()<CR>", general_default_opts },
 
-    { "n", "<leader>hm", ":lua require'harpoon.mark'.add_file()<CR>", general_default_opts },
+    { "n", "<leader>a", ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", general_default_opts },
 
     { "n", "<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", general_default_opts },
 
