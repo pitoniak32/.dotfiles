@@ -47,15 +47,16 @@ return packer.startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("tpope/vim-surround")
 	use("gruvbox-community/gruvbox")
-	use("hrsh7th/nvim-cmp")
+	use("neovim/nvim-lspconfig")
+	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
+  use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("saadparwaiz1/cmp_luasnip")
+	use("hrsh7th/nvim-cmp")
 	use("onsails/lspkind-nvim")
 	use("L3MON4D3/LuaSnip") --snippet engine
-	use("neovim/nvim-lspconfig")
+	use("saadparwaiz1/cmp_luasnip")
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",

@@ -1,4 +1,4 @@
-local colorscheme = "tokyonight"
+local colorscheme = "gruvbox"
 
 if colorscheme == "tokyonight" then
   vim.g.tokyonight_style = "night"
@@ -19,17 +19,20 @@ vim.g.tokyonight_transparent_sidebar = true
 vim.g.gruvbox_invert_selection = "0"
 vim.opt.background = "dark"
 
+hl("GruvboxAquaSign",  { ctermfg = 108, ctermbg = 237, fg = "#8ec07c", bg = "NONE" })
+hl("GruvboxRedSign",   { ctermfg = 167, ctermbg = 237, fg = "#fb4934", bg = "NONE" })
+hl("GruvboxGreenSign", { ctermfg = 142, ctermbg = 237, fg = "#b8bb26", bg = "NONE" })
+hl("GruvboxBlueSign",  { ctermfg = 109, ctermbg = 237, fg = "#83a598", bg = "NONE" })
 
-hl("SignColumn", { bg = "none" })
-hl("ColorColumn", { ctermbg = 0, bg = "#555555" })
-hl("CursorLineNR", { bg = "None" })
-hl("Normal", { ctermbg = 0, bg = "none" })
-hl("NormalNC", { bg = "none" })
-hl("LineNr", { fg = "#5eacd3" })
+hl("SignColumn",   { fg = "fg", bg = "NONE" })
+hl("CursorLineNR", { fg = "fg", bg = "NONE" })
+hl("Normal",       { fg = "fg", bg = "NONE" })
+hl("NormalNC",     { fg = "fg", bg = "NONE" })
+hl("LineNr",       { fg = "#5eacd3" })
 
-hl("NvimTreeNormal", { bg = "none" })
-hl("NvimTreeNormalNC", { bg = "none" })
+hl("NvimTreeNormal",   { bg = "None" })
+hl("NvimTreeNormalNC", { bg = "None" })
 
-hl("TelescopeNormal", { bg = "none" })
-hl("TelescopeBorder", { fg = "#5eacd3", bg = "none" })
+hl("TelescopeNormal",       { bg = "None" })
+hl("TelescopeBorder",       { fg = "#5eacd3", bg = "None" })
 hl("TelescopePromptPrefix", { fg = "#96f1ff" })

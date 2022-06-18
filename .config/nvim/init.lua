@@ -1,7 +1,7 @@
 require("pitoniak32.telescope")
 require("pitoniak32.harpoon")
 require("pitoniak32.keymaps")
-require("pitoniak32.term")
+require("pitoniak32.toggle_term")
 require("pitoniak32.nvimtree")
 require("pitoniak32.treesitter")
 require("pitoniak32.autopairs")

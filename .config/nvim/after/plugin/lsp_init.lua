@@ -1,4 +1,4 @@
-local lsp_custom_opts_ok, lsp_custom_opts = pcall(require, "pitoniak32.lsp.custom_server_opts")
+local lsp_custom_opts_ok, lsp_custom_opts = pcall(require, "pitoniak32.lsp.custom_servers")
 if not lsp_custom_opts_ok then
 	print("LSP: error when requiring custom options.")
 	return
