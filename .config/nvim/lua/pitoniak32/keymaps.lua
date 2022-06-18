@@ -43,11 +43,6 @@ local key_maps = {
     { "n", "<leader>l", ":lua require'harpoon.ui'.nav_file(3)<CR>", general_default_opts },
     { "n", "<leader>;", ":lua require'harpoon.ui'.nav_file(4)<CR>", general_default_opts },
 
-    -- { "n", "<C-t>", ":lua require'harpoon.cmd-ui'.toggle_quick_menu()<CR>", general_default_opts },
-
-    -- { "n", "<leader><leader>a", ":lua require'harpoon.tmux'.gotoTerminal(1)<CR>", general_default_opts },
-    -- { "n", "<leader><leader>s", ":lua require'harpoon.tmux'.sendCommand(0, 'ls -la')<CR>", general_default_opts },
-    -- { "n", "<leader><leader>t", ":TestNearest<CR>", general_default_opts },
     { "n", "<leader>tn", ":TestNearest -strategy=neovim<CR>", general_default_opts },
     { "n", "<leader>tl", ":TestLast -strategy=neovim<CR>", general_default_opts },
     { "n", "<leader>tv", ":TestVisit<CR>", general_default_opts },
@@ -116,7 +111,6 @@ M.set_buf_lsp_keymaps = function(bufnr)
   for _, value in pairs(key_maps.lsp) do
     lsp_keymap(bufnr, value[1], value[2], value[3], value[4])
   end
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 -- Return the keymap function for lsp setup

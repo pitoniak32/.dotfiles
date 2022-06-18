@@ -9,7 +9,6 @@ configs.setup({
 	highlight = {
 		-- use_languagetree = true,
 		enable = true, -- false will disable the whole extension
-		-- disable = { "css", "html" }, -- list of language that will be disabled
 		disable = { "css" }, -- list of language that will be disabled
 		additional_vim_regex_highlighting = true,
 	},

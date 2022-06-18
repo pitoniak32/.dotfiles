@@ -21,10 +21,10 @@ o.updatetime = 50
 o.signcolumn = "yes"
 o.mouse = "nv"
 o.showmode = false
+o.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- vimwiki
 vim.g.vimwiki_list = { { path = "~/.vimwiki/vimwiki/" } }
-
 
 -- winbar formatting
 o.winbar = "%=%m %f"
@@ -35,17 +35,3 @@ vim.cmd([[set inccommand=split]])
 
 vim.cmd([[let g:test#neovim#term_position="vert botright"]])
 
--- Transparency
-vim.cmd([[highlight Normal ctermbg=none guibg=none]])
-vim.cmd([[highlight NormalNC guibg=none]])
-vim.cmd([[highlight NvimTreeNormal guibg=none]])
-vim.cmd([[highlight NvimTreeNormalNC guibg=none]])
-vim.cmd([[highlight SignColumn guibg=none]])
-vim.cmd([[highlight TelescopeNormal guibg=none]])
-vim.cmd([[highlight TelescopeBorder guibg=none]])
-
--- Telescope prompt color
-vim.cmd([[highlight TelescopePromptPrefix guifg=#96f1ff]])
-vim.cmd([[highlight LineNr guifg=#5eacd3]])
-vim.cmd([[highlight qfFileName guifg=#aed75f]])
-vim.cmd([[highlight TelescopeBorder guifg=#5eacd3]])

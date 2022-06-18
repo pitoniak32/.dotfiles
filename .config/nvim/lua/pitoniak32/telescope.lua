@@ -4,8 +4,8 @@ require("telescope").setup({
 	defaults = {
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
-		prompt_prefix = " ",
-		selection_caret = " ",
+		prompt_prefix = "  ",
+		selection_caret = "  ",
 		mappings = {
 			i = {
 				-- map actions.which_key to <C-h> (default: <C-/>)
