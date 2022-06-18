@@ -1,9 +1,5 @@
 local colorscheme = "gruvbox"
 
-if colorscheme == "tokyonight" then
-  vim.g.tokyonight_style = "night"
-end
-
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
   vim.notify("colorscheme " .. colorscheme .. " not found!")
@@ -14,15 +10,21 @@ local hl = function(thing, opts)
   vim.api.nvim_set_hl(0, thing, opts)
 end
 
-vim.g.gruvbox_contrast_dark = "hard"
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.gruvbox_invert_selection = "0"
-vim.opt.background = "dark"
+if colorscheme == "tokyonight" then
+  vim.g.tokyonight_style = "night"
+  vim.g.tokyonight_transparent_sidebar = true
+end
 
-hl("GruvboxAquaSign",  { ctermfg = 108, ctermbg = 237, fg = "#8ec07c", bg = "NONE" })
-hl("GruvboxRedSign",   { ctermfg = 167, ctermbg = 237, fg = "#fb4934", bg = "NONE" })
-hl("GruvboxGreenSign", { ctermfg = 142, ctermbg = 237, fg = "#b8bb26", bg = "NONE" })
-hl("GruvboxBlueSign",  { ctermfg = 109, ctermbg = 237, fg = "#83a598", bg = "NONE" })
+if colorscheme == 'gruvbox' then
+  vim.g.gruvbox_contrast_dark = "hard"
+  vim.g.gruvbox_invert_selection = "0"
+
+  hl("GruvboxAquaSign",  { ctermfg = 108, ctermbg = 237, fg = "#8ec07c", bg = "NONE" })
+  hl("GruvboxRedSign",   { ctermfg = 167, ctermbg = 237, fg = "#fb4934", bg = "NONE" })
+  hl("GruvboxGreenSign", { ctermfg = 142, ctermbg = 237, fg = "#b8bb26", bg = "NONE" })
+  hl("GruvboxBlueSign",  { ctermfg = 109, ctermbg = 237, fg = "#83a598", bg = "NONE" })
+end
+
 
 hl("SignColumn",   { fg = "fg", bg = "NONE" })
 hl("CursorLineNR", { fg = "fg", bg = "NONE" })
