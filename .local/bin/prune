@@ -1,6 +1,8 @@
 #!/bin/bash
 
-result=$(git diff origin/main --name-only | cut -d "/" -f 1,2 | uniq)
+git rebase origin/master
+
+result=$(git diff origin/master --name-only | cut -d "/" -f 1,2 | uniq)
 
 echo $result
 
@@ -12,6 +14,6 @@ for namespace in $result; do
   fi
 done
 
-final=$(echo $namespaces | xargs)
+final=$(echo $namespaces | sed 's/ *$//')
 
 echo "::set-output name=NAMESPACES::$final"
