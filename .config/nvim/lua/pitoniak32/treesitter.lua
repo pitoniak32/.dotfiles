@@ -7,7 +7,7 @@ configs.setup({
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	highlight = {
-		-- use_languagetree = true,
+		use_languagetree = true, -- Maybe remove?
 		enable = true, -- false will disable the whole extension
 		disable = { "css" }, -- list of language that will be disabled
 		additional_vim_regex_highlighting = true,
