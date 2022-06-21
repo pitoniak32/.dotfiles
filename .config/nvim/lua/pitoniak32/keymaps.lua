@@ -70,6 +70,7 @@ local key_maps = {
     -- Visual Block Mode Maps
     { "x", "J", ":move '>+1<CR>gv-gv", general_default_opts },
     { "x", "K", ":move '<-2<CR>gv-gv", general_default_opts },
+
   },
 
   -- Add table for nvim-tree
