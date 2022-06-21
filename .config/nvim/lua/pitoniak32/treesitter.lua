@@ -31,7 +31,6 @@ configs.setup({
 			"Orchid",
 			"DodgerBlue",
 			"Salmon",
-			"LawnGreen",
 		},
 		disable = { "html" },
 	},

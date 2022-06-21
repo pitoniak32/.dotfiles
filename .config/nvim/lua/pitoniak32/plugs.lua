@@ -79,6 +79,10 @@ return packer.startup(function(use)
   use("vimwiki/vimwiki")
   use('mfussenegger/nvim-jdtls')
 
+  use("mfussenegger/nvim-dap")
+  use("rcarriga/nvim-dap-ui")
+  use("theHamsta/nvim-dap-virtual-text")
+
   -- Visual Enhancements
 	use("akinsho/bufferline.nvim")
 	use("lewis6991/gitsigns.nvim")
