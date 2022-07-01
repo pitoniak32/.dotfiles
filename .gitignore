@@ -3,4 +3,5 @@
 !.config/nvim/
 !.config/ranger/
 !.config/skhd/
+!.config/i3/
 .config/nvim/plugin/
