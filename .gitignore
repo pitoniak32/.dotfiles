@@ -4,4 +4,6 @@
 !.config/ranger/
 !.config/skhd/
 !.config/i3/
+!.config/i3status/
+!.config/kitty/
 .config/nvim/plugin/
