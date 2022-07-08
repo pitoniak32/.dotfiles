@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-wiki_path="~/.vimwiki/"
-selected_name=$(basename "$wiki_path" | tr . _)
+wiki_path="/Users/davidpi/vimwiki/"
+selected_name=$(basename "$wiki_path")
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $wiki_path
+    tmux new-session -s $selected_name -c "$wiki_path"
     exit 0
 fi
 
@@ -12,7 +12,7 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $wiki_path
 fi
 
-tmux new-window -t '=_vimwiki' -n 'vimwiki'
-tmux set-option -t '=_vimwiki:=vimwiki' status off
-tmux send-keys -t '=_vimwiki:=vimwiki' 'nvim -c VimwikiIndex' C-m
+tmux new-window -t "=vimwiki" -n 'vimwiki' -c "$wiki_path"
+tmux set-option -t '=vimwiki:=vimwiki' status off
+tmux send-keys -t '=vimwiki:=vimwiki' 'nvim -c VimwikiIndex' C-m
 
