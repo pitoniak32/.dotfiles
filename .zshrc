@@ -12,6 +12,8 @@ source $ZSH/oh-my-zsh.sh
 
 # eval "$(pyenv init -)"
 
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 export PATH="$HOME/.local/bin/:$PATH"
 export JDTLS_HOME="$HOME/.local/share/nvim/lsp_servers/jdtls"
 
