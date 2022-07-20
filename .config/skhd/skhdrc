@@ -3,7 +3,7 @@
 ##############################################
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # open Brave Browser 
 cmd + shift - w : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --single-instance -d 
