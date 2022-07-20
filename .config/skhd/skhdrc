@@ -6,7 +6,7 @@
 cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # open Brave Browser 
-cmd - w : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --single-instance -d 
+cmd + shift - w : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --single-instance -d 
 
 ##############################################
 # Focus 
