@@ -20,8 +20,10 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = cmp.config.disable,
-		["<C-s>"] = cmp.mapping.confirm({ select = true }),
+		["<C-n>"] = cmp.mapping.scroll_docs(4),
+		["<C-p>"] = cmp.mapping.scroll_docs(-4),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-s"] = cmp.mapping.complete(),
 		["<C-y>"] = function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -57,7 +59,7 @@ cmp.setup({
 	view = {
 		entries = "native",
 	},
-  experimental = {
-    ghost_text = true,
-  },
+	experimental = {
+		ghost_text = true,
+	},
 })
