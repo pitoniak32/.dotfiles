@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/davidpi/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
   },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/Users/davidpi/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
+    url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/davidpi/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
