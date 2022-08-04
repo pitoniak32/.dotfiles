@@ -36,9 +36,6 @@ nnoremap("<leader>k", ":lua require'harpoon.ui'.nav_file(2)<CR>", gen_opts)
 nnoremap("<leader>l", ":lua require'harpoon.ui'.nav_file(3)<CR>", gen_opts)
 nnoremap("<leader>;", ":lua require'harpoon.ui'.nav_file(4)<CR>", gen_opts)
 
-nnoremap("<leader>cw", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", gen_opts)
-nnoremap("<leader>wt", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", gen_opts)
-
 nnoremap("<leader>tn", ":TestNearest -strategy=neovim<CR>", gen_opts)
 nnoremap("<leader>tl", ":TestLast -strategy=neovim<CR>", gen_opts)
 nnoremap("<leader>tv", ":TestVisit<CR>", gen_opts)
