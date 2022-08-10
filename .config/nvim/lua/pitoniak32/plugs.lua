@@ -74,7 +74,6 @@ return packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("vim-test/vim-test")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-  use({ "akinsho/toggleterm.nvim", branch = "main" })
   use("kyazdani42/nvim-tree.lua")
   use("vimwiki/vimwiki")
   use('mfussenegger/nvim-jdtls')
