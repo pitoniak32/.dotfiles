@@ -13,4 +13,4 @@ require("pitoniak32.comment")
 require("pitoniak32.auto_cmd")
 require("pitoniak32.options")
 require("pitoniak32.globals")
---[[ require("pitoniak32.lualine") ]]
+require("pitoniak32.lualine")
