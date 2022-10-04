@@ -52,7 +52,6 @@ M.default_attach = function(client, bufnr)
     illuminate.on_attach(client)
   end
 
-  -- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", gen_opts},
   nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
   nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
   nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })

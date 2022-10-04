@@ -24,3 +24,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export EDITOR=nvim
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
