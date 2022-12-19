@@ -1,25 +1,49 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+
+if [[ "$1" == "proj" ]]; then
+  # selct a core project dir and open a session with all projects as new windows
+  selected=$(find ~/Documents/quark -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p)
 else
-    selected=$(find ~/Documents/quark ~/.config -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p)
+  # select a single repository and open it as a session
+  selected=$(find ~/Documents/test-projects ~/Documents/quark ~/.config -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p)
 fi
 
+# exit if no selection
 if [[ -z $selected ]]; then
-    exit 0
+  exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+if [[ "$1" == "proj" ]]; then
+  projects=$(find "$selected" -maxdepth 1 -type d )
+  
+  session_name="temp-session-name"
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $session_name -c $selected
+  fi
+
+  if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $selected
+  fi
+
+  for repo in $projects; do
+    window_name=$(basename "$repo" | tr . _)
+    echo "$session_name:$window_name"
+    tmux new-window -t "$session_name:$window_name" -n $window_name -c $repo $SHELL 
+  done
+else
+  selected_name=$(basename "$selected" | tr . _)
+  tmux_running=$(pgrep tmux)
+
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
-fi
+  fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+  if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
-fi
+  fi
 
-tmux switch-client -t $selected_name
+  tmux switch-client -t $selected_name
+fi

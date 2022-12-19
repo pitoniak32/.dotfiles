@@ -6,24 +6,23 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # NOTE: must set plugins before sourcin oh-my-zsh
 
-plugins=(git)
+export EDITOR=vim
+export VISUAL=$EDITOR
+
+export COMPOSE_DOCKER_CLI_BUILD=0
+export DOCKER_BUILDKIT=0
+
+plugins=(git kubectl kubecolor-zsh)
 
 source $ZSH/oh-my-zsh.sh
 
-# eval "$(pyenv init -)"
-
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
 export PATH="$HOME/.local/bin/:$PATH"
-export JDTLS_HOME="$HOME/.local/share/nvim/lsp_servers/jdtls"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export EDITOR=nvim
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi

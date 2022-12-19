@@ -1,0 +1,16 @@
+#!/bin/bash
+path=".git/config"
+
+# if a path is passed as a parameter append it.
+if [ "$#" -gt 0 ]; then
+  path="$1/.git/config"
+fi
+
+# else just use the .git/config from the current directory.
+url=$(read -ra URL <<< $(cat $path 2>/dev/null | grep "url = ") && echo "${URL[2]}" | sed "s/:/\//; s/git@/https:\/\//; s/\.git//")
+
+if [[ -z "$url" ]]; then
+  echo "could not find repo url."
+else
+  open $url
+fi
