@@ -1,42 +1,82 @@
-local lsp_custom_opts_ok, lsp_custom_opts = pcall(require, "pitoniak32.lsp.custom_servers")
-if not lsp_custom_opts_ok then
-	print("LSP: error when requiring custom options.")
-	return
-end
+local lsp = require("lsp-zero")
 
-local lsp_default_handlers_status_ok, lsp_default_handlers = pcall(require, "pitoniak32.lsp.default_handlers")
-if not lsp_default_handlers_status_ok then
-	print("LSP: error when requiring default handers.")
-	return
-end
+lsp.preset("recommended")
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	print("CMP: failed to import cmp_nvim_lsp.")
-	return
-end
+lsp.set_preferences({
+	suggest_lsp_servers = true,
+	setup_servers_on_start = true,
+	configure_diagnostics = true,
+	manage_nvim_cmp = false,
+	sign_icons = {},
+})
 
-local completion_status_ok, _ = pcall(require, "pitoniak32.completions")
-if not completion_status_ok then
-	print("CMP: error when requiring completions.")
-	return
-end
+require("fidget").setup()
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
-end
+lsp.ensure_installed({
+	"tsserver",
+	"eslint",
+	"sumneko_lua",
+	"rust_analyzer",
+})
+-- nvim-cmp setup
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+	},
+})
 
-for name, server in pairs(lsp_custom_opts.servers) do
-	local custom_server_opts = server
+local nnoremap = require("pitoniak32.keymaps.utils").nnoremap
 
-	local opts = vim.tbl_deep_extend("force", {
-		on_attach = lsp_default_handlers.default_attach,
-		capabilities = updated_capabilities,
-	}, custom_server_opts or {})
+lsp.on_attach(function(client, bufnr)
+	nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<leader>fd", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
+	nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
+	nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true, buffer = bufnr })
+end)
 
-	lspconfig[name].setup(opts)
-end
+lsp.nvim_workspace()
+lsp.setup()
