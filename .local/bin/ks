@@ -1,0 +1,21 @@
+#!/bin/bash
+sessions_to_kill=$(tmux ls | cut -d':' -f1 | fzf -m --reverse)
+
+sessions_array=($sessions_to_kill)
+
+for session in $sessions_to_kill; do
+  tmux kill-session -t $session
+done
+
+message=""
+num_killed="${#sessions_array[@]}"
+
+echo $num_killed
+
+if [[ "$num_killed" -gt 1 ]]; then
+  message="$num_killed sessions killed"
+else
+  message="${sessions_array[@]} session killed"
+fi
+
+tmux display-message "$message"
