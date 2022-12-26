@@ -63,19 +63,18 @@ cmp.setup({
 
 local nnoremap = require("pitoniak32.keymaps.utils").nnoremap
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<leader>fd", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<leader>df", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
 	nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
-	nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
 	nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true, buffer = bufnr })
 end)
 
 lsp.nvim_workspace()

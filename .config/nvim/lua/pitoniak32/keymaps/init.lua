@@ -12,6 +12,7 @@ leader_map("<Space>", "<Nop>", gen_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+nnoremap("<leader>ex", vim.cmd.Ex, gen_opts)
 nnoremap("<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", gen_opts)
 
 -- Normal Mode Maps
@@ -46,24 +47,43 @@ nnoremap("<leader>tl", ":TestLast -strategy=neovim<CR>", gen_opts)
 nnoremap("<leader>tv", ":TestVisit<CR>", gen_opts)
 nnoremap("<leader>sp", ":setlocal spell!<CR>", gen_opts)
 
--- Move line
-inoremap("<C-k>", "<ESC>:m .-2<CR>==", gen_opts)
-inoremap("<C-j>", "<ESC>:m .+1<CR>==", gen_opts)
-
 -- Undo Breakpoints
 inoremap(",", ",<c-g>u", gen_opts )
 inoremap(".", ".<c-g>u", gen_opts )
 inoremap("!", "!<c-g>u", gen_opts )
 inoremap("?", "?<c-g>u", gen_opts )
 
--- Visual Mode Maps
-vnoremap("<", "<gv", gen_opts )
-vnoremap(">", ">gv", gen_opts )
+-- Shift J cursor stay in place
+nnoremap("J", "mzJ`z", gen_opts)
+
+-- Jump up and down cursor stay in place
+nnoremap("<C-d>", "<C-d>zz", gen_opts)
+nnoremap("<C-u>", "<C-u>zz", gen_opts)
+
+-- Search stay in place
+nnoremap("n", "nzzzv", gen_opts)
+nnoremap("N", "Nzzzv", gen_opts)
 
 -- Move Block
+vnoremap("<", "<gv", gen_opts )
+vnoremap(">", ">gv", gen_opts )
 vnoremap("J", ":m '>+1<CR>gv=gv", gen_opts )
 vnoremap("K", ":m '<-2<CR>gv=gv", gen_opts )
+xnoremap("J", ":move '>+1<CR>gv=gv", gen_opts )
+xnoremap("K", ":move '<-2<CR>gv=gv", gen_opts )
 
--- Visual Block Mode Maps
-xnoremap("J", ":move '>+1<CR>gv-gv", gen_opts )
-xnoremap("K", ":move '<-2<CR>gv-gv", gen_opts )
+-- Keep register value when pasting
+xnoremap("<leader>p", "\"_dP", gen_opts)
+
+-- Keep register value when deleting 
+nnoremap("<leader>d", "\"_d", gen_opts)
+vnoremap("<leader>d", "\"_d", gen_opts)
+
+-- System clipboard copy
+nnoremap("<leader>y", "\"*y", gen_opts)
+vnoremap("<leader>y", "\"*y", gen_opts)
+nnoremap("<leader>Y", "\"*Y", gen_opts)
+
+-- Quickfix list  
+nnoremap("<C-k>", "<cmd>cnext<CR>zz", gen_opts)
+nnoremap("<C-j>", "<cmd>cprev<CR>zz", gen_opts)
