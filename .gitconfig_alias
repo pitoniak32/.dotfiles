@@ -1,3 +1,7 @@
+# to include these aliases in your existing .gitconfig add:
+# [include]
+#   path = .gitconfig_alias
+
 [alias]
   shove = push -u origin HEAD
   s     = status
