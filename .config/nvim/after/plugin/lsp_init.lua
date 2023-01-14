@@ -73,9 +73,13 @@ lsp.on_attach(function(_, bufnr)
 	nnoremap("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
 	nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
 	nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
+	nnoremap("<leader>fm", ":lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
 	nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true, buffer = bufnr })
 end)
 
 lsp.nvim_workspace()
 lsp.setup()
+
+vim.diagnostic.config({
+	virtual_text = true,
+})
