@@ -1,4 +1,4 @@
-local colorscheme = "onedark"
+local colorscheme = "catppuccin-frappe"
 local transparent = false
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

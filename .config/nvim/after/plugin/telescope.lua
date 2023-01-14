@@ -20,6 +20,21 @@ require("telescope").setup({
 				return true
 			end,
 		},
+    find_files = {
+      theme = "ivy",
+    },
+    git_files = {
+      theme = "ivy",
+    },
+    help_tags = {
+      theme = "ivy",
+    },
+    live_grep = {
+      theme = "ivy",
+    },
+    diagnostics = {
+      theme = "ivy",
+    },
 	},
 	extensions = {
     fzf = {

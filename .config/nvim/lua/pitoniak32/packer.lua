@@ -37,6 +37,7 @@ return require("packer").startup(function(use)
 	use("vim-test/vim-test")
 
 	use({ "folke/tokyonight.nvim" }) -- very nice theme
+  use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "navarasu/onedark.nvim" }) -- Theme inspired by Atom
 	use({ "p00f/nvim-ts-rainbow" }) -- rainbow braces
 	use({ "f-person/git-blame.nvim" })
