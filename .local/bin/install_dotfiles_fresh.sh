@@ -2,12 +2,15 @@
 
 git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/.dotfiles
 mkdir -p .config-backup
-cfg checkout
+function cfg_func {
+   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
+cfg_func checkout
 if [ $? = 0 ]; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
-    cfg checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    cfg_func checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
 fi;
-cfg checkout
-cfg config status.showUntrackedFiles no
+cfg_func checkout
+cfg_func config status.showUntrackedFiles no
