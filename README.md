@@ -1,4 +1,4 @@
-# Bare Dotfiles Repo
+# Bare Dotfiles Repo PERSONAL
 
 [Original Post](https://www.atlassian.com/git/tutorials/dotfiles)
 
