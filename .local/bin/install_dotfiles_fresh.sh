@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/pitoniak32/.dotfiles.git $HOME/.dotfiles
 mkdir -p .config-backup
 function cfg_func {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
