@@ -23,6 +23,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 export PATH="$HOME/.local/bin/:$PATH"
 export PROJ_DIR="$HOME/Documents/quark"
 
