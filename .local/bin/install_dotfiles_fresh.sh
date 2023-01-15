@@ -1,10 +1,8 @@
 #!/bin/bash
 
-config_dir_name=".dotfiles"
-
-git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/$config_dir_name
+git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/.dotfiles
 function config {
-   /usr/bin/git --git-dir=$HOME/$config_dir_name/ --work-tree=$HOME $@
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 mkdir -p .config-backup
 config checkout
