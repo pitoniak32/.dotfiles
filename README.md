@@ -1,5 +1,9 @@
 # David Pitoniak .dotfiles
 
+```bash
+curl -Lks https://raw.githubusercontent.com/pitoniak32/.dotfiles/feat/bare_repo_config/.local/bin/install_dotfiles_fresh.sh | /bin/bash
+```
+
 # Requirements to use?
 ## Assumptions
 - (If you are on mac) You have [`brew`](https://brew.sh/) installed
