@@ -12,7 +12,14 @@ export VISUAL=$EDITOR
 export COMPOSE_DOCKER_CLI_BUILD=0
 export DOCKER_BUILDKIT=0
 
-plugins=(git kubectl kubecolor-zsh)
+plugins=(
+  aliases # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases#aliases-cheatsheet
+  profiles # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/profiles#profiles-plugin
+  encode64 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/encode64#encode64
+  themes # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/themes#themes-plugin
+  git
+  kubectl
+)
 
 source $ZSH/oh-my-zsh.sh
 
