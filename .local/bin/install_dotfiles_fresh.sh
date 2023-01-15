@@ -3,7 +3,7 @@
 git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/.dotfiles
 mkdir -p .config-backup
 function cfg_func {
-   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 cfg_func checkout
 if [ $? = 0 ]; then
