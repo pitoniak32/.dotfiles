@@ -12,7 +12,7 @@ leader_map("<Space>", "<Nop>", gen_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-nnoremap("<leader>e", vim.cmd.Vex, gen_opts)
+nnoremap("<leader>e", vim.cmd.Lex, gen_opts)
 nnoremap("<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", gen_opts)
 
 -- Normal Mode Maps
