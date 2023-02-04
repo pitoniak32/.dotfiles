@@ -21,9 +21,13 @@ plugins=(
   kubectl
 )
 
+source "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
+
 source $ZSH/oh-my-zsh.sh
 
-alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cfit='mv Fix*.fit $HOME/Documents/fix_fit && mv *.fit $HOME/Documents/raw_fit/'
 
 export PATH="$HOME/.local/bin/:$PATH"
 export PROJ_DIR="$HOME/Documents/quark"
@@ -39,3 +43,6 @@ if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export GPG_TTY=$(tty)
