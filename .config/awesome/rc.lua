@@ -58,6 +58,8 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 --[[ beautiful.init(os.getenv("HOME") .. "/.config/awesome/" .. "mytheme.lua") ]]
 beautiful.useless_gap = 4
+-- start compositor
+awful.util.spawn("compton")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
