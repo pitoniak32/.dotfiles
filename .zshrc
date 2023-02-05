@@ -37,6 +37,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
