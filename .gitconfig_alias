@@ -1,7 +1,11 @@
+# to include these aliases in your existing .gitconfig add:
+# [include]
+#   path = .gitconfig_alias
+
 [alias]
   shove = push -u origin HEAD
-	s     = status
-	pf    = push --force-with-lease
+  s     = status
+  pf    = push --force-with-lease
   c     = commit -m
   ac    = commit -am
   ca    = commit --amend --no-edit
@@ -11,4 +15,6 @@
   lo    = log --oneline
 	r     = restore
 	cb    = checkout -b
+  r     = restore
+  cb    = checkout -b
   a     = add .

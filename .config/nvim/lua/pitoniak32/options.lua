@@ -34,6 +34,17 @@ vim.g.gitblame_highlight_group = "LineNr"
 -- winbar formatting
 o.winbar = "%=%m %f"
 
+-- netrw settings
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
+vim.g.netrw_browse_split = 4
+vim.g.netrw_winsize = 25
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = {"netrw"},
+  command = "set nolist"
+})
+
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set inccommand=split]])
