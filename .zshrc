@@ -27,8 +27,6 @@ autoload -Uz compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-alias cfit='mv Fix*.fit $HOME/Documents/fix_fit && mv *.fit $HOME/Documents/raw_fit/'
-
 export PATH="$HOME/.local/bin/:$PATH"
 export PROJ_DIR="$HOME/Documents/quark"
 
@@ -40,11 +38,12 @@ export NVM_DIR="$HOME/.nvm"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
+export PROJ_DIR="$HOME/Documents/quark"
+export WE_MISS_YOU="UkdGeVpXc0sK"
+export QUARK_BANNER_OFF=true
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
+if [ -f '/Users/davidpi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/davidpi/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-export GPG_TTY=$(tty)
+if [ -f '/Users/davidpi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidpi/google-cloud-sdk/completion.zsh.inc'; fi
