@@ -16,8 +16,7 @@ plugins=(git kubectl kubecolor-zsh)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/.local/bin/:$PATH"
-export PROJ_DIR="$HOME/Documents/quark"
+export PATH="$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -25,8 +24,12 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PROJ_DIR="$HOME/Documents/quark"
+export WE_MISS_YOU="UkdGeVpXc0sK"
+export QUARK_BANNER_OFF=true
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
+if [ -f '/Users/davidpi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/davidpi/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
+if [ -f '/Users/davidpi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidpi/google-cloud-sdk/completion.zsh.inc'; fi
