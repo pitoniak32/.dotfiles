@@ -62,7 +62,7 @@ beautiful.useless_gap = 4
 awful.util.spawn("compton")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -133,6 +133,41 @@ else
 		},
 	})
 end
+
+local my_vert_sep = wibox.widget({
+	widget = wibox.widget.separator,
+	orientation = "vertical",
+	forced_width = 2,
+})
+
+-- Create the textbox that will be used to print the battery percentage and initialize it with an empty string
+local my_battery_widget = wibox.widget.textbox()
+my_battery_widget:set_text("")
+local my_battery_widget_timer = timer({ timeout = 10 })
+
+-- Initialize the timer and execute the function every 5 seconds
+my_battery_widget_timer:connect_signal("timeout", function()
+	local fremaining = assert(io.popen("acpi | cut -d' ' -f 5", "r"))
+	local remaining = fremaining:read("*l")
+	local fperc = assert(io.popen("acpi | cut -d' ' -f 4 | cut -d% -f 1", "r"))
+	local perc = fperc:read("*number")
+	local fstatus = assert(io.popen("acpi | cut -d: -f 2,2 | cut -d, -f 1,1", "r"))
+	local status = fstatus:read("*l")
+	local sym = ""
+
+	if string.match(status, "Charging") then
+		sym = "+"
+	elseif string.match(status, "Full") then
+		sym = "_"
+	end
+
+	my_battery_widget:set_text(" " .. sym .. " " .. perc .. "%" .. " " .. remaining .. " ")
+
+	fperc:close()
+	fstatus:close()
+end)
+-- Start the timer
+my_battery_widget_timer:start()
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
@@ -260,9 +295,12 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
+			my_vert_sep,
+			my_battery_widget,
+			my_vert_sep,
 			wibox.widget.systray(),
 			mytextclock,
+			my_vert_sep,
 			s.mylayoutbox,
 		},
 	})
@@ -321,27 +359,31 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+	awful.key({ modkey }, "b", function()
+		awful.spawn("brave-browser")
+	end, { description = "open a browser", group = "launcher" }),
+
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-	awful.key({ modkey }, "l", function()
+	awful.key({ modkey, "Control" }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ modkey }, "h", function()
+	awful.key({ modkey, "Control" }, "h", function()
 		awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "h", function()
-		awful.tag.incnmaster(1, nil, true)
-	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "l", function()
-		awful.tag.incnmaster(-1, nil, true)
-	end, { description = "decrease the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Control" }, "h", function()
-		awful.tag.incncol(1, nil, true)
-	end, { description = "increase the number of columns", group = "layout" }),
-	awful.key({ modkey, "Control" }, "l", function()
-		awful.tag.incncol(-1, nil, true)
-	end, { description = "decrease the number of columns", group = "layout" }),
+	--[[ awful.key({ modkey, "Shift" }, "h", function() ]]
+	--[[ 	awful.tag.incnmaster(1, nil, true) ]]
+	--[[ end, { description = "increase the number of master clients", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Shift" }, "l", function() ]]
+	--[[ 	awful.tag.incnmaster(-1, nil, true) ]]
+	--[[ end, { description = "decrease the number of master clients", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Control" }, "h", function() ]]
+	--[[ 	awful.tag.incncol(1, nil, true) ]]
+	--[[ end, { description = "increase the number of columns", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Control" }, "l", function() ]]
+	--[[ 	awful.tag.incncol(-1, nil, true) ]]
+	--[[ end, { description = "decrease the number of columns", group = "layout" }), ]]
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
@@ -495,6 +537,14 @@ awful.rules.rules = {
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},
+	},
+
+	-- Custom Rules
+	{
+		rule = {
+			class = "Brave-browser",
+		},
+		properties = { tag = "1" },
 	},
 
 	-- Floating clients.
