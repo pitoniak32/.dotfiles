@@ -13,6 +13,8 @@
   rhom  = reset --hard origin/main
   fa    = fetch --all
   lo    = log --oneline
+	r     = restore
+	cb    = checkout -b
   r     = restore
   cb    = checkout -b
   a     = add .
