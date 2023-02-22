@@ -58,9 +58,11 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 --[[ beautiful.init(os.getenv("HOME") .. "/.config/awesome/" .. "mytheme.lua") ]]
 beautiful.useless_gap = 4
+-- start compositor
+awful.util.spawn("compton")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -74,26 +76,28 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
-	awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier,
-	awful.layout.suit.corner.nw,
 	awful.layout.suit.floating,
-	-- awful.layout.suit.corner.ne,
-	-- awful.layout.suit.corner.sw,
-	-- awful.layout.suit.corner.se,
+	--[[ awful.layout.suit.tile.left, ]]
+	--[[ awful.layout.suit.tile.bottom, ]]
+	--[[ awful.layout.suit.tile.top, ]]
+	--[[ awful.layout.suit.fair, ]]
+	--[[ awful.layout.suit.fair.horizontal, ]]
+	--[[ awful.layout.suit.spiral, ]]
+	--[[ awful.layout.suit.spiral.dwindle, ]]
+	--[[ awful.layout.suit.max, ]]
+	--[[ awful.layout.suit.max.fullscreen, ]]
+	--[[ awful.layout.suit.magnifier, ]]
+	--[[ awful.layout.suit.corner.nw, ]]
+	--[[ awful.layout.suit.corner.ne, ]]
+	--[[ awful.layout.suit.corner.sw, ]]
+	--[[ awful.layout.suit.corner.se, ]]
 }
 -- }}}
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
+beautiful.menu_height = 20
+beautiful.menu_width = 200
 myawesomemenu = {
 	{
 		"hotkeys",
@@ -129,6 +133,41 @@ else
 		},
 	})
 end
+
+local my_vert_sep = wibox.widget({
+	widget = wibox.widget.separator,
+	orientation = "vertical",
+	forced_width = 2,
+})
+
+-- Create the textbox that will be used to print the battery percentage and initialize it with an empty string
+local my_battery_widget = wibox.widget.textbox()
+my_battery_widget:set_text("")
+local my_battery_widget_timer = timer({ timeout = 10 })
+
+-- Initialize the timer and execute the function every 5 seconds
+my_battery_widget_timer:connect_signal("timeout", function()
+	local fremaining = assert(io.popen("acpi | cut -d' ' -f 5", "r"))
+	local remaining = fremaining:read("*l")
+	local fperc = assert(io.popen("acpi | cut -d' ' -f 4 | cut -d% -f 1", "r"))
+	local perc = fperc:read("*number")
+	local fstatus = assert(io.popen("acpi | cut -d: -f 2,2 | cut -d, -f 1,1", "r"))
+	local status = fstatus:read("*l")
+	local sym = ""
+
+	if string.match(status, "Charging") then
+		sym = "+"
+	elseif string.match(status, "Full") then
+		sym = "_"
+	end
+
+	my_battery_widget:set_text(" " .. sym .. " " .. perc .. "%" .. " " .. remaining .. " ")
+
+	fperc:close()
+	fstatus:close()
+end)
+-- Start the timer
+my_battery_widget_timer:start()
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
@@ -256,9 +295,12 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
+			my_vert_sep,
+			my_battery_widget,
+			my_vert_sep,
 			wibox.widget.systray(),
 			mytextclock,
+			my_vert_sep,
 			s.mylayoutbox,
 		},
 	})
@@ -317,27 +359,31 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+	awful.key({ modkey }, "b", function()
+		awful.spawn("brave-browser")
+	end, { description = "open a browser", group = "launcher" }),
+
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-	awful.key({ modkey }, "l", function()
+	awful.key({ modkey, "Control" }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ modkey }, "h", function()
+	awful.key({ modkey, "Control" }, "h", function()
 		awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "h", function()
-		awful.tag.incnmaster(1, nil, true)
-	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "l", function()
-		awful.tag.incnmaster(-1, nil, true)
-	end, { description = "decrease the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Control" }, "h", function()
-		awful.tag.incncol(1, nil, true)
-	end, { description = "increase the number of columns", group = "layout" }),
-	awful.key({ modkey, "Control" }, "l", function()
-		awful.tag.incncol(-1, nil, true)
-	end, { description = "decrease the number of columns", group = "layout" }),
+	--[[ awful.key({ modkey, "Shift" }, "h", function() ]]
+	--[[ 	awful.tag.incnmaster(1, nil, true) ]]
+	--[[ end, { description = "increase the number of master clients", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Shift" }, "l", function() ]]
+	--[[ 	awful.tag.incnmaster(-1, nil, true) ]]
+	--[[ end, { description = "decrease the number of master clients", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Control" }, "h", function() ]]
+	--[[ 	awful.tag.incncol(1, nil, true) ]]
+	--[[ end, { description = "increase the number of columns", group = "layout" }), ]]
+	--[[ awful.key({ modkey, "Control" }, "l", function() ]]
+	--[[ 	awful.tag.incncol(-1, nil, true) ]]
+	--[[ end, { description = "decrease the number of columns", group = "layout" }), ]]
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
@@ -354,7 +400,7 @@ globalkeys = gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Prompt
-	awful.key({ modkey }, "r", function()
+	awful.key({ modkey }, "d", function()
 		awful.util.spawn("dmenu_run")
 	end, { description = "run prompt", group = "launcher" }),
 
@@ -367,7 +413,7 @@ globalkeys = gears.table.join(
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),
 	-- Menubar
-	awful.key({ modkey }, "d", function()
+	awful.key({ modkey }, "r", function()
 		menubar.show()
 	end, { description = "show the menubar", group = "launcher" })
 )
@@ -491,6 +537,14 @@ awful.rules.rules = {
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},
+	},
+
+	-- Custom Rules
+	{
+		rule = {
+			class = "Brave-browser",
+		},
+		properties = { tag = "1" },
 	},
 
 	-- Floating clients.
