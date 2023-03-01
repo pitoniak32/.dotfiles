@@ -1,16 +1,13 @@
-# Bare Dotfiles Repo
-
-[Original Post](https://www.atlassian.com/git/tutorials/dotfiles)
-
-When using this method you should avoid checking out worktrees in the `.dotfiles` bare repo.
-use `cfg` in place of git `cfg status`, `cfg add <new config file>`.
-to checkout a different branch for a work computer or personal computer use `cfg checkout <branch>`.
-
-```bash
-curl -Lks https://raw.githubusercontent.com/pitoniak32/.dotfiles/main/.local/bin/install_dotfiles_fresh.sh | /bin/bash
-```
+# Dotfiles Repo
+ 
+# TODO
+- [ ] installer script
+- [ ] cleanup no longer used files
+- [ ] maybe write a rust dotfiles manager?
+- [ ] list of required programs
 
 # Requirements to use?
+
 ## Assumptions
 - (If you are on mac) You have [`brew`](https://brew.sh/) installed
 - You have installed the recommended dependencies
