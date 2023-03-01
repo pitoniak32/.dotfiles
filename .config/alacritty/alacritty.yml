@@ -68,7 +68,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.95
+  opacity: 1.0
 
   # Startup Mode (changes require restart)
   #
@@ -82,7 +82,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+  # title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
@@ -106,7 +106,7 @@ window:
   #   - OnlyRight
   #   - Both
   #   - None (default)
-  #option_as_alt: None
+  option_as_alt: OnlyLeft 
 
 scrolling:
   history: 10000
@@ -126,7 +126,7 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font Mono 
     style: Bold Italic
-  size: 9
+  size: 12
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -868,3 +868,4 @@ live_config_reload: true
 
   # Highlight window damage information.
   #highlight_damage: false
+
