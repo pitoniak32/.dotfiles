@@ -4,12 +4,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 
-# NOTE: must set plugins before sourcin oh-my-zsh
-
 export EDITOR=nvim
 export VISUAL=$EDITOR
 
-
+# NOTE: must set plugins before sourcin oh-my-zsh
 plugins=(
   aliases # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases#aliases-cheatsheet
   profiles # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/profiles#profiles-plugin
