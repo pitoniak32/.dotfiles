@@ -30,9 +30,9 @@ window:
   # must be non-zero for this to take effect. The number of columns must be at
   # least `2`, while using a value of `0` for columns and lines will fall back
   # to the window manager's recommended size
-  dimensions:
-    columns: 132
-    lines: 32
+  # dimensions:
+  #   columns: 132
+  #   lines: 32
 
   # Window position (changes require restart)
   #
@@ -424,7 +424,7 @@ live_config_reload: true
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -434,7 +434,7 @@ live_config_reload: true
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+  hide_when_typing: true
 
 # Hints
 #

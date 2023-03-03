@@ -20,3 +20,5 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.local/bin/:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
