@@ -5,7 +5,6 @@ not_in_zellij() {
 }
 
 DIR=$1
-echo $PROJ_DIR
 
 # If no project directory is provided error.
 if [[ -z "$PROJ_DIR" ]] && [[ -z "$DIR" ]]; then
@@ -18,6 +17,7 @@ fi
 # If an argument is provided set that to be used in the search.
 if not_in_zellij; then
   echo "Not in Zellij"
+  exit 1;
 fi
 
 _session_name=$(ls -d $PROJ_DIR/* | sed "s#.*/##" | fzf --reverse)
@@ -29,8 +29,4 @@ if [ -z "$session_name" ]; then
   exit 1;
 fi
 
-echo "_session_name: $_session_name"
-echo "session_name: $session_name"
-echo "path_name: $path_name"
-
-zellij action new-tab --layout $HOME/.config/zellij/layouts/project_layout.kdl --cwd $path_name --name $session_name &
+zellij action new-tab --layout $HOME/.config/zellij/layouts/project_layout.kdl --cwd $path_name --name $session_name

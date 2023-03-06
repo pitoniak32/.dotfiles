@@ -7,12 +7,6 @@ keybinds clear-defaults=true {
     locked {
         bind "Ctrl q" { Quit; }
         bind "Ctrl g" { SwitchToMode "Normal"; }
-        bind "Ctrl e" {
-          Run "spz" {
-            cwd "/tmp"
-            direction "Down"
-          }
-        }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
