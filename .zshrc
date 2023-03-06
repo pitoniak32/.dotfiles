@@ -1,24 +1,24 @@
-ZSH_THEME=robbyrussell
-export ZSH="$HOME/.oh-my-zsh"
+# theme loading without oh-my-zsh
+setopt prompt_subst
 
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+autoload -U promptinit && promptinit
+autoload -U colors && colors
 
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.config/.zsh/git.zsh
+source $HOME/.config/.zsh/robbyrussel.zsh-theme
+
+# aliases
+alias g='git'
+alias ls='ls --color'
+alias dka='docker kill $(docker ps -q)'
+alias dcu='~/docker-m1/update-topics.sh; docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml up -d'
+alias dcd='docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml down'
+
+# User configuration
 export EDITOR=nvim
 export VISUAL=$EDITOR
-
-# NOTE: must set plugins before sourcin oh-my-zsh
-plugins=(
-  aliases # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases#aliases-cheatsheet
-  profiles # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/profiles#profiles-plugin
-  encode64 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/encode64#encode64
-  themes # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/themes#themes-plugin
-  git
-  kubectl
-)
-
-source $ZSH/oh-my-zsh.sh
-
 export PATH="$HOME/.local/bin/:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
