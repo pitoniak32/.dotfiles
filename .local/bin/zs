@@ -4,6 +4,11 @@ not_in_zellij() {
   [[ -z "$ZELLIJ" ]]
 }
 
+if ! not_in_zellij; then
+  echo "Cannot be attached to session!"
+  exit 1;
+fi
+
 DIR=$1
 
 # If no project directory is provided error.
@@ -12,12 +17,6 @@ if [[ -z "$PROJ_DIR" ]] && [[ -z "$DIR" ]]; then
   exit 1;
 elif [[ ! -z "$DIR" ]]; then
   PROJ_DIR=$DIR
-fi
-
-# If an argument is provided set that to be used in the search.
-if not_in_zellij; then
-  echo "Not in Zellij"
-  exit 1;
 fi
 
 _session_name=$(ls -d $PROJ_DIR/* | sed "s#.*/##" | fzf --reverse)
@@ -29,4 +28,5 @@ if [ -z "$session_name" ]; then
   exit 1;
 fi
 
-zellij action new-tab --layout $HOME/.config/zellij/layouts/project_layout.kdl --cwd $path_name --name $session_name
+cd $path_name
+zellij --layout $HOME/.config/zellij/layouts/project_layout.kdl attach $session_name --create
