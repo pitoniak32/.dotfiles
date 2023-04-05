@@ -3,20 +3,15 @@
 # setopt prompt_subst
 # autoload -U promptinit && promptinit
 # autoload -U colors && colors
-# source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $HOME/.config/.zsh/git.zsh
-# source $HOME/.config/.zsh/robbyrussel.zsh-theme
-# export HISTSIZE=10000
-# export HISTFILE="$HOME/.zsh_history"
-# export SAVEHIST=$HISTSIZE
 # setopt hist_ignore_all_dups
 
-export ZSH="$HOME/.oh-my-zsh"
+HISTFILE=$HOME/.zsh_history
 
-ZSH_THEME="robbyrussell"
+HISTSIZE=1000000
+SAVEHIST=1000000
 
-source $ZSH/oh-my-zsh.sh
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # aliases
 alias g='git'
@@ -30,6 +25,7 @@ alias dcd='docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.ar
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin/:$PATH
+export PATH=$HOME/ukg/local/bin/:$PATH
 
 export PROJ_DIR=$HOME/Documents/quark
 
@@ -41,6 +37,8 @@ if [ -f '/Users/davidpi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(starship init zsh)"
