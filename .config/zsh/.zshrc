@@ -15,11 +15,11 @@ source $ZDOTDIR/zsh_aliases
 source $ZDOTDIR/zsh_vimode
 # source $ZDOTDIR/zsh_vcsprompt
 
-if [[ -v $WORK_MACHINE ]]; then
+if [[ -n $WORK_MACHINE ]]; then
   source $ZDOTDIR/zsh_work_machine
 fi
 
-if [[ -v $PERSONAL_MACHINE ]]; then
+if [[ -n $PERSONAL_MACHINE ]]; then
   source $ZDOTDIR/zsh_personal_machine
 fi
 
