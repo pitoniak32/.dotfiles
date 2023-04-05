@@ -1,3 +1,6 @@
+# --------------------------------
+# vi mode configuration
+# --------------------------------
 bindkey -v
 export KEYTIMEOUT=1
 

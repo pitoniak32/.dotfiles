@@ -1,4 +1,6 @@
-# disabled git prompt
+# --------------------------------
+# VCS prompt configuration
+# --------------------------------
 
 # autoload -Uz vcs_info add-zsh-hook
 # zstyle ':vcs_info:*' enable git
