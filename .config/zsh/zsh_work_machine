@@ -1,0 +1,6 @@
+# --------------------------------
+# Work machine configuration
+# --------------------------------
+export PATH=$HOME/ukg/local/bin/:$PATH
+export PROJ_DIR=$HOME/Documents/quark
+export QUARK_BANNER_OFF=true
