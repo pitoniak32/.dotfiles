@@ -24,12 +24,12 @@ chsh -s $(which zsh)
 # -------------------------------------------------------
 # clone dotfiles to home 
 # -------------------------------------------------------
-git clone https://github.com/pitoniak32/.dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/pitoniak32/.dotfiles.git $HOME/.dotfiles
 
 # -------------------------------------------------------
 # checkout .dotfiles working tree into $HOME 
 # -------------------------------------------------------
-cfg checkout
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout 
 
 # -------------------------------------------------------
 # Install packer for nvim 
