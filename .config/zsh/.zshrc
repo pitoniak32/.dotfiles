@@ -43,6 +43,6 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin/:$PATH
 
-# [ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
+if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
 eval "$(starship init zsh)"
