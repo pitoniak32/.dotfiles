@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to automate new computer setup
 
@@ -9,7 +9,7 @@ fi
 # -------------------------------------------------------
 # Guard ensuring prerequisites are installed.
 # -------------------------------------------------------
-zsh --version && fzf --version
+zsh --version && fzf --version && curl --version
 
 if [[ $? -ne 0 ]]; then
   echo "Please Ensure Programs Are Installed."
@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim $XDG_DATA_HOME/nvi
 # -------------------------------------------------------
 # Install rust
 # -------------------------------------------------------
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # -------------------------------------------------------
 # Install dependencies with cargo 
@@ -56,4 +56,4 @@ git clone https://github.com/zsh-users/zsh-completions.git $HOME/zsh-completions
 # -------------------------------------------------------
 # FINAL STEPS OF INSTALL 
 # -------------------------------------------------------
-source $ZDOTDIR/.zshrc
+source $HOME/.zshenv && source $ZDOTDIR/.zshrc
