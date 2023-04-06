@@ -1,12 +1,13 @@
-# autoload -Uz compinit
 # autoload -U colors && colors
-# autoload -U promptinit && promptinit 
 
 # PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c %{$reset_color%}%{\${vcs_info_msg_0_}%}%(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
 # PROMPT="%B%{$fg[black]%}[%{$fg[cyan]%}%n%{$fg[white]%}@%{$fg[cyan]%}%m%{$fg[black]%}] [%{$fg[cyan]%}%c%{$fg[black]%}] %(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
 
-setopt prompt_subst hist_ignore_all_dups menucomplete SHARE_HISTORY
+setopt prompt_subst hist_ignore_all_dups menucomplete share_history
+autoload -U compinit && compinit
 zmodload zsh/complist
+
+zstyle ':completion:*' menu select
 
 # --------------------------------
 # Custom scripts
@@ -32,6 +33,8 @@ fi
 # --------------------------------
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+fpath=($HOME/zsh-completions/src $fpath)
 
 # --------------------------------
 # Configuration
