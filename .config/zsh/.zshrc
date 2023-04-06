@@ -15,12 +15,16 @@ source $ZDOTDIR/zsh_aliases
 source $ZDOTDIR/zsh_vimode
 # source $ZDOTDIR/zsh_vcsprompt
 
-if [[ -n $WORK_MACHINE ]]; then
+if [[ -n $MACHINE_WORK ]]; then
   source $ZDOTDIR/zsh_work_machine
 fi
 
-if [[ -n $PERSONAL_MACHINE ]]; then
+if [[ -n $MACHINE_DESKTOP ]]; then
   source $ZDOTDIR/zsh_personal_machine
+fi
+
+if [[ -n $MACHINE_SYS76 ]]; then
+  source $ZDOTDIR/zsh_system76
 fi
 
 # --------------------------------
@@ -36,6 +40,6 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin/:$PATH
 
-[ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
+# [ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
 
 eval "$(starship init zsh)"

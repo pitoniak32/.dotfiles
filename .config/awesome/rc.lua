@@ -143,7 +143,7 @@ local my_vert_sep = wibox.widget({
 -- Create the textbox that will be used to print the battery percentage and initialize it with an empty string
 local my_battery_widget = wibox.widget.textbox()
 my_battery_widget:set_text("")
-local my_battery_widget_timer = timer({ timeout = 10 })
+local my_battery_widget_timer = timer({ timeout = 5 })
 
 -- Initialize the timer and execute the function every 5 seconds
 my_battery_widget_timer:connect_signal("timeout", function()
@@ -306,6 +306,7 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 end)
 -- }}}
+
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
