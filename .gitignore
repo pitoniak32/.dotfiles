@@ -10,6 +10,7 @@
 !.config/zellij/
 !.config/fish/
 !.config/zsh/
+.config/zsh/.zcompdump*
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions/*
 
