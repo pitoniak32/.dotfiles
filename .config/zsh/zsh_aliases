@@ -1,0 +1,14 @@
+# --------------------------------
+# Aliases
+# --------------------------------
+alias g='git'
+alias k='kubectl'
+alias ls='ls --color'
+alias dka='docker kill $(docker ps -q)'
+alias dcu='~/docker-m1/update-topics.sh; docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml up -d'
+alias dcd='docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml down'
+alias cat='bat'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

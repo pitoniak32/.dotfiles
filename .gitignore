@@ -1,7 +1,15 @@
 .config/*
 .config/ranger/colorschemes/
 !.config/nvim/
+!.config/awesome/
 !.config/ranger/
 !.config/i3/
 !.config/i3status/
 !.config/kitty/
+!.config/alacritty/
+!.config/zellij/
+!.config/fish/
+!.config/zsh/
+.config/zsh/.zsh_history
+.config/zsh/.zsh_sessions/*
+

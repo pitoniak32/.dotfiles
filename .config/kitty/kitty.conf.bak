@@ -19,10 +19,11 @@
 #: heavy. Setting them manually is useful for font families that have
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
-font_family      JetBrainsMonoNerdFontCompleteM-Regular
-bold_font        JetBrainsMonoNerdFontCompleteM-Bold
-italic_font      JetBrainsMonoNerdFontCompleteM-Italic
-bold_italic_font JetBrainsMonoNerdFontCompleteM-BoldItalic
+font_family      JetBrainsMono Nerd Font Mono Regular 
+bold_font        JetBrainsMono Nerd Font Mono Bold 
+italic_font      JetBrainsMono Nerd Font Mono Italic 
+bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic 
+
 font_size 12.0
 
 #: Font size (in pts)
@@ -316,7 +317,7 @@ disable_ligatures always
 #: The color and style for highlighting URLs on mouse-over. url_style
 #: can be one of: none, straight, double, curly, dotted, dashed.
 
-open_url_with default
+# open_url_with default
 
 #: The program to open clicked URLs. The special value default means
 #: to use the operating system's default URL handler (open on macOS
@@ -655,7 +656,7 @@ enable_audio_bell no
 
 #: }}}
 
-#: Window layout {{{
+#`: Window layout {{{
 
 # remember_window_size  yes
 # initial_window_width  640
@@ -729,11 +730,13 @@ window_padding_width 4 4 4 4
 #: this option. Using a value of center means the cell area will be
 #: placed centrally. A value of top-left means the padding will be
 #: only at the bottom and right edges.
-# active_border_color #00ff00
+
+active_border_color #00ff00
 
 #: The color for the border of the active window. Set this to none to
 #: not draw borders around the active window.
-# inactive_border_color #cccccc
+
+inactive_border_color #cccccc
 
 #: The color for the border of inactive windows.
 
@@ -966,7 +969,7 @@ confirm_os_window_close 0
 
 #: The foreground and background colors.
 
-background_opacity 0.95
+#: background_opacity 0.9
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -2155,9 +2158,3 @@ macos_thicken_font .5
 
 #: }}}
 
-
-
-# BEGIN_KITTY_THEME
-# Catppuccin-Frappe
-include current-theme.conf
-# END_KITTY_THEME

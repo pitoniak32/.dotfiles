@@ -1,0 +1,31 @@
+#!/bin/bash
+
+not_in_zellij() {
+  [[ -z "$ZELLIJ" ]]
+}
+
+if not_in_zellij; then
+  echo "Need to be attached to session!"
+  exit 1;
+fi
+
+DIR=$1
+
+# If no project directory is provided error.
+if [[ -z "$PROJ_DIR" ]] && [[ -z "$DIR" ]]; then
+  echo "Please provide a Project directory as an argument or as PROJ_DIR"
+  exit 1;
+elif [[ ! -z "$DIR" ]]; then
+  PROJ_DIR=$DIR
+fi
+
+_project_name=$(ls -d $PROJ_DIR/* | sed "s#.*/##" | fzf --reverse)
+project_name="${_project_name//./_}"
+path_name="$PROJ_DIR/$_project_name"
+
+if [ -z "$project_name" ]; then
+  echo "Selection Cancelled."
+  exit 1;
+fi
+
+zellij --layout $HOME/.config/zellij/layouts/project_layout.kdl action go-to-tab-name $project_name --create

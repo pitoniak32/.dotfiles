@@ -12,20 +12,19 @@ leader_map("<Space>", "<Nop>", gen_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-nnoremap("<leader>ex", vim.cmd.Ex, gen_opts)
+nnoremap("<leader>e", vim.cmd.Lex, gen_opts)
 nnoremap("<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", gen_opts)
 
 -- Normal Mode Maps
 nnoremap("<C-S-Up>", ":resize -2<CR>", gen_opts)
 nnoremap("<C-S-Down>", ":resize +2<CR>", gen_opts)
-nnoremap("<C-S-Left>", ":vertical resize -2<CR>", gen_opts)
-nnoremap("<C-S-Right>", ":vertical resize +2<CR>", gen_opts)
+nnoremap("<C-S-Left>", ":vertical resize +2<CR>", gen_opts)
+nnoremap("<C-S-Right>", ":vertical resize -2<CR>", gen_opts)
 nnoremap("<leader>q", ":Bdelete<CR>", gen_opts)
 nnoremap("<leader>gb", ":GitBlameToggle<CR>", gen_opts)
-nnoremap("<leader><leader>mc", ":Gvdiff<CR>", gen_opts)
-nnoremap("<leader><leader>gm", ":diffget //2<CR>", gen_opts)
-nnoremap("<leader><leader>gt", ":diffget //3<CR>", gen_opts)
-nnoremap("<leader>e", ":NvimTreeToggle <CR>", gen_opts)
+nnoremap("<leader><leader>mc", ":Gvdiffsplit!<CR>", gen_opts)
+nnoremap("<leader>gt", ":diffget //2|diffupdate<CR>", gen_opts)
+nnoremap("<leader>gm", ":diffget //3|diffupdate<CR>", gen_opts)
 nnoremap("<leader>gs", ":G<CR>", gen_opts)
 nnoremap("<leader>gf", ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", gen_opts)
 nnoremap("<leader>sf", ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", gen_opts)

@@ -1,0 +1,4 @@
+# --------------------------------
+# Desktop machine configuration
+# --------------------------------
+export PROJ_DIR=$HOME/Documents/

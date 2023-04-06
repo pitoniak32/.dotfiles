@@ -1,0 +1,58 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# [\\[](bold black)\
+# $username\
+# [@](bold white)\
+# $hostname\
+# [\\]](bold black)\
+
+format = """
+[\\[](bold black)\
+$directory\
+[\\]](bold black)\
+([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
+$character"""
+
+right_format = "$status"
+
+command_timeout = 1000
+
+add_newline = false
+
+# [character]
+# format = " $symbol "
+
+[status]
+format = '[\[](bold black)[$status]($style)[\]](bold black)'
+disabled = false
+
+[username]
+style_user = 'cyan'
+style_root = 'red'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$hostname](cyan)'
+disabled = false
+
+[directory]
+format = '[$path](cyan)'
+
+[git_status]
+format = '([[\(](bold black)$all_status$ahead_behind[\)](bold black)]($style) )'
+modified = '[$count!](bold yellow)'
+ahead = '[$count⇡](bold yellow)'
+untracked = '[$count?](bold purple)'
+renamed = '[$count»](bold purple)'
+staged = '[$count+](bold green)'
+
+[git_branch]
+style = 'bold black'
+format = '[$symbol](bold green) [$branch(:$remote_branch)]($style)'
+symbol = ''
+# truncation_length = 16
+truncation_symbol = '…'
