@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # script to automate new computer setup
 
