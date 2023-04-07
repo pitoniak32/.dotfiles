@@ -4,6 +4,14 @@
 
 setopt prompt_subst hist_ignore_all_dups menucomplete share_history nomenucomplete
 
+# This enables arrow keys to use already typed commands to search history
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 autoload -U compinit && compinit
 autoload -U colors && colors
 
