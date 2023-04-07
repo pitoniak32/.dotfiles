@@ -45,6 +45,17 @@ return require("packer").startup(function(use)
 	use({ "nvim-lualine/lualine.nvim" }) -- fancier statusline
 	use({ "j-hui/fidget.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- linting / formatting
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  }
+
 	-- END Plugins
 
 	-- BEGIN Treesitter
