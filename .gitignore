@@ -1,6 +1,7 @@
 .config/*
 .config/ranger/colorschemes/
 !.config/nvim/
+.config/nvim/plugin/packer_compiled.lua
 !.config/awesome/
 !.config/ranger/
 !.config/i3/
