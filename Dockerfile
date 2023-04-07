@@ -10,7 +10,7 @@ RUN apt update && apt install -y \
   vim \
   fzf \
   # cargo install 
-  gcc \
+  g++ \
   # cargo install starship
   cmake 
 
