@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
-  ensure_installed = { "help", "bash", "typescript", "javascript", "lua", "rust" },
+  ensure_installed = { "vimdoc", "bash", "typescript", "javascript", "lua", "rust" },
 	sync_install = false,
   auto_install = true,
 	highlight = {
