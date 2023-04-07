@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim $XDG_DATA_HOME/nvi
 # -------------------------------------------------------
 # Install rust
 # -------------------------------------------------------
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env 
 
 # -------------------------------------------------------
 # Install dependencies with cargo 
