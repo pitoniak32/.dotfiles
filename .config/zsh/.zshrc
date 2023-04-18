@@ -51,7 +51,7 @@ fpath=($HOME/zsh-completions/src $fpath)
 # --------------------------------
 export EDITOR=nvim
 export VISUAL=$EDITOR
-export PATH=$HOME/.local/bin/:$PATH
+export PATH=$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH
 
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
