@@ -17,3 +17,7 @@ if colorscheme == "tokyonight" then
     vim.g.tokyonight_transparent_sidebar = true
   end
 end
+
+hl("TelescopeBorder", { fg = "#8caaee", bg = "#292c3c" })
+hl("TelescopeSelectionCaret", { fg = "#56b6c2" })
+hl("TelescopePromptPrefix", { fg = "#56b6c2" })
