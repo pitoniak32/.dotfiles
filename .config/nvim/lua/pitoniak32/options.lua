@@ -22,6 +22,8 @@ o.signcolumn = "yes"
 o.mouse = "nv"
 o.showmode = false
 o.completeopt = 'menuone,noselect'
+o.splitright = true
+o.splitbelow = false
 
 -- vimwiki
 vim.g.vimwiki_list = { { path = "~/vimwiki/" } }
