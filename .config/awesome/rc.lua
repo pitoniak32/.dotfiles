@@ -62,7 +62,7 @@ beautiful.useless_gap = 4
 awful.util.spawn("compton")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -71,7 +71,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+modkey = "Mod2"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
