@@ -25,15 +25,14 @@ source $ZDOTDIR/zsh_aliases
 source $ZDOTDIR/zsh_vimode
 # source $ZDOTDIR/zsh_vcsprompt
 
-if [[ -n $MACHINE_WORK ]]; then
-  source $ZDOTDIR/zsh_work_machine
-fi
-
-if [[ -n $MACHINE_DESKTOP ]]; then
+# --------------------------------
+# Determine what machine
+# --------------------------------
+if [[ $HOST == "pop-os" ]]; then
   source $ZDOTDIR/zsh_personal_machine
-fi
-
-if [[ -n $MACHINE_SYS76 ]]; then
+elif [[ $HOST ==  "US-YFCRWDX2QT.local" ]]; then
+  source $ZDOTDIR/zsh_work_machine
+elif [[ $HOST == "" ]]; then
   source $ZDOTDIR/zsh_system76
 fi
 
@@ -51,5 +50,6 @@ fpath=($HOME/zsh-completions/src $fpath)
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH
+export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
