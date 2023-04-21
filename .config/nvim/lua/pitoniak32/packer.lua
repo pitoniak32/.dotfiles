@@ -17,6 +17,8 @@ return require("packer").startup(function(use)
 	-- Packer Plugin
 	use({ "wbthomason/packer.nvim" })
 	-- Packer Plugin
+  --
+  use({"folke/which-key.nvim"})
 
 	-- BEGIN Plugins
 

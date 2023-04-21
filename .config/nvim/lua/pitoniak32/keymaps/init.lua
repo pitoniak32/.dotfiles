@@ -12,6 +12,46 @@ leader_map("<Space>", "<Nop>", gen_opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Trying out something new here. Using "chords" with a pneumonic 
+
+local wk = require("which-key")
+
+-- Find = <leader> f []
+wk.register({
+  f = {
+    name = "find",
+    g = { ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", "find git files for project" },
+    f = { ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", "find all files in current directory" },
+  },
+  s = {
+    name = "search",
+    h = { ":lua require('telescope.builtin').help_tags()<CR>", "search help tags" },
+    g = { ":lua require('telescope.builtin').live_grep()<CR>", "search grep string in current project files" },
+    d = { ":lua require('telescope.builtin').diagnostics()<CR>", "search all diagnostics" },
+    b = { ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false })", "Fuzzily search in current buffer" },
+  },
+  t = {
+    name = "test",
+    n = {":TestNearest -strategy=neovim<CR>", "run the nearest test to your cursor" },
+    l = {":TestLast -strategy=neovim<CR>", "rerun the last test that was ran" },
+    v = {":TestVisit<CR>", "visit location of last run test" },
+  },
+  a = {
+    name = "action",
+    m = { ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", "add mark for current buffer" },
+  },
+  o = {
+    name = "open",
+    e = { ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", "open harpoon menu" },
+    j = { ":lua require'harpoon.ui'.nav_file(1)<CR>", "open harpooned file 1" },
+    k = { ":lua require'harpoon.ui'.nav_file(2)<CR>", "open harpooned file 2" },
+    l = { ":lua require'harpoon.ui'.nav_file(3)<CR>", "open harpooned file 3" },
+    [";"] = { ":lua require'harpoon.ui'.nav_file(4)<CR>", "open harpooned file 4" },
+  },
+}, { prefix = "<leader>", silent = true })
+
+-- pneumoic keybinds end
+
 --[[ nnoremap("<leader>e", vim.cmd.Lex, gen_opts) ]] -- netrw key bind
 nnoremap("<leader>e", ":NvimTreeToggle<CR>", gen_opts)
 nnoremap("<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", gen_opts)
@@ -27,27 +67,8 @@ nnoremap("<leader><leader>mc", ":Gvdiffsplit!<CR>", gen_opts)
 nnoremap("<leader>gt", ":diffget //2|diffupdate<CR>", gen_opts)
 nnoremap("<leader>gm", ":diffget //3|diffupdate<CR>", gen_opts)
 nnoremap("<leader>gs", ":G<CR>", gen_opts)
-nnoremap("<leader>gf", ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", gen_opts)
-nnoremap("<leader>sf", ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", gen_opts)
-nnoremap("<leader>sh", ":lua require('telescope.builtin').help_tags()<CR>", gen_opts)
-nnoremap("<leader>sg", ":lua require('telescope.builtin').live_grep()<CR>", gen_opts)
-nnoremap("<leader>sd", ":lua require('telescope.builtin').diagnostics()<CR>", gen_opts)
-nnoremap('<leader>/', function()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer]' })
 
-nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", gen_opts)
-nnoremap("<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", gen_opts)
-nnoremap("<leader>j", ":lua require'harpoon.ui'.nav_file(1)<CR>", gen_opts)
-nnoremap("<leader>k", ":lua require'harpoon.ui'.nav_file(2)<CR>", gen_opts)
-nnoremap("<leader>l", ":lua require'harpoon.ui'.nav_file(3)<CR>", gen_opts)
-nnoremap("<leader>;", ":lua require'harpoon.ui'.nav_file(4)<CR>", gen_opts)
 
-nnoremap("<leader>tn", ":TestNearest -strategy=neovim<CR>", gen_opts)
-nnoremap("<leader>tl", ":TestLast -strategy=neovim<CR>", gen_opts)
-nnoremap("<leader>tv", ":TestVisit<CR>", gen_opts)
 nnoremap("<leader>sp", ":setlocal spell!<CR>", gen_opts)
 
 -- Undo Breakpoints

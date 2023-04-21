@@ -25,6 +25,10 @@ o.completeopt = 'menuone,noselect'
 o.splitright = true
 o.splitbelow = false
 
+-- which_key
+o.timeout = true
+o.timeoutlen = 300
+
 -- vimwiki
 vim.g.vimwiki_list = { { path = "~/vimwiki/" } }
 

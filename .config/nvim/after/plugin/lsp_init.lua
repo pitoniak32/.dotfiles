@@ -61,20 +61,40 @@ cmp.setup({
 	},
 })
 
-local nnoremap = require("pitoniak32.keymaps.utils").nnoremap
+local wk = require("which-key")
 
-lsp.on_attach(function(_, bufnr)
-	nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<leader>df", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
-	nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
-	nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<leader>fm", ":lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
-	nnoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true, buffer = bufnr })
+lsp.on_attach(function(_, buffnr)
+	wk.register({
+		a = {
+			name = "action",
+			r = { ":lua vim.lsp.buf.rename()<CR>", "rename lsp symbol under cursor" },
+			f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
+		},
+		o = {
+			name = "open",
+			d = {
+				"<cmd>lua vim.diagnostic.open_float()<CR>",
+				"open diagnostics for symbol under cursor",
+			},
+			h = { ":lua vim.lsp.buf.hover()<CR>", "open hover info for symbol under cursor" },
+			r = { ":lua vim.lsp.buf.references()<CR>", "open references" },
+			s = { ":lua vim.lsp.buf.signature_help()<CR>", "open signature help" },
+			c = { ":lua vim.lsp.buf.code_action()<CR>", "open code actions" },
+		},
+		g = {
+			name = "goto",
+			d = { ":lua vim.lsp.buf.definition()<CR>", "goto definition" },
+			i = { ":lua vim.lsp.buf.implementation()<CR>", "goto implementation" },
+			dn = {
+				":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>",
+				"goto diagnostic next",
+			},
+			dp = {
+				":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>",
+				"goto diagnostic previous",
+			},
+		},
+	}, { prefix = "<leader>", buffer = buffnr, silent = true })
 end)
 
 lsp.nvim_workspace()
