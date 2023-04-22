@@ -11,7 +11,6 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
@@ -22,36 +21,7 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		title = "Oops, there were errors during startup!",
-		text = awesome.startup_errors,
-	})
-end
-
--- Handle runtime errors after startup
-do
-	local in_error = false
-	awesome.connect_signal("debug::error", function(err)
-		-- Make sure we don't go into an endless error loop
-		if in_error then
-			return
-		end
-		in_error = true
-
-		naughty.notify({
-			preset = naughty.config.presets.critical,
-			title = "Oops, an error happened!",
-			text = tostring(err),
-		})
-		in_error = false
-	end)
-end
--- }}}
+require('error_handling')
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -118,41 +88,6 @@ else
 		},
 	})
 end
-
-local my_vert_sep = wibox.widget({
-	widget = wibox.widget.separator,
-	orientation = "vertical",
-	forced_width = 2,
-})
-
--- Create the textbox that will be used to print the battery percentage and initialize it with an empty string
-local my_battery_widget = wibox.widget.textbox()
-my_battery_widget:set_text("")
-local my_battery_widget_timer = timer({ timeout = 5 })
-
--- Initialize the timer and execute the function every 5 seconds
-my_battery_widget_timer:connect_signal("timeout", function()
-	local fremaining = assert(io.popen("acpi | cut -d' ' -f 5", "r"))
-	local remaining = fremaining:read("*l")
-	local fperc = assert(io.popen("acpi | cut -d' ' -f 4 | cut -d% -f 1", "r"))
-	local perc = fperc:read("*number")
-	local fstatus = assert(io.popen("acpi | cut -d: -f 2,2 | cut -d, -f 1,1", "r"))
-	local status = fstatus:read("*l")
-	local sym = ""
-
-	if string.match(status, "Charging") then
-		sym = "+"
-	elseif string.match(status, "Full") then
-		sym = "_"
-	end
-
-	my_battery_widget:set_text(" " .. sym .. " " .. perc .. "%" .. " " .. remaining .. " ")
-
-	fperc:close()
-	fstatus:close()
-end)
--- Start the timer
-my_battery_widget_timer:start()
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
