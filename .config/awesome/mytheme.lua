@@ -14,7 +14,7 @@ local icons_dir = home_path .. ".config/awesome/icons/"
 
 local theme = {}
 
-theme.font          = "JetBrains Mono Nerd Font Mono 6"
+theme.font          = "JetBrains Mono Nerd Font Mono 8"
 
 theme.widget_cpu_icon = icons_dir .. "cpu.png"
 theme.widget_battery_icon = icons_dir .. "battery.png"
