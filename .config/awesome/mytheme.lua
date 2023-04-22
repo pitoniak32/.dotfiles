@@ -13,24 +13,52 @@ local home_path = os.getenv("HOME") .. "/"
 
 local theme = {}
 
-theme.font          = "sans 8"
+theme.font          = "JetBrainsMono Nerd Font Mono 10"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+theme.black = "#1e1e28"
+theme.deep_black = "#1b1923"
+theme.white = "#d7dae0"
+theme.light_white = "#fafafa"
+theme.pink = "#f0afe1"
+theme.red = "#e28c8c"
+theme.orange = "#f9c096"
+theme.yellow = "#eadda0"
+theme.green = "#b3e1a3"
+theme.blue = "#a4b9ef"
+theme.purple = "#c6aae8"
+theme.grey = "#6e6c7c"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.bg_normal = theme.black
+theme.bg_focus = theme.deep_black
+theme.bg_urgent = theme.white
+theme.bg_minimize = theme.grey
+theme.bg_systray = theme.black
+
+theme.fg_normal = theme.white
+theme.fg_focus = theme.orange
+theme.fg_urgent = theme.red
+theme.fg_minimize = theme.light_white
+
+theme.border_normal = theme.blue
+theme.border_focus = theme.green
+theme.border_marked = theme.purple
+
+--[[ theme.bg_normal     = "#222222" ]]
+--[[ theme.bg_focus      = "#535d6c" ]]
+--[[ theme.bg_urgent     = "#ff0000" ]]
+--[[ theme.bg_minimize   = "#444444" ]]
+--[[ theme.bg_systray    = theme.bg_normal ]]
+
+--[[ theme.fg_normal     = "#aaaaaa" ]]
+--[[ theme.fg_focus      = "#ffffff" ]]
+--[[ theme.fg_urgent     = "#ffffff" ]]
+--[[ theme.fg_minimize   = "#ffffff" ]]
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+--[[ theme.border_normal = "#000000" ]]
+--[[ theme.border_focus  = "#535d6c" ]]
+--[[ theme.border_marked = "#91231c" ]]
 
 -- There are other variable sets
 -- overriding the default one when
