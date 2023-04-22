@@ -10,10 +10,16 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 local home_path = os.getenv("HOME") .. "/"
+local icons_dir = home_path .. ".config/awesome/icons/"
 
 local theme = {}
 
-theme.font          = "JetBrainsMono Nerd Font Mono 10"
+theme.font          = "JetBrains Mono Nerd Font Mono 6"
+
+theme.widget_cpu_icon = icons_dir .. "cpu.png"
+theme.widget_battery_icon = icons_dir .. "battery.png"
+theme.widget_volume_icon = icons_dir .. "speaker.png"
+theme.widget_memory_icon = icons_dir .. "memory.png"
 
 theme.black = "#1e1e28"
 theme.deep_black = "#1b1923"

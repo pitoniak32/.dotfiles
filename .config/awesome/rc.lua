@@ -62,7 +62,7 @@ awful.util.spawn("compton")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "editor"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -282,6 +282,54 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
 
+  -- CPU
+  local lain = require('lain')
+  local theme = require('mytheme')
+
+  local markup = lain.util.markup
+
+  local cpuicon = wibox.widget.imagebox(theme.widget_cpu_icon)
+  local cpu = lain.widget.cpu({
+      settings = function()
+          widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, cpu_now.usage .. "% "))
+      end
+  })
+  
+  -- Battery
+  local baticon = wibox.widget.imagebox(theme.widget_battery_icon)
+  local bat = lain.widget.bat({
+      settings = function()
+          local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
+
+          if bat_now.ac_status == 1 then
+              perc = perc .. " plug"
+          end
+
+          widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, perc .. " "))
+      end
+  })
+
+
+  -- ALSA volume
+  local volicon = wibox.widget.imagebox(theme.widget_volume_icon)
+  theme.volume = lain.widget.alsa({
+      settings = function()
+          if volume_now.status == "off" then
+              volume_now.level = volume_now.level .. "M"
+          end
+
+          widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, volume_now.level .. "% "))
+      end
+  })
+
+  -- MEM
+  local memicon = wibox.widget.imagebox(theme.widget_memory_icon)
+  local memory = lain.widget.mem({
+      settings = function()
+          widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, mem_now.used .. "M "))
+      end
+  })
+
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -294,9 +342,14 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			my_vert_sep,
-			my_battery_widget,
-			my_vert_sep,
+      volicon,
+      theme.volume.widget,
+      baticon,
+      bat,
+      memicon,
+      memory,
+      cpuicon,
+      cpu,
 			wibox.widget.systray(),
 			mytextclock,
 			my_vert_sep,
