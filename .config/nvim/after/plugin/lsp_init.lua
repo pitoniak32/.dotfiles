@@ -64,37 +64,7 @@ cmp.setup({
 local wk = require("which-key")
 
 lsp.on_attach(function(_, buffnr)
-	wk.register({
-		a = {
-			name = "action",
-			r = { ":lua vim.lsp.buf.rename()<CR>", "rename lsp symbol under cursor" },
-			f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
-		},
-		o = {
-			name = "open",
-			d = {
-				"<cmd>lua vim.diagnostic.open_float()<CR>",
-				"open diagnostics for symbol under cursor",
-			},
-			h = { ":lua vim.lsp.buf.hover()<CR>", "open hover info for symbol under cursor" },
-			r = { ":lua vim.lsp.buf.references()<CR>", "open references" },
-			s = { ":lua vim.lsp.buf.signature_help()<CR>", "open signature help" },
-			c = { ":lua vim.lsp.buf.code_action()<CR>", "open code actions" },
-		},
-		g = {
-			name = "goto",
-			d = { ":lua vim.lsp.buf.definition()<CR>", "goto definition" },
-			i = { ":lua vim.lsp.buf.implementation()<CR>", "goto implementation" },
-			dn = {
-				":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>",
-				"goto diagnostic next",
-			},
-			dp = {
-				":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>",
-				"goto diagnostic previous",
-			},
-		},
-	}, { prefix = "<leader>", buffer = buffnr, silent = true })
+	wk.register(require("pitoniak32.keymaps").key_maps_lsp, { prefix = "<leader>", buffer = buffnr, silent = true })
 end)
 
 lsp.nvim_workspace()

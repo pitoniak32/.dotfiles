@@ -14,10 +14,10 @@ vim.g.maplocalleader = " "
 
 -- Trying out something new here. Using "chords" with a pneumonic 
 
-local wk = require("which-key")
+M = {}
 
 -- Find = <leader> f []
-wk.register({
+M.key_maps_all = {
   f = {
     name = "find",
     g = { ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", "find git files for project" },
@@ -48,7 +48,41 @@ wk.register({
     l = { ":lua require'harpoon.ui'.nav_file(3)<CR>", "open harpooned file 3" },
     [";"] = { ":lua require'harpoon.ui'.nav_file(4)<CR>", "open harpooned file 4" },
   },
-}, { prefix = "<leader>", silent = true })
+}
+
+M.key_maps_lsp = {
+  a = {
+    name = "action",
+    r = { ":lua vim.lsp.buf.rename()<CR>", "rename lsp symbol under cursor" },
+    f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
+  },
+  o = {
+    name = "open",
+    d = {
+      "<cmd>lua vim.diagnostic.open_float()<CR>",
+      "open diagnostics for symbol under cursor",
+    },
+    h = { ":lua vim.lsp.buf.hover()<CR>", "open hover info for symbol under cursor" },
+    r = { ":lua vim.lsp.buf.references()<CR>", "open references" },
+    s = { ":lua vim.lsp.buf.signature_help()<CR>", "open signature help" },
+    c = { ":lua vim.lsp.buf.code_action()<CR>", "open code actions" },
+  },
+  g = {
+    name = "goto",
+    d = { ":lua vim.lsp.buf.definition()<CR>", "goto definition" },
+    i = { ":lua vim.lsp.buf.implementation()<CR>", "goto implementation" },
+    dn = {
+      ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>",
+      "goto diagnostic next",
+    },
+    dp = {
+      ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>",
+      "goto diagnostic previous",
+    },
+  },
+}
+
+M.options = { prefix = "<leader>", silent = true }
 
 -- pneumoic keybinds end
 
@@ -111,3 +145,5 @@ nnoremap("<leader>Y", "\"*Y", gen_opts)
 -- Quickfix list  
 nnoremap("<C-j>", "<cmd>cnext<CR>zz", gen_opts)
 nnoremap("<C-k>", "<cmd>cprev<CR>zz", gen_opts)
+
+return M
