@@ -211,6 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   local cpuicon = wibox.widget.imagebox(theme.widget_cpu_icon)
   local cpu = lain.widget.cpu({
+      timeout = 2, -- Default = 2
       settings = function()
           widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, cpu_now.usage .. "% "))
       end
@@ -219,7 +220,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- Battery
   local baticon = wibox.widget.imagebox(theme.widget_battery_icon)
   local bat = lain.widget.bat({
-      timeout = 2,
+      timeout = 2, -- Default = 30
       settings = function()
           local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
 
@@ -234,7 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- ALSA volume
   local volicon = wibox.widget.imagebox(theme.widget_volume_icon)
   theme.volume = lain.widget.alsa({
-      timeout = 0.2,
+      timeout = 0.2, -- Default = 30
       settings = function()
           if volume_now.status == "off" then
               volume_now.level = volume_now.level .. "M"
@@ -247,6 +248,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- MEM
   local memicon = wibox.widget.imagebox(theme.widget_memory_icon)
   local memory = lain.widget.mem({
+      timeout = 2, -- Default = 2
       settings = function()
           widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, mem_now.used .. "M "))
       end
