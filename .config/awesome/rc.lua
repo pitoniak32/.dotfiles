@@ -29,6 +29,7 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 beautiful.useless_gap = 4
 -- start compositor
 awful.util.spawn("compton")
+awful.util.spawn("nitrogen --restore")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
