@@ -342,6 +342,7 @@ globalkeys = gears.table.join(
 
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, "Shift" }, "l", function () awful.util.spawn("i3lock --color 232634") end, { description = "lock screen", group = "awesome" }),
 
 	awful.key({ modkey, "Control" }, "l", function()
 		awful.tag.incmwfact(0.05)
