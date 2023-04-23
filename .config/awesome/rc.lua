@@ -215,10 +215,11 @@ awful.screen.connect_for_each_screen(function(s)
           widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, cpu_now.usage .. "% "))
       end
   })
-  
+
   -- Battery
   local baticon = wibox.widget.imagebox(theme.widget_battery_icon)
   local bat = lain.widget.bat({
+      timeout = 2,
       settings = function()
           local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
 
@@ -230,10 +231,10 @@ awful.screen.connect_for_each_screen(function(s)
       end
   })
 
-
   -- ALSA volume
   local volicon = wibox.widget.imagebox(theme.widget_volume_icon)
   theme.volume = lain.widget.alsa({
+      timeout = 0.2,
       settings = function()
           if volume_now.status == "off" then
               volume_now.level = volume_now.level .. "M"
@@ -263,17 +264,16 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			wibox.widget.systray(),
       volicon,
       theme.volume.widget,
-      baticon,
-      bat,
       memicon,
       memory,
       cpuicon,
       cpu,
-			wibox.widget.systray(),
+      baticon,
+      bat,
 			mytextclock,
-			my_vert_sep,
 			s.mylayoutbox,
 		},
 	})
@@ -358,6 +358,12 @@ globalkeys = gears.table.join(
 	--[[ awful.key({ modkey, "Control" }, "l", function() ]]
 	--[[ 	awful.tag.incncol(-1, nil, true) ]]
 	--[[ end, { description = "decrease the number of columns", group = "layout" }), ]]
+  awful.key({ }, "XF86AudioRaiseVolume", function ()
+       awful.util.spawn("amixer set Master 2%+") end),
+   awful.key({ }, "XF86AudioLowerVolume", function ()
+       awful.util.spawn("amixer set Master 2%-") end),
+   awful.key({ }, "XF86AudioMute", function ()
+       awful.util.spawn("amixer sset Master toggle") end),
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
