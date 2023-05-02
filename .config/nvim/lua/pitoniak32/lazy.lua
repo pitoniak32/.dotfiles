@@ -49,7 +49,15 @@ require("lazy").setup({
   { "catppuccin/nvim", name = "catppuccin" },
 	"navarasu/onedark.nvim",
 	"p00f/nvim-ts-rainbow",
-	"f-person/git-blame.nvim",
+  {
+    "f-person/git-blame.nvim",
+    init = function ()
+      vim.g.gitblame_enabled = 0
+      vim.g.gitblame_message_template = "<summary> • <date> • <author>"
+      vim.g.gitblame_highlight_group = "LineNr"
+    end
+  },
+
 	"vimwiki/vimwiki",
   { "nvim-lualine/lualine.nvim",
     opts = {

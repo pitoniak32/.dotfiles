@@ -2,6 +2,7 @@
 .config/ranger/colorschemes/
 !.config/nvim/
 .config/nvim/plugin/packer_compiled.lua
+.config/nvim/lazy-lock.json
 !.config/awesome/
 !.config/ranger/
 !.config/i3/
