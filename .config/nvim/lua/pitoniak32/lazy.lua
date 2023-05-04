@@ -57,7 +57,6 @@ require("lazy").setup({
       vim.g.gitblame_highlight_group = "LineNr"
     end
   },
-
 	"vimwiki/vimwiki",
   { "nvim-lualine/lualine.nvim",
     opts = {
@@ -71,7 +70,6 @@ require("lazy").setup({
   },
 	"j-hui/fidget.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
-
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {

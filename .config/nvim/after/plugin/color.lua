@@ -1,5 +1,5 @@
 local colorscheme = "catppuccin-frappe"
-local transparent = false
+local transparent = true
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
@@ -18,6 +18,17 @@ if colorscheme == "tokyonight" then
   end
 end
 
-hl("TelescopeBorder", { fg = "#8caaee", bg = "#292c3c" })
+if transparent then
+  hl("Normal", { bg = "none" })
+  hl("NormalNC", { bg = "none" })
+  hl("NonText", { bg = "none" })
+  hl("NormalFloat", { bg = "none" })
+  hl("NvimTreeNormal", { bg = "none" })
+  hl("NvimTreeWinSeparator", { fg = "#303446", bg = "none" })
+  hl("TelescopeBorder", { fg = "#8caaee" })
+else
+  hl("TelescopeBorder", { fg = "#8caaee", bg = "#292c3c" })
+end
+
 hl("TelescopeSelectionCaret", { fg = "#56b6c2" })
 hl("TelescopePromptPrefix", { fg = "#56b6c2" })
