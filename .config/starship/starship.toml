@@ -51,7 +51,7 @@ renamed = '[$count»](bold purple)'
 staged = '[$count+](bold green)'
 
 [git_branch]
-style = 'black'
+style = 'purple'
 format = '[$symbol](bold green) [$branch(:$remote_branch)]($style)'
 symbol = ''
 # truncation_length = 16
