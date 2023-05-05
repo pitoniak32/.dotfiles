@@ -75,7 +75,20 @@ require("lazy").setup({
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- optional
     },
-    opts = {},
+    opts = {
+      renderer = {
+        icons = {
+          glyphs = {
+            git = {
+              ignored = "I",
+            },
+          },
+        },
+      },
+      git = {
+        ignore = false,
+      },
+    },
   },
 
 	-- END Plugins
