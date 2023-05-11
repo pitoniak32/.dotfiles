@@ -22,13 +22,13 @@ M.key_maps_all = {
     name = "find",
     g = { ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", "find git files for project" },
     f = { ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", "find all files in current directory" },
+    l = { ":lua require('telescope.builtin').live_grep()<CR>", "find grep string in current project files" },
   },
   s = {
     name = "search",
     h = { ":lua require('telescope.builtin').help_tags()<CR>", "search help tags" },
-    g = { ":lua require('telescope.builtin').live_grep()<CR>", "search grep string in current project files" },
     d = { ":lua require('telescope.builtin').diagnostics()<CR>", "search all diagnostics" },
-    b = { ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false })", "Fuzzily search in current buffer" },
+    b = { ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", "Fuzzily search in current buffer" },
   },
   t = {
     name = "test",
@@ -40,14 +40,10 @@ M.key_maps_all = {
     name = "action",
     m = { ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", "add mark for current buffer" },
   },
-  o = {
-    name = "open",
-    e = { ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", "open harpoon menu" },
-    j = { ":lua require'harpoon.ui'.nav_file(1)<CR>", "open harpooned file 1" },
-    k = { ":lua require'harpoon.ui'.nav_file(2)<CR>", "open harpooned file 2" },
-    l = { ":lua require'harpoon.ui'.nav_file(3)<CR>", "open harpooned file 3" },
-    [";"] = { ":lua require'harpoon.ui'.nav_file(4)<CR>", "open harpooned file 4" },
-  },
+  j = { ":lua require'harpoon.ui'.nav_file(1)<CR>", "open harpooned file 1" },
+  k = { ":lua require'harpoon.ui'.nav_file(2)<CR>", "open harpooned file 2" },
+  l = { ":lua require'harpoon.ui'.nav_file(3)<CR>", "open harpooned file 3" },
+  [";"] = { ":lua require'harpoon.ui'.nav_file(4)<CR>", "open harpooned file 4" },
 }
 
 M.key_maps_lsp = {
@@ -55,6 +51,7 @@ M.key_maps_lsp = {
     name = "action",
     r = { ":lua vim.lsp.buf.rename()<CR>", "rename lsp symbol under cursor" },
     f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
+    c = { ":lua vim.lsp.buf.code_action()<CR>", "code actions" },
   },
   o = {
     name = "open",
@@ -65,7 +62,6 @@ M.key_maps_lsp = {
     h = { ":lua vim.lsp.buf.hover()<CR>", "open hover info for symbol under cursor" },
     r = { ":lua vim.lsp.buf.references()<CR>", "open references" },
     s = { ":lua vim.lsp.buf.signature_help()<CR>", "open signature help" },
-    c = { ":lua vim.lsp.buf.code_action()<CR>", "open code actions" },
   },
   g = {
     name = "goto",
@@ -85,6 +81,7 @@ M.key_maps_lsp = {
 M.options = { prefix = "<leader>", silent = true }
 
 -- pneumoic keybinds end
+nnoremap("<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", { desc = "open harpoon menu", silent = true })
 
 --[[ nnoremap("<leader>e", vim.cmd.Lex, gen_opts) ]] -- netrw key bind
 nnoremap("<leader>e", ":NvimTreeToggle<CR>", gen_opts)
