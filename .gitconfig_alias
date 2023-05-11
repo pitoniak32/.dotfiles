@@ -3,6 +3,7 @@
 #   path = .gitconfig_alias
 
 [alias]
+  pruneclean = !git fetch --prune && git prune -v
   shove = push -u origin HEAD
   s     = status
   pf    = push --force-with-lease
