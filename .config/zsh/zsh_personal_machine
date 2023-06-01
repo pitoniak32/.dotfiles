@@ -2,4 +2,4 @@
 # Desktop machine configuration
 # --------------------------------
 export PROJ_DIR=$HOME/Documents/
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/fzf/key-bindings.zsh

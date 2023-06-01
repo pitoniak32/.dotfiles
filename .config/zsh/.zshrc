@@ -28,7 +28,7 @@ source $ZDOTDIR/zsh_vimode
 # --------------------------------
 # Determine what machine
 # --------------------------------
-if [[ $HOST == "pop-os" ]]; then
+if [[ $HOST == "jawnix" ]]; then
   source $ZDOTDIR/zsh_personal_machine
 elif [[ $HOST ==  "YFCRWDX2QT" ]]; then
   source $ZDOTDIR/zsh_work_machine
