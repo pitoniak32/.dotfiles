@@ -30,7 +30,7 @@ source $ZDOTDIR/zsh_vimode
 # --------------------------------
 if [[ $HOST == "pop-os" ]]; then
   source $ZDOTDIR/zsh_personal_machine
-elif [[ $HOST ==  "US-YFCRWDX2QT.local" ]]; then
+elif [[ $HOST ==  "YFCRWDX2QT" ]]; then
   source $ZDOTDIR/zsh_work_machine
 elif [[ $HOST == "" ]]; then
   source $ZDOTDIR/zsh_system76
