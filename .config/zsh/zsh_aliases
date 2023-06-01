@@ -3,6 +3,24 @@
 # --------------------------------
 alias g='git'
 alias k='kubectl'
+
+function kgns() {
+  echo "printing current k8 namespace:"
+  echo "Command Used: kubectl config view --minify --output 'jsonpath={..namespace}'"
+  kubectl config view --minify --output 'jsonpath={..namespace}'; echo
+}
+
+function ksns() {
+  echo "switching current k8s namespace:"
+  echo "Command Used: kubectl config set-context --current --namespace $@"
+  kubectl config set-context --current --namespace "$@"
+  echo "---"
+  kgns
+}
+
+function matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4;        letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}' }
+
+
 alias ls='ls --color'
 alias dka='docker kill $(docker ps -q)'
 alias dcu='~/docker-m1/update-topics.sh; docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml up -d'
