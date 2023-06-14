@@ -28,4 +28,4 @@ if [ -z "$project_name" ]; then
   exit 1;
 fi
 
-zellij --layout $HOME/.config/zellij/layouts/project_layout.kdl action go-to-tab-name $project_name --create
+zellij --layout $HOME/.config/zellij/layouts/project_layout.kdl action go-to-tab-name $project_name --create --cwd $path_name
