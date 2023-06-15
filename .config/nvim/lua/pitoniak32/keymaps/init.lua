@@ -32,8 +32,9 @@ M.key_maps_all = {
   },
   t = {
     name = "test",
-    n = {":TestNearest -strategy=neovim<CR>", "run the nearest test to your cursor" },
-    l = {":TestLast -strategy=neovim<CR>", "rerun the last test that was ran" },
+    f = {":TestFile<CR>", "run all tests in the current file" },
+    n = {":TestNearest<CR>", "run the nearest test to your cursor" },
+    l = {":TestLast<CR>", "rerun the last test that was ran" },
     v = {":TestVisit<CR>", "visit location of last run test" },
   },
   a = {

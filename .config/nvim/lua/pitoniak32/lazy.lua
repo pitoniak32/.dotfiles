@@ -44,7 +44,13 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"numToStr/Comment.nvim",
 	"JoosepAlviste/nvim-ts-context-commentstring",
-  "vim-test/vim-test",
+  --[[ "vim-test/vim-test", ]]
+  {
+    "klen/nvim-test",
+    init = function()
+      require('nvim-test').setup()
+    end
+  },
 	"folke/tokyonight.nvim",
   { "catppuccin/nvim", name = "catppuccin" },
 	"navarasu/onedark.nvim",

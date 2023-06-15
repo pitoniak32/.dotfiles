@@ -2,6 +2,38 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+local lspconfig = require('lspconfig')
+
+lspconfig.tsserver.setup({
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = "relative"
+    },
+  },
+})
+
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        -- Setup your lua path
+        path = vim.split(package.path, ";"),
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
+      },
+    },
+  },
+})
+
 lsp.set_preferences({
 	suggest_lsp_servers = true,
 	setup_servers_on_start = true,
@@ -18,6 +50,8 @@ lsp.ensure_installed({
 	"lua_ls",
 	"rust_analyzer",
 })
+
+
 -- nvim-cmp setup
 local cmp = require("cmp")
 local luasnip = require("luasnip")
