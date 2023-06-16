@@ -19,3 +19,4 @@
   r     = restore
   cb    = checkout -b
   a     = add .
+  fu    = "!f() { git commit --fixup $1 && git rebase -i --autosquash $1~; }; f"
