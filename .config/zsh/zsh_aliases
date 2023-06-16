@@ -22,6 +22,7 @@ function matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMN
 
 
 alias ls='ls --color'
+alias lsa='ls --color -la'
 alias dka='docker kill $(docker ps -q)'
 alias dcu='~/docker-m1/update-topics.sh; docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml up -d'
 alias dcd='docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml down'
