@@ -25,7 +25,7 @@ path_name="$PROJ_DIR/$_project_name"
 
 if [ -z "$project_name" ]; then
   echo "Selection Cancelled."
-  exit 1;
+  exit 0;
 fi
 
 zellij --layout $HOME/.config/zellij/layouts/project_layout.kdl action go-to-tab-name $project_name --create --cwd $path_name
