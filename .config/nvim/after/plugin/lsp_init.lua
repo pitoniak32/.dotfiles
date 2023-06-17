@@ -45,8 +45,8 @@ lsp.set_preferences({
 require("fidget").setup()
 
 lsp.ensure_installed({
-	"tsserver",
-	"eslint",
+	--[[ "tsserver", ]]
+	--[[ "eslint", ]]
 	"lua_ls",
 	"rust_analyzer",
 })
