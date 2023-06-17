@@ -20,9 +20,6 @@ ZDOTDIR=$HOME/.config/zsh
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # Source cargo env
 . "/home/davidpi/.local/share/cargo/env"
