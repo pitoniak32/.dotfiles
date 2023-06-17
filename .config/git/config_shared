@@ -3,7 +3,7 @@
   name = David Pitoniak
 
 [include]
-  path = .gitconfig_alias
+  path = aliases
 [commit]
   gpgSign = true
 [init]

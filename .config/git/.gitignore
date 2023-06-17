@@ -1,6 +1,10 @@
 # Ignore all config unless explicitly mentioned
 .config/*
 
+# Git
+!.config/git/
+.config/git/config
+
 # Zsh
 !.config/zsh/
 .config/zsh/.zcompdump*
