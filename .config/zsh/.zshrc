@@ -1,4 +1,3 @@
-
 # PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c %{$reset_color%}%{\${vcs_info_msg_0_}%}%(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
 # PROMPT="%B%{$fg[black]%}[%{$fg[cyan]%}%n%{$fg[white]%}@%{$fg[cyan]%}%m%{$fg[black]%}] [%{$fg[cyan]%}%c%{$fg[black]%}] %(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
 
@@ -17,7 +16,8 @@ autoload -U colors && colors
 
 zmodload zsh/complist
 
-zstyle ':completion:*' menu select
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 # --------------------------------
 # Custom scripts
 # --------------------------------
