@@ -20,6 +20,7 @@ ZDOTDIR=$HOME/.config/zsh
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+eval $(dircolors "$XDG_CONFIG_HOME"/dircolors)
 
 # Source cargo env
 . "/home/davidpi/.local/share/cargo/env"
