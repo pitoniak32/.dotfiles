@@ -1,0 +1,10 @@
+[user]
+  email = davidpitoniak32@gmail.com
+  name = David Pitoniak
+
+[include]
+  path = .gitconfig_alias
+[commit]
+  gpgSign = true
+[init]
+  defaultBranch = main
