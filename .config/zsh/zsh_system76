@@ -1,2 +1,2 @@
 export MACHINE_SYS76="true"
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/fzf/key-bindings.zsh

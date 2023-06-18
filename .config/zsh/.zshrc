@@ -32,7 +32,7 @@ if [[ $HOST == "jawnix" ]]; then
   source $ZDOTDIR/zsh_personal_machine
 elif [[ $HOST ==  "YFCRWDX2QT" ]]; then
   source $ZDOTDIR/zsh_work_machine
-elif [[ $HOST == "" ]]; then
+elif [[ $HOST == "lemurpro" ]]; then
   source $ZDOTDIR/zsh_system76
 fi
 
