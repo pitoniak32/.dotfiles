@@ -1,6 +1,8 @@
 # --------------------------------
 # Work machine configuration
 # --------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PATH=$HOME/ukg/local/bin/:$PATH
 export PROJ_DIR=$HOME/Documents/quark
 export QUARK_BANNER_OFF=true
