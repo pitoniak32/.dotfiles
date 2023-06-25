@@ -107,6 +107,7 @@ require("lazy").setup({
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/playground",
       "romgrk/nvim-treesitter-context",
     },
     config = function ()
