@@ -43,8 +43,8 @@ shared_linux_configs() {
 # -------------------------------------------------------------------------
 # BEGIN Machine Specific Configuration
 # -------------------------------------------------------------------------
-if [[ $HOST == "jawnix" ]]; then
-    # Personal Deskop Config (Manjaro)
+if [[ $HOST == "jawnix" || $HOST == "lemurpro" ]]; then
+    # Personal Config (Manjaro)
     export PROJ_DIR=$HOME/Documents/
     source /usr/share/fzf/key-bindings.zsh
 
@@ -53,11 +53,6 @@ if [[ $HOST == "jawnix" ]]; then
 
     export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
     export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
-fi
-
-if [[ $HOST == "lemurpro" ]]; then
-    # Personal Laptop Config (Manjaro LemurPro)
-    # shared_linux_configs()
 fi
 
 if [[ $HOST ==  "YFCRWDX2QT" ]]; then
