@@ -18,23 +18,13 @@ zmodload zsh/complist
 
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+
 # --------------------------------
 # Custom scripts
 # --------------------------------
 source $ZDOTDIR/zsh_aliases
 source $ZDOTDIR/zsh_vimode
 # source $ZDOTDIR/zsh_vcsprompt
-
-# --------------------------------
-# Determine what machine
-# --------------------------------
-if [[ $HOST == "jawnix" ]]; then
-  source $ZDOTDIR/zsh_personal_machine
-elif [[ $HOST ==  "YFCRWDX2QT" ]]; then
-  source $ZDOTDIR/zsh_work_machine
-elif [[ $HOST == "lemurpro" ]]; then
-  source $ZDOTDIR/zsh_system76
-fi
 
 # --------------------------------
 # Plugins

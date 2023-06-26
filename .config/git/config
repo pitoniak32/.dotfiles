@@ -1,0 +1,6 @@
+[user]
+	signingkey = 249F8057B093BAF2
+    email = "david.pitoniak@ukg.com"
+
+[include]
+    path = "config_shared"
