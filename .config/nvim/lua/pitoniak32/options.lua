@@ -1,8 +1,8 @@
 local o = vim.opt
 
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
 o.expandtab = true
 o.smartindent = true
 o.relativenumber = true
@@ -19,11 +19,22 @@ o.termguicolors = true
 o.scrolloff = 8
 o.updatetime = 50
 o.signcolumn = "yes"
-o.mouse = "nv"
+o.mouse = "a"
 o.showmode = false
 o.completeopt = 'menuone,noselect'
 o.splitright = true
 o.splitbelow = false
+
+o.formatoptions = o.formatoptions
+    - "a" -- Auto formatting is BAD.
+    - "t" -- Don't auto format my code. I got linters for that.
+    + "c" -- In general, I like it when comments respect textwidth
+    + "q" -- Allow formatting comments w/ gq
+    - "o" -- O and o, don't continue comments
+    + "r" -- But do continue when pressing enter.
+    + "n" -- Indent past the formatlistpat, not underneath it.
+    + "j" -- Auto-remove comments if possible.
+    - "2" -- I'm not in gradeschool anymore
 
 -- which_key
 o.timeout = true
@@ -43,15 +54,12 @@ vim.g.loaded_netrwPlugin = 1
 --[[ vim.g.netrw_banner = 0 ]]
 --[[ vim.g.netrw_browse_split = 4 ]]
 --[[ vim.g.netrw_winsize = 25 ]]
-
 --[[ vim.api.nvim_create_autocmd({"FileType"}, { ]]
 --[[   pattern = {"netrw"}, ]]
 --[[   command = "set nolist" ]]
 --[[ }) ]]
-
 -- Adding - to what defines a contiguous word
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set inccommand=split]])
 
 vim.cmd([[let g:test#neovim#term_position="vert botright"]])
-
