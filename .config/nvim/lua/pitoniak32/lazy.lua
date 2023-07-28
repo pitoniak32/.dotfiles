@@ -49,7 +49,12 @@ require("lazy").setup({
     {
         "klen/nvim-test",
         init = function()
-            require('nvim-test').setup()
+            require('nvim-test').setup({
+                termOpts = {
+                width = 132,
+                go_back = false,
+              },
+            })
         end
     },
     "folke/tokyonight.nvim",

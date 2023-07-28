@@ -3,6 +3,7 @@
 # --------------------------------
 alias g='git'
 alias k='kubectl'
+# alias kexp=yq eval -i ".users[].user.auth-provider.config.expiry = "2020-01-01T12:00"' ~/.kube/config
 
 function kgns() {
   echo "printing current k8 namespace:"
@@ -23,8 +24,8 @@ function matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMN
 alias ls='ls --color'
 alias lsa='ls --color -la'
 alias dka='docker kill $(docker ps -q)'
-alias dcu='~/docker-m1/update-topics.sh; docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml up -d'
-alias dcd='docker compose -f docker-compose.yml -f ~/docker-m1/docker-compose.arm.yml down'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
 alias cat='bat'
 alias grep='rg'
 alias rm='rm -I'

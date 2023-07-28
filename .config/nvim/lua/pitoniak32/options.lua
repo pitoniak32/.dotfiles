@@ -24,6 +24,7 @@ o.showmode = false
 o.completeopt = 'menuone,noselect'
 o.splitright = true
 o.splitbelow = false
+o.gdefault = true
 
 o.formatoptions = o.formatoptions
     - "a" -- Auto formatting is BAD.
