@@ -1,9 +1,0 @@
-[user]
-  name = David Pitoniak
-
-[include]
-  path = aliases
-[commit]
-  gpgSign = true
-[init]
-  defaultBranch = main

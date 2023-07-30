@@ -1,0 +1,12 @@
+[user]
+  name = David Pitoniak
+  signingkey = D3A2C522ED8F9183E13DC3FBA0E01EF9607AC57F
+  email = "davidpitoniak32@gmail.com"
+[include]
+  path = aliases
+[commit]
+  gpgSign = true
+[tag]
+  gpgSign = true
+[init]
+  defaultBranch = main
