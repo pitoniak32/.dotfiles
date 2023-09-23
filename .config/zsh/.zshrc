@@ -37,6 +37,8 @@ fpath=($HOME/zsh-completions/src $fpath)
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 # configure SSH to use GPG
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # start gpg-agent, if it isn't started already

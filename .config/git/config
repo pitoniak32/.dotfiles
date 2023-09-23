@@ -1,6 +1,9 @@
 [includeIf "gitdir:~/Documents/quark-com/"]
     path = personal_git
 
+[includeIf "gitdir:~"]
+    path = personal_git
+
 [includeIf "gitdir:~/Documents/quark/"]
     [user]
       name = David Pitoniak

@@ -70,9 +70,10 @@ if [[ $HOST ==  "YFCRWDX2QT" ]]; then
     # The next line enables shell command completion for gcloud.
     if [ -f '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-    alias terraform="docker run --env-file=.env --rm -i -v $(pwd):/app -w /app hashicorp/terraform"
-
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+
+# bun completions
+[ -s "/Users/davidpi/.bun/_bun" ] && source "/Users/davidpi/.bun/_bun"
