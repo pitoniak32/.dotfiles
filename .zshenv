@@ -55,25 +55,26 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" ]]; then
     export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 fi
 
-if [[ $HOST ==  "YFCRWDX2QT" ]]; then
+if [[ $HOST == "YFCRWDX2QT" ]]; then
     # Work Machine Config (MacBook Pro M1)
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     export PATH=$HOME/ukg/local/bin/:$PATH
     export PROJ_DIR=$HOME/Documents/quark
     export QUARK_BANNER_OFF=true
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
 
     if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
     # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '/Users/davidpi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+    if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
     # The next line enables shell command completion for gcloud.
-    if [ -f '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidpi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+    if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # bun completions
 fi
 
-# bun completions
-[ -s "/Users/davidpi/.bun/_bun" ] && source "/Users/davidpi/.bun/_bun"
