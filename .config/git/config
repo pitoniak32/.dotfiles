@@ -1,17 +1,17 @@
-[includeIf "gitdir:~/Documents/quark-com/"]
+[includeIf "hasconfig:remote.*.url:git@github.com:pitoniak32/**"]
     path = personal_git
 
-[includeIf "gitdir:~"]
+[includeIf "hasconfig:remote.*.url:git@github.com:UltimateSoftware/**"]
     path = personal_git
 
-[includeIf "gitdir:~/Documents/quark/"]
+[includeIf "hasconfig:remote.*.url:git@github.com:UKGEPIC/**"]
     [user]
       name = David Pitoniak
       email = "david.pitoniak@ukg.com"
       signingkey = 55DC618B4114B5FF1CBD866E16E58655519368E1
 
 [commit]
-  gpgSign = true
+	gpgSign = false
 [tag]
   gpgSign = true
 [init]
