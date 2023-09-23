@@ -11,11 +11,11 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
 # Zsh config
-SHELL_SESSION_DISABLE=1
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=1200000
-SAVEHIST=1000000
-ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export SHELL_SESSION_DISABLE=1
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=1200000
+export SAVEHIST=1000000
 
 # Non defaults to clean $HOME
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
@@ -49,9 +49,6 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
 
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
-
-    export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-    export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 fi
 
 if [[ $HOST == "YFCRWDX2QT" ]]; then
@@ -76,5 +73,3 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
     [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # bun completions
 fi
-
-. "/home/davidpi/.local/share/cargo/env"
