@@ -15,26 +15,15 @@ SHELL_SESSION_DISABLE=1
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=1200000
 SAVEHIST=1000000
-ZDOTDIR=$HOME/.config/zsh
+ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Non defaults to clean $HOME
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Source cargo env
 . "$CARGO_HOME/env"
-
-shared_linux_configs() {
-    export PROJ_DIR=$HOME/Documents/
-    source /usr/share/fzf/key-bindings.zsh
-
-    alias pbcopy='xclip -selection clipboard'
-    alias pbpaste='xclip -selection clipboard -o'
-
-    export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-    export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
-}
 
 # -------------------------------------------------------------------------
 # END Shared Configuration
@@ -43,10 +32,20 @@ shared_linux_configs() {
 # -------------------------------------------------------------------------
 # BEGIN Machine Specific Configuration
 # -------------------------------------------------------------------------
-if [[ $HOST == "jawnix" || $HOST == "lemurpro" ]]; then
+if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
     export PROJ_DIR=$HOME/Documents/
-    source /usr/share/fzf/key-bindings.zsh
+
+    fzf_keys="$XDG_DATA_HOME/fzf/key-bindings.zsh"
+    fzf_comp="$XDG_DATA_HOME/fzf/completion.zsh"
+
+    if [[ ! -f $fzf_keys || ! -f $fzf_comp ]]; then
+      echo "Check fzf docs for where to find the file(s):"
+      echo "$fzf_keys exists:" $(test -e $fzf_keys && echo "true" || echo "false")
+      echo "$fzf_comp exists:" $(test -e $fzf_comp && echo "true" || echo "false")
+    else
+      source $fzf_keys $fzf_comp
+    fi
 
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
@@ -78,3 +77,4 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # bun completions
 fi
 
+. "/home/davidpi/.local/share/cargo/env"
