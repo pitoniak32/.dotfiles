@@ -1,12 +1,21 @@
-[user]
-  name = David Pitoniak
-  signingkey = D3A2C522ED8F9183E13DC3FBA0E01EF9607AC57F
-  email = "davidpitoniak32@gmail.com"
-[include]
-  path = aliases
+[includeIf "gitdir:~/Documents/quark-com/"]
+    path = personal_git
+
+[includeIf "gitdir:~"]
+    path = personal_git
+
+[includeIf "gitdir:~/Documents/quark/"]
+    [user]
+      name = David Pitoniak
+      email = "david.pitoniak@ukg.com"
+      signingkey = 55DC618B4114B5FF1CBD866E16E58655519368E1
+
 [commit]
   gpgSign = true
 [tag]
   gpgSign = true
 [init]
   defaultBranch = main
+
+[include]
+  path = aliases
