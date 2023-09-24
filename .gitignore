@@ -1,4 +1,4 @@
-* # Should ignore everything, and only explicitly allowed files are tracked.
+*
 
 # zsh
 !.config/zsh/.zshrc
