@@ -1,10 +1,25 @@
-local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
+local lsp_zero = require("lsp-zero")
+local wk = require("which-key")
 
-local lspconfig = require('lspconfig')
+lsp_zero.on_attach(function(_, buffnr)
+    wk.register(require("pitoniak32.keymaps").key_maps_lsp, { prefix = "<leader>", buffer = buffnr, silent = true })
+end)
 
-lspconfig.tsserver.setup({
+lsp_zero.preset("recommended")
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = { "lua_ls", "rust_analyzer", --[[ "tsserver", "eslint", ]] },
+    handlers = {
+      lsp_zero.default_setup,
+      lua_ls = function()
+        require('lsconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+      end,
+    }
+})
+
+require('lspconfig').tsserver.setup({
     init_options = {
         preferences = {
             importModuleSpecifierPreference = "relative"
@@ -12,7 +27,7 @@ lspconfig.tsserver.setup({
     },
 })
 
-lspconfig.lua_ls.setup({
+require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
             runtime = {
@@ -34,7 +49,7 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lsp.set_preferences({
+lsp_zero.set_preferences({
     suggest_lsp_servers = true,
     setup_servers_on_start = true,
     configure_diagnostics = true,
@@ -43,14 +58,6 @@ lsp.set_preferences({
 })
 
 require("fidget").setup()
-
-lsp.ensure_installed({
-    --[[ "tsserver", ]]
-    --[[ "eslint", ]]
-    "lua_ls",
-    "rust_analyzer",
-})
-
 
 -- nvim-cmp setup
 local cmp = require("cmp")
@@ -105,14 +112,8 @@ cmp.setup({
     },
 })
 
-local wk = require("which-key")
 
-lsp.on_attach(function(_, buffnr)
-    wk.register(require("pitoniak32.keymaps").key_maps_lsp, { prefix = "<leader>", buffer = buffnr, silent = true })
-end)
-
-lsp.nvim_workspace()
-lsp.setup()
+lsp_zero.setup()
 
 vim.diagnostic.config({
     virtual_text = true,
