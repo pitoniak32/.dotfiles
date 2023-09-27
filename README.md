@@ -12,7 +12,5 @@ git clone --bare git@github.com:pitoniak32/.dotfiles.git $HOME/.dotfiles
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-cfg config --local status.showUntrackedFiles no
-
 cfg checkout
 ```
