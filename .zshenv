@@ -25,6 +25,11 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # Source cargo env
 . "$CARGO_HOME/env"
 
+# bun
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "/home/davidpi/.local/share/zsh-completions/_bun" ] && source "/home/davidpi/.local/share/zsh-completions/_bun"
+
 # -------------------------------------------------------------------------
 # END Shared Configuration
 # -------------------------------------------------------------------------
@@ -58,8 +63,6 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     export PATH=$HOME/ukg/local/bin/:$PATH
     export PROJ_DIR=$HOME/Documents/quark
     export QUARK_BANNER_OFF=true
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
 
     if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
