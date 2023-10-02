@@ -14,7 +14,7 @@ require('mason-lspconfig').setup({
     handlers = {
       lsp_zero.default_setup,
       lua_ls = function()
-        require('lsconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+        require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
       end,
     }
 })
