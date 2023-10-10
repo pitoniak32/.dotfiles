@@ -28,7 +28,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # bun
 export BUN_INSTALL="$HOME/.bun" 
 export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "/home/davidpi/.local/share/zsh-completions/_bun" ] && source "/home/davidpi/.local/share/zsh-completions/_bun"
+[ -s "$XDG_DATA_HOME/zsh-completions/_bun" ] && source "$XDG_DATA_HOME/zsh-completions/_bun"
 
 # -------------------------------------------------------------------------
 # END Shared Configuration
