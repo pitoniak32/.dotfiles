@@ -7,6 +7,12 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:UKGEPIC/**"]
   path = work_git
 
+[includeIf "hasconfig:remote.*.url:git@github.com:UKG-Sandbox/**"]
+  path = work_git
+
+[includeIf "hasconfig:remote.*.url:git@github.dev.us.corp:UKG/**"]
+  path = work_git
+
 [commit]
   gpgSign = true
 [tag]
