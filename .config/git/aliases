@@ -7,11 +7,10 @@
   shove = push -u origin HEAD
   s     = status
   c     = commit -m
+  ds    = diff --staged
   ac    = commit -am
   ca    = commit --amend --no-edit
   pf    = push --force-with-lease
-  cpf  = !git commit --amend --no-edit && git push --force-with-lease
-  aca   = commit -a --amend --no-edit
   rhom  = !git fetch --all && git reset --hard origin/main
   fa    = fetch --all
   lo    = log --oneline
@@ -21,4 +20,4 @@
   cb    = checkout -b
   a     = add .
   fu    = "!f() { git commit --fixup $1 && git rebase -i --autosquash $1~; }; f"
-  cfgl  = config --global --list --includes
+  cl    = config --global --list --includes

@@ -35,3 +35,8 @@ alias cp='cp'
 alias mv='mv'
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi

@@ -51,9 +51,6 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     else
       source $fzf_keys $fzf_comp
     fi
-
-    alias pbcopy='xclip -selection clipboard'
-    alias pbpaste='xclip -selection clipboard -o'
 fi
 
 if [[ $HOST == "YFCRWDX2QT" ]]; then
