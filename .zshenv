@@ -39,7 +39,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # -------------------------------------------------------------------------
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
-    export PROJ_DIR=$HOME/Documents/
+    export PROJECTS_DIR=$HOME/Documents/
 
     fzf_keys="$XDG_DATA_HOME/fzf/key-bindings.zsh"
     fzf_comp="$XDG_DATA_HOME/fzf/completion.zsh"
@@ -58,7 +58,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     export PATH=$HOME/ukg/local/bin/:$PATH
-    export PROJ_DIR=$HOME/Documents/quark
+    export PROJECTS_DIR=$HOME/Documents/quark
     export QUARK_BANNER_OFF=true
 
     if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
