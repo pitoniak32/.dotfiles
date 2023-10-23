@@ -21,7 +21,7 @@ require("lazy").setup({
   },
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.1",
+    tag = "0.1.4",
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
@@ -81,7 +81,12 @@ require("lazy").setup({
       },
     },
   },
-  "j-hui/fidget.nvim",
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
+    opts = {},
+  },
   "jose-elias-alvarez/null-ls.nvim",
   {
     'nvim-tree/nvim-tree.lua',
