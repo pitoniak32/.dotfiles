@@ -63,11 +63,11 @@ require("lazy").setup({
   "p00f/nvim-ts-rainbow",
   {
     "f-person/git-blame.nvim",
-    init = function()
-      vim.g.gitblame_enabled = 0
-      vim.g.gitblame_message_template = "<summary> • <date> • <author>"
-      vim.g.gitblame_highlight_group = "LineNr"
-    end
+    opts = {
+      enabled = false,
+      message_template = "<summary> • <date> • <author>",
+      highlight_group = "LineNr",
+    }
   },
   "vimwiki/vimwiki",
   {
