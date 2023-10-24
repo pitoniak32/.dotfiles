@@ -58,7 +58,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     export PATH=$HOME/ukg/local/bin/:$PATH
-    export PROJECTS_DIR=$HOME/Documents/quark
+    export PROJECTS_DIR=$HOME/Projects/quark
     export QUARK_BANNER_OFF=true
 
     if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
