@@ -26,8 +26,8 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id feh --bg-scale /home/davidpi/Pictures/backgrounds/iron_man_schematic.png
-exec --no-startup-id compton
+exec --no-startup-id feh --bg-scale /usr/share/wallpapers/North/contents/images_dark/5120x2880.png
+exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -57,7 +57,7 @@ exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as es
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -104,7 +104,6 @@ bindsym $mod+minus split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
