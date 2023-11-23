@@ -57,7 +57,7 @@ exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as es
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty -o window.opacity=0.9 -o font.size=9
 
 # kill focused window
 bindsym $mod+Shift+q kill
