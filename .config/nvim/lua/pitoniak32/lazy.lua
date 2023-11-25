@@ -44,7 +44,12 @@ require("lazy").setup({
   "tpope/vim-surround",
   "tpope/vim-fugitive",
   "numToStr/Comment.nvim",
-  "JoosepAlviste/nvim-ts-context-commentstring",
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    init = function()
+      vim.g.skip_ts_context_commentstring_module = true
+    end,
+  },
   --[[ "vim-test/vim-test", ]]
   {
     "klen/nvim-test",
