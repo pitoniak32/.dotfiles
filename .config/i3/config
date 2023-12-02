@@ -33,8 +33,8 @@ exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-gaps inner 8
-gaps outer 4
+gaps inner 4
+gaps outer 2
 
 for_window [class="^.*"] border pixel 2
                          # class                 border  backgr. text    indicator child_border
@@ -52,6 +52,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 exec --no-startup-id xmodmap -e "clear lock" #disable caps lock switch
 exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+
+# Use ... to adjust brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id 
+bindsym XF86MonBrightnessDown exec --no-startup-id 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

@@ -21,6 +21,12 @@
 !.config/nvim/after/
 !.config/nvim/spell/
 
+# emacs
+!.config/emacs/init.el
+!.config/emacs/early-init.el
+!.config/emacs/config.org
+!.config/emacs/config.el
+
 # starship
 !.config/starship/starship.toml
 
