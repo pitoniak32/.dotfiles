@@ -26,6 +26,8 @@
 !.config/emacs/early-init.el
 !.config/emacs/config.org
 !.config/emacs/config.el
+!.config/emacs/themes/*.el
+!.config/emacs/eshell/*
 
 # starship
 !.config/starship/starship.toml
