@@ -13,17 +13,15 @@
 - [[#all-the-icons][All The Icons]]
 - [[#dashboard][Dashboard]]
 - [[#fonts][Fonts]]
-- [[#graphical-tweaks][Graphical Tweaks]]
-  - [[#disable-menu-tool-scroll-bars][Disable Menu, Tool, Scroll Bars]]
-  - [[#display-line--and-truncated-lines][Display Line #, and Truncated Lines]]
-  - [[#mini-buffer-exit-on-esc][Mini Buffer Exit On ESC]]
+- [[#defaults][Defaults]]
 - [[#ivy-counsel][Ivy (Counsel)]]
 - [[#magit][Magit]]
 - [[#modeline][Modeline]]
 - [[#neotree][NeoTree]]
 - [[#programming-langugaes][Programming Langugaes]]
-  - [[#rust][Rust]]
+  - [[#lsp-eglot][Lsp (eglot)]]
   - [[#completions][Completions]]
+  - [[#rust][Rust]]
 - [[#org-mode][Org Mode]]
   - [[#toc][TOC]]
   - [[#bullets][Bullets]]
@@ -34,7 +32,9 @@
   - [[#vterm][Vterm]]
   - [[#vterm-toggle][Vterm-Toggle]]
 - [[#sudo-edit][Sudo Edit]]
+- [[#auto-trash-backups][Auto Trash Backups]]
 - [[#projectile][Projectile]]
+- [[#rainbow-delimiters][Rainbow Delimiters]]
 - [[#rainbow-mode][Rainbow Mode]]
 - [[#theme][Theme]]
 - [[#which-key][Which-key]]
@@ -221,23 +221,15 @@ This is an icon set that can be used with dashboard, dired, ibuffer, and other E
   (setq-default line-spacing 0.12)
 #+end_src
 
-* Graphical Tweaks
-** Disable Menu, Tool, Scroll Bars
+* Defaults
 #+begin_src elisp
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-#+end_src
-
-** Display Line #, and Truncated Lines
-#+begin_src elisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
   (global-display-line-numbers-mode 1)
   (global-visual-line-mode t)
-#+end_src
-
-** Mini Buffer Exit On ESC
-#+begin_src elisp
   (global-set-key [escape] 'keyboard-escape-quit)
+  (global-eldoc-mode -1)
 #+end_src
 
 * Ivy (Counsel)
@@ -317,19 +309,29 @@ This is an icon set that can be used with dashboard, dired, ibuffer, and other E
 #+end_src
 
 * Programming Langugaes
-** Rust
+** Lsp (eglot)
 #+begin_src elisp
-   (use-package rust-ts-mode
-     :ensure t
-     :hook ((rust-ts-mode . elgot-ensure)
-            (rust-ts-mode . company-mode))
-     :mode ("\\.rs\\'" . rust-ts-mode))
+  (use-package eglot
+    :elpaca nil
+    :ensure t
+    :config
+    (add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer"))))
 #+end_src
 
 ** Completions
 #+begin_src elisp
   (use-package company
     :ensure t)
+#+end_src
+
+** Rust
+#+begin_src elisp
+    (use-package rust-ts-mode
+        :elpaca nil 
+        :after eglot
+        :mode ("\\.rs\\'" . rust-ts-mode)
+        :hook (rust-ts-mode . eglot-ensure)
+            (rust-ts-mode . company-mode))
 #+end_src
 
 * Org Mode
@@ -439,11 +441,24 @@ Org-tempo is not a separate package but a module within org that can be enabled.
       "fU" '(sudo-edit :wk "Sudo edit file")))
 #+end_src
 
+* Auto Trash Backups
+#+begin_src elisp
+  (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+#+end_src
+
 * Projectile
 #+begin_src elisp
   (use-package projectile
     :config
     (projectile-mode 1))
+#+end_src
+
+* Rainbow Delimiters
+#+begin_src elisp
+  (use-package rainbow-delimiters
+    :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+           (rust-ts-mode . rainbow-delimiters-mode)
+           (clojure-mode . rainbow-delimiters-mode)))
 #+end_src
 
 * Rainbow Mode

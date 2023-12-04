@@ -159,11 +159,10 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
-
 (global-set-key [escape] 'keyboard-escape-quit)
+(global-eldoc-mode -1)
 
 (use-package counsel
   :after ivy
@@ -225,14 +224,21 @@
                  (make-local-variable 'auto-hscroll-mode)
                  (setq auto-hscroll-mode nil)))))
 
-(use-package rust-ts-mode
+(use-package eglot
+  :elpaca nil
   :ensure t
-  :hook ((rust-ts-mode . elgot-ensure)
-         (rust-ts-mode . company-mode))
-  :mode ("\\.rs\\'" . rust-ts-mode))
+  :config
+  (add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer"))))
 
 (use-package company
   :ensure t)
+
+(use-package rust-ts-mode
+    :elpaca nil 
+    :after eglot
+    :mode ("\\.rs\\'" . rust-ts-mode)
+    :hook (rust-ts-mode . eglot-ensure)
+        (rust-ts-mode . company-mode))
 
 (use-package toc-org
     :commands toc-org-enable
@@ -294,9 +300,16 @@
       "fu" '(sudo-edit-find-file :wk "Sudo find file")
       "fU" '(sudo-edit :wk "Sudo edit file")))
 
+(setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+
 (use-package projectile
   :config
   (projectile-mode 1))
+
+(use-package rainbow-delimiters
+  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+         (rust-ts-mode . rainbow-delimiters-mode)
+         (clojure-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-mode
   :hook 
