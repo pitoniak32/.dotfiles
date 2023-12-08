@@ -20,18 +20,10 @@ require("telescope").setup({
 				return true
 			end,
 		},
-    find_files = {
-      theme = "ivy",
-    },
-    git_files = {
-      theme = "ivy",
-    },
-    help_tags = {
-      theme = "ivy",
-    },
-    live_grep = {
-      theme = "ivy",
-    },
+    find_files = {},
+    git_files = {},
+    help_tags = {},
+    live_grep = {},
     diagnostics = {
       theme = "ivy",
     },

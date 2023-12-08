@@ -54,6 +54,12 @@ M.key_maps_lsp = {
     f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
     c = { ":lua vim.lsp.buf.code_action()<CR>", "code actions" },
   },
+  r = {
+    name = "debugger?",
+    d = { "DapToggleBreakpoint<CR>" },
+    x = { "DapTerminate<CR>" },
+    s = { "DapStepOver<CR>" },
+  },
   o = {
     name = "open",
     d = {
@@ -98,7 +104,7 @@ nnoremap("<leader>gb", ":GitBlameToggle<CR>", gen_opts)
 nnoremap("<leader><leader>mc", ":Gvdiffsplit!<CR>", gen_opts)
 nnoremap("<leader>gt", ":diffget //2|diffupdate<CR>", gen_opts)
 nnoremap("<leader>gm", ":diffget //3|diffupdate<CR>", gen_opts)
-nnoremap("<leader>gs", ":G<CR>", gen_opts)
+nnoremap("<leader>gs", ":vertical G<CR>", gen_opts)
 
 
 nnoremap("<leader>sp", ":setlocal spell!<CR>", gen_opts)

@@ -50,7 +50,6 @@ require("lazy").setup({
       vim.g.skip_ts_context_commentstring_module = true
     end,
   },
-  --[[ "vim-test/vim-test", ]]
   {
     "klen/nvim-test",
     init = function()
@@ -114,14 +113,6 @@ require("lazy").setup({
     },
   },
 
-  --[[ { ]]
-  --[[     "rust-lang/rust.vim", ]]
-  --[[     ft = "rust", ]]
-  --[[     init = function() ]]
-  --[[         vim.g.rustfmt_autosave = 1 ]]
-  --[[     end, ]]
-  --[[ }, ]]
-  -- END Plugins
 
   -- BEGIN Treesitter
   {
@@ -221,5 +212,11 @@ require("lazy").setup({
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
     },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    }
   },
 })

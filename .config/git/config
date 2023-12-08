@@ -16,6 +16,9 @@
 [includeIf "hasconfig:remote.*.url:ssh://git@ultigit.ultimatesoftware.com:7999/**"]
   path = work_git
 
+[includeIf "hasconfig:remote.*.url:ssh://git@progit.ukg.int:7999/**"]
+  path = work_git
+
 [commit]
   gpgSign = true
 [tag]
