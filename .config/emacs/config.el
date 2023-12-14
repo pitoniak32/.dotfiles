@@ -133,7 +133,7 @@
   :height 110
   :weight 'medium)
 (set-face-attribute 'variable-pitch nil
-  :font "DejaVu Sans"
+  :font "JetBrainsMono Nerd Font"
   :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil

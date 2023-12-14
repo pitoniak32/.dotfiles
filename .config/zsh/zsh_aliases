@@ -23,8 +23,8 @@ function matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMN
 
 alias kx='kubectx && k9s'
 alias kn='kubens'
-alias ls='ls --color'
-alias lsa='ls --color -la'
+alias ls='eza'
+alias ll='eza -la'
 alias dka='docker kill $(docker ps -q)'
 alias dcu='docker compose up -d'
 alias dcd='docker compose down'
