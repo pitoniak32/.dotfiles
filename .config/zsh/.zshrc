@@ -49,10 +49,15 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
     export PROJECTS_DIR=$HOME/Documents/
 
+    if [[ $HOST == "d" ]]; then
+      fzf_keys=/usr/share/doc/fzf/examples/key-bindings.zsh
+      fzf_comp=/usr/share/doc/fzf/examples/completion.zsh
+    else
     # fzf_keys="$XDG_DATA_HOME/fzf/key-bindings.zsh"
     # fzf_comp="$XDG_DATA_HOME/fzf/completion.zsh"
-    fzf_keys=/usr/share/fzf/key-bindings.zsh
-    fzf_comp=/usr/share/fzf/completion.zsh
+      fzf_keys=/usr/share/fzf/key-bindings.zsh
+      fzf_comp=/usr/share/fzf/completion.zsh
+    fi
 
     if [[ ! -f $fzf_keys || ! -f $fzf_comp ]]; then
       echo "Check fzf docs for where to find the file(s):"
