@@ -77,6 +77,9 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # start browser
 bindsym $mod+Shift+b exec chromium
 
+# lock screen
+bindsym $mod+Control+l exec "i3lock -c 000000"
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

@@ -47,7 +47,7 @@ eval "$(starship init zsh)"
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
-    export PROJECTS_DIR=$HOME/Documents/
+    export PROJECTS_DIR=$HOME/Projects/
 
     if [[ $HOST == "d" ]]; then
       fzf_keys=/usr/share/doc/fzf/examples/key-bindings.zsh
