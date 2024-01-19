@@ -1,0 +1,7 @@
+[projects_dir]
+default = "/home/davidpi/Documents"
+options = [
+  "/home/davidpi/Documents",
+  "/home/davidpi/Projects",
+]
+
