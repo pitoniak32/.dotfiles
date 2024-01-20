@@ -8,9 +8,10 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-# autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-autoload -U colors && colors
 zmodload zsh/complist
+# autoload -Uz compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION && compinit
+
+autoload -U colors && colors
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
 # --------------------------------
