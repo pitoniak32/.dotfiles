@@ -1,7 +1,0 @@
-[projects_dir]
-default = "/home/davidpi/Projects"
-options = [
-  "/home/davidpi/Documents",
-  "/home/davidpi/Projects",
-]
-
