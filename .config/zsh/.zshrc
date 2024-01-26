@@ -50,6 +50,10 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
     export PROJECTS_DIR=$HOME/Projects/
 
+    export FLYCTL_INSTALL="/home/davidpi/.fly"
+    export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+
     if [[ $HOST == "d" ]]; then
       fzf_keys=/usr/share/doc/fzf/examples/key-bindings.zsh
       fzf_comp=/usr/share/doc/fzf/examples/completion.zsh
