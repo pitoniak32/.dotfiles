@@ -64,11 +64,6 @@ require("lazy").setup({
   "folke/tokyonight.nvim",
   { "catppuccin/nvim", name = "catppuccin" },
   "navarasu/onedark.nvim",
-  { "NvChad/nvim-colorizer.lua",
-    init = function()
-      require('colorizer').setup({})
-    end
-  },
   "p00f/nvim-ts-rainbow",
   {
     "f-person/git-blame.nvim",

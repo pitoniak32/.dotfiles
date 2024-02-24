@@ -18,7 +18,7 @@
 !.config/nvim/init.lua
 !.config/nvim/lazy-lock.json
 !.config/nvim/lua/*
-!.config/nvim/after/
+!.config/nvim/after/*
 !.config/nvim/spell/
 
 # emacs
