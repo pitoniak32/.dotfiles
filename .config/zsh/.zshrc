@@ -80,6 +80,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
 
     export PATH=$HOME/ukg/local/bin:$PATH
     export PROJECTS_DIR=$HOME/Projects/quark
+    export PROJECTS_DIRECTORY_FILE=$XDG_CONFIG_HOME/axl/work_projects.yml
     export QUARK_BANNER_OFF=true
 
     if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
