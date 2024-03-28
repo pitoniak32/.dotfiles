@@ -83,7 +83,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     export PROJECTS_DIRECTORY_FILE=$XDG_CONFIG_HOME/axl/work_projects.yml
     export QUARK_BANNER_OFF=true
 
-    if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh; else echo "INSTALL ZSH FZF."; fi
+    if [ -f $ZDOTDIR/fzf.zsh ]; then source $ZDOTDIR/fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
     # The next line updates PATH for the Google Cloud SDK.
     if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
