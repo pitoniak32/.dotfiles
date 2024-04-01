@@ -199,6 +199,7 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "github/copilot.vim",
 
       -- Autocompletion
       "hrsh7th/nvim-cmp",

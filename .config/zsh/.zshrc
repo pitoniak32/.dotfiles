@@ -85,9 +85,8 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
 
     if [ -f $ZDOTDIR/fzf.zsh ]; then source $ZDOTDIR/fzf.zsh; else echo "INSTALL ZSH FZF."; fi
 
-    # The next line updates PATH for the Google Cloud SDK.
+    export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.11"
     if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
-    # The next line enables shell command completion for gcloud.
     if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
     export NVM_DIR="$HOME/.nvm"
