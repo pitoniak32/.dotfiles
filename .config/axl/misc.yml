@@ -1,0 +1,5 @@
+include:  
+  - remote: git@github.com:pitoniak32/hike-tracker.git
+  - remote: git@github.com:pitoniak32/advent_of_code.git
+  - remote: git@github.com:pitoniak32/git_repo.git
+    tags: ['lib']

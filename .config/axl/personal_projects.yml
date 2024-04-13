@@ -1,0 +1,5 @@
+projects_directory: /home/davidpi/Projects/
+include:
+  - '/home/davidpi/.config/axl/dotfiles.yml'
+  - '/home/davidpi/.config/axl/clis.yml'
+  - '/home/davidpi/.config/axl/misc.yml'

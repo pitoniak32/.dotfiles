@@ -48,7 +48,6 @@ eval "$(starship init zsh)"
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
-    export PROJECTS_DIR=$HOME/Projects/
     export PROJECTS_DIRECTORY_FILE=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
     export FLYCTL_INSTALL="/home/davidpi/.fly"

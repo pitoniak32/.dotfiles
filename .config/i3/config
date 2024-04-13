@@ -75,7 +75,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # start browser
-bindsym $mod+Shift+b exec chromium
+bindsym $mod+Shift+b exec firefox
 
 # lock screen
 bindsym $mod+Control+l exec "i3lock -c 000000"
