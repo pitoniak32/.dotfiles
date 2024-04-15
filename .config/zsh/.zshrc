@@ -48,7 +48,7 @@ eval "$(starship init zsh)"
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
-    export PROJECTS_DIRECTORY_FILE=$XDG_CONFIG_HOME/axl/personal_projects.yml
+    export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
     export FLYCTL_INSTALL="/home/davidpi/.fly"
     export PATH="$FLYCTL_INSTALL/bin:$PATH"
@@ -78,8 +78,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     export PATH=$HOME/ukg/local/bin:$PATH
-    export PROJECTS_DIR=$HOME/Projects/quark
-    export PROJECTS_DIRECTORY_FILE=$XDG_CONFIG_HOME/axl/work_projects.yml
+    export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
     export QUARK_BANNER_OFF=true
 
     if [ -f $ZDOTDIR/fzf.zsh ]; then source $ZDOTDIR/fzf.zsh; else echo "INSTALL ZSH FZF."; fi
