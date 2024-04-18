@@ -35,6 +35,7 @@ fpath=($XDG_DATA_HOME/zsh/zsh-completions/src $fpath)
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH
+export AXL_DEFAULT_MULTIPLEXER=tmux
 # configure SSH to use GPG
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # start gpg-agent, if it isn't started already
