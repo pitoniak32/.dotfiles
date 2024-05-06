@@ -5,7 +5,6 @@ format = """
 [\\[](bold black)\
 $directory\
 [\\]](bold black)\
-$rust\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
