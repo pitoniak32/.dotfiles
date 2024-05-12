@@ -6,3 +6,12 @@ include:
     tags: ['lib']
   - remote: git@github.com:pitoniak32/actions.git
     tags: ['gha']
+  - remote: https://github.com/neovim/neovim
+    tags: ['nvim', 'neovim']
+  - remote: git@github.com:pitoniak32/gloomhaven-helper.git
+    tags: ['learn', 'gloomhaven', 'leptos', 'htmx']
+  - remote: git@github.com:pitoniak32/go-learn.git
+    tags: ['learn']
+  - remote: git@github.com:pitoniak32/leptos.git
+    tags: ['learn', 'leptos']
+

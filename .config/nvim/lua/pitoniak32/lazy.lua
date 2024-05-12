@@ -73,7 +73,6 @@ require("lazy").setup({
       highlight_group = "LineNr",
     }
   },
-  "vimwiki/vimwiki",
   {
     "nvim-lualine/lualine.nvim",
     opts = {
@@ -87,8 +86,6 @@ require("lazy").setup({
   },
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
-    event = "LspAttach",
     opts = {},
   },
   "jose-elias-alvarez/null-ls.nvim",

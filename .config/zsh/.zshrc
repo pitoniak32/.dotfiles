@@ -52,8 +52,7 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
     export FLYCTL_INSTALL="/home/davidpi/.fly"
-    export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
+    export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:$PATH"
 
     if [[ $HOST == "d" ]]; then
       fzf_keys=/usr/share/doc/fzf/examples/key-bindings.zsh

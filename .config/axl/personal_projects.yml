@@ -3,4 +3,3 @@ include:
 - /home/davidpi/.config/axl/groups/dotfiles.yml
 - /home/davidpi/.config/axl/groups/clis.yml
 - /home/davidpi/.config/axl/groups/misc.yml
-- remote: https://github.com/neovim/neovim

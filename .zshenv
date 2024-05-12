@@ -20,8 +20,3 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Source cargo env
 . "$CARGO_HOME/env"
-
-# bun
-export BUN_INSTALL="$HOME/.bun" 
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "$XDG_DATA_HOME/zsh-completions/_bun" ] && source "$XDG_DATA_HOME/zsh-completions/_bun"

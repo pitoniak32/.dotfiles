@@ -8,7 +8,7 @@ $directory\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
-right_format = "$rust $status"
+right_format = "$status"
 
 command_timeout = 1000
 
