@@ -8,11 +8,16 @@ $directory\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
-right_format = "$status"
+right_format = '$status$time'
 
 command_timeout = 1000
 
 add_newline = false
+
+[time]
+disabled = false
+use_12hr = true
+format = '[\[](bold black)[$time]($style)[\]](bold black)'
 
 [rust]
 format = '[\[](bold black)$symbol[+](bold cyan)[$toolchain](green)[\]](bold black)'
