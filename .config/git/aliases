@@ -6,7 +6,7 @@
   pruneclean = !git fetch --prune && git prune -v
   shove = push -u origin HEAD
   s     = status
-  c     = commit -m
+  c     = commit
   ca    = commit --amend --no-edit
   cb    = checkout -b
   co    = checkout
