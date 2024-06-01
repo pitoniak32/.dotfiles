@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+pushd "$XDG_CONFIG_HOME/nixos/"
+nvim configuration.nix
+alejandra . &>/dev/null
+git diff -U0 *.nix
+echo "NixOS Rebuilding..."
+sudo nixos-rebuild switch -I nixos-config="$XDG_CONFIG_HOME/nixos/configuration.nix" &> nixos-switch.log || (cat nixos-switch.log | rg --color error && false)
+git commit -am "$(nixos-rebuild list-generations | rg current)"
+popd
