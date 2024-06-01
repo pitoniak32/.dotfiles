@@ -6,17 +6,17 @@ format = """
 $directory\
 [\\]](bold black)\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
-$nix_shell\
 $character"""
 
-right_format = '$status$time'
+right_format = '$nix_shell$status$time'
 
 command_timeout = 1000
 
 add_newline = false
 
 [nix_shell]
-format = '[\[](bold black)[$symbol$state( \($name\))]($style)[\]](bold black)'
+format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
+symbol = '❄️'
 
 [time]
 disabled = false
