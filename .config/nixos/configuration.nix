@@ -67,12 +67,25 @@
 
     desktopManager = {
       xterm.enable = false;
-      plasma5.enable = true;
+      gnome.enable = false;
+      plasma5.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
     };
-    #displayManager.defaultSession = "none+i3";
-    displayManager.sddm.enable = true;
-
-    # windowManager.i3 = { enable = true; package = pkgs.i3-gaps; extraPackages = with pkgs; [ dmenu i3status i3lock #i3blocks ]; };
+    displayManager.defaultSession = "xfce+i3";
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        i3lock
+        i3blocks
+      ];
+    };
 
     # Configure keymap in X11
     layout = "us";
@@ -122,11 +135,16 @@
       gnumake # neovim plugins (telescope-fzf)
       gcc # neovim plugins (telescope-fzf)
       alejandra # rebuild script
+      xfontsel
+      bluez
+      bluez-tools
+      blueman
       # RUST PKGS
       starship
       eza
       bat
       ripgrep
+      rust-analyzer
       # NET TOOLS
       dig
       traceroute

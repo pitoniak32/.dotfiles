@@ -11,7 +11,6 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
-    "rust_analyzer",
     "tsserver",
     "eslint",
     "dockerls",
@@ -69,8 +68,23 @@ require('lspconfig').rust_analyzer.setup {
   -- Other Configs ...
   settings = {
     ["rust-analyzer"] = {
+     imports = {
+          granularity = {
+              group = "module",
+          },
+          prefix = "self",
+      },
+      cargo = {
+          buildScripts = {
+              enable = true,
+          },
+      },
+      procMacro = {
+          enable = true
+      },
       diagnostics = {
         disabled = { "unresolved-proc-macro" },
+
       },
     },
   }
