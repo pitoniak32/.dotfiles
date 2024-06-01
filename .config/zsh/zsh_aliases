@@ -23,20 +23,13 @@ function matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMN
 
 alias kx='kubectx && k9s'
 alias kn='kubens'
-alias ls='eza'
 alias ll='eza -la'
 alias dka='docker kill $(docker ps -q)'
 alias dcu='docker compose up -d'
 alias dcd='docker compose down'
-alias cat='bat'
-alias grep='rg'
 alias rm='rm -I'
-alias cp='cp'
-alias mv='mv'
 
 alias ..="cd .."
-
-alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
   alias pbcopy='xclip -selection clipboard'
