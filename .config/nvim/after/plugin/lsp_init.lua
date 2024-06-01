@@ -15,9 +15,8 @@ require("mason-lspconfig").setup({
     "tsserver",
     "eslint",
     "dockerls",
-    "terraformls",
-    "tflint",
     "yamlls",
+    "nil_ls",
   },
   handlers = {
     lsp_zero.default_setup,

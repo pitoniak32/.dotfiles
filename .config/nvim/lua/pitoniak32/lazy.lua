@@ -21,16 +21,9 @@ require("lazy").setup({
   },
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function()
-          return vim.fn.executable('make') == 1
-        end
-      },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
     },
   },
   {
@@ -147,7 +140,7 @@ require("lazy").setup({
       end
 
       configs.setup({
-        ensure_installed = { "vimdoc", "bash", "typescript", "javascript", "lua", "rust" },
+        ensure_installed = { "vimdoc", "bash", "typescript", "javascript", "lua", "rust", "nix" },
         sync_install = false,
         auto_install = true,
         highlight = {
@@ -175,36 +168,6 @@ require("lazy").setup({
     end
   },
   -- END Treesitter
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({
-        ui = {
-          -- This option only works in Neovim 0.9
-          title = true,
-          -- Border type can be single, double, rounded, solid, shadow.
-          border = "rounded",
-          winblend = 0,
-          expand = "",
-          collapse = "",
-          code_action = "󱠂 ",
-          incoming = " ",
-          outgoing = " ",
-          hover = ' ',
-          kind = {},
-        },
-        lightbulb = {
-          enable = false,
-        },
-      })
-    end,
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      --Please make sure you install markdown and markdown_inline parser
-      { "nvim-treesitter/nvim-treesitter" }
-    }
-  },
   {
     -- BEGIN lsp-zero
     "VonHeikemen/lsp-zero.nvim",
