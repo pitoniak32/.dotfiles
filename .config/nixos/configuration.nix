@@ -1,16 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -72,7 +73,7 @@
     displayManager.sddm.enable = true;
 
     # windowManager.i3 = { enable = true; package = pkgs.i3-gaps; extraPackages = with pkgs; [ dmenu i3status i3lock #i3blocks ]; };
-    
+
     # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
@@ -105,42 +106,39 @@
   users.users.davidpi = {
     isNormalUser = true;
     description = "davidpi";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.zsh;
     packages = with pkgs; [
-        zsh       # default shell
-	kitty     # terminal
-        neovim    # editor
-        stow      # symlink .dotfiles
-	brave     # browser
-        tmux
-	gnupg
-	fzf
-	jq
-	nodejs    # neovim plugins (node based)
-	gnumake   # neovim plugins (telescope-fzf)
-	gcc       # neovim plugins (telescope-fzf)
-	alejandra # rebuild script
-	# RUST PKGS
-        starship
-	eza
-	bat
-	ripgrep
-	# NET TOOLS
-	dig
-	traceroute
-	whois
-	nmap
+      zsh # default shell
+      kitty # terminal
+      neovim # editor
+      stow # symlink .dotfiles
+      brave # browser
+      tmux
+      gnupg
+      fzf
+      jq
+      nodejs # neovim plugins (node based)
+      gnumake # neovim plugins (telescope-fzf)
+      gcc # neovim plugins (telescope-fzf)
+      alejandra # rebuild script
+      # RUST PKGS
+      starship
+      eza
+      bat
+      ripgrep
+      # NET TOOLS
+      dig
+      traceroute
+      whois
+      nmap
     ];
   };
 
   fonts.packages = with pkgs; [
-      pkgs.nerdfonts
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.nerdfonts
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
-
-  # Install firefox.
-  programs.firefox.enable = false;
 
   # Install zsh
   programs.zsh.enable = true;
@@ -154,12 +152,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     rustup
-     git
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     lutris
-     wineWowPackages.stable
-  #  wget
+    rustup
+    git
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    lutris
+    wineWowPackages.stable
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -188,5 +186,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/etc/profiles/per-user/davidpi/bin/zsh
 set -e
 pushd "$XDG_CONFIG_HOME/nixos/"
 nvim configuration.nix

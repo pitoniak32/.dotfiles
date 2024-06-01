@@ -81,7 +81,7 @@ require("lazy").setup({
     "j-hui/fidget.nvim",
     opts = {},
   },
-  "jose-elias-alvarez/null-ls.nvim",
+  "mfussenegger/nvim-lint",
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
