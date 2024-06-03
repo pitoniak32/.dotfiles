@@ -95,10 +95,10 @@ nnoremap("<leader>e", ":NvimTreeToggle<CR>", gen_opts)
 nnoremap("<leader><leader>x", ":lua require'pitoniak32.globals'.save_and_exec()<CR>", gen_opts)
 
 -- Normal Mode Maps
-nnoremap("<C-S-Up>", ":resize -2<CR>", gen_opts)
-nnoremap("<C-S-Down>", ":resize +2<CR>", gen_opts)
-nnoremap("<C-S-Left>", ":vertical resize +2<CR>", gen_opts)
-nnoremap("<C-S-Right>", ":vertical resize -2<CR>", gen_opts)
+nnoremap("<M-l>", "<c-w>5<", gen_opts)
+nnoremap("<M-h>", "<c-w>5>", gen_opts)
+nnoremap("<M-j>", "<C-W>+", gen_opts)
+nnoremap("<M-k>", "<C-W>-", gen_opts)
 nnoremap("<leader>q", ":Bdelete<CR>", gen_opts)
 nnoremap("<leader>gb", ":GitBlameToggle<CR>", gen_opts)
 nnoremap("<leader><leader>mc", ":Gvdiffsplit!<CR>", gen_opts)
@@ -147,7 +147,7 @@ vnoremap("<leader>y", "\"*y", gen_opts)
 nnoremap("<leader>Y", "\"*Y", gen_opts)
 
 -- Quickfix list  
-nnoremap("<C-j>", "<cmd>cnext<CR>zz", gen_opts)
-nnoremap("<C-k>", "<cmd>cprev<CR>zz", gen_opts)
+nnoremap("<C-S-j>", "<cmd>cnext<CR>zz", gen_opts)
+nnoremap("<C-S-k>", "<cmd>cprev<CR>zz", gen_opts)
 
 return M
