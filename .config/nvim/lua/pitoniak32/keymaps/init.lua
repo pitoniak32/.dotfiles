@@ -87,6 +87,8 @@ M.key_maps_lsp = {
 
 M.options = { prefix = "<leader>", silent = true }
 
+nnoremap("<space>-", ":lua require'oil'.toggle_float()<CR>", gen_opts)
+
 -- pneumoic keybinds end
 nnoremap("<C-e>", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", { desc = "open harpoon menu", silent = true })
 
