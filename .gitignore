@@ -1,4 +1,11 @@
 .config/zsh/.zcompdump
 .config/zsh/.zsh_history
 .config/nixos/nixos-switch.log
+
 .config/axl/work_projects.yml
+.config/axl/groups/cloud-ex.yml
+.config/axl/groups/quark.yml
+.config/axl/groups/shift-left.yml
+.config/axl/groups/tch.yml
+.config/axl/groups/scm.yml
+.config/axl/groups/tools.yml
