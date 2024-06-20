@@ -24,8 +24,19 @@ source $ZDOTDIR/zsh_vimode
 # --------------------------------
 # Plugins
 # --------------------------------
-source $XDG_DATA_HOME/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $XDG_DATA_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+syn_highlight_dir_path=$XDG_DATA_HOME/zsh/zsh-syntax-highlighting/
+syn_highlight_file_path=$XDG_DATA_HOME/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ ! -f $syn_highlight_file_path ]]; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $syn_highlight_dir_path
+fi
+source $syn_highlight_file_path
+
+autosuggest_dir_path=$XDG_DATA_HOME/zsh/zsh-autosuggestions/
+autosuggest_file_path=$XDG_DATA_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ ! -f $autosuggest_file_path ]]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $autosuggest_dir_path
+fi
+source $autosuggest_file_path
 
 fpath=($XDG_DATA_HOME/zsh/zsh-completions/src $fpath)
 
