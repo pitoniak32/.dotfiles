@@ -67,12 +67,12 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
     # Personal Config (Manjaro)
     export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
-    eval `keychain --quiet --eval --agents ssh,gpg id_ed25519_personal F37BD0CEA2ADFAA9`
-
     export FLYCTL_INSTALL="/home/davidpi/.fly"
     export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:$PATH"
 
     if [[ $HOST == "d" ]]; then
+      unset DISPLAY
+
       fzf_keys=/usr/share/doc/fzf/examples/key-bindings.zsh
       fzf_comp=/usr/share/doc/fzf/examples/completion.zsh
     else
