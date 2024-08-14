@@ -9,7 +9,7 @@ $directory\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
-# right_format = '$nix_shell$status$time'
+right_format = '$nix_shell'
 
 command_timeout = 1000
 
