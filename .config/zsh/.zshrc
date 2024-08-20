@@ -31,25 +31,32 @@ source $ZDOTDIR/zsh_vimode
 # --------------------------------
 # Plugins
 # --------------------------------
-syn_highlight_dir_path="${XDG_DATA_HOME}/zsh/zsh-syntax-highlighting/"
-syn_highlight_file_path="${syn_highlight_dir_path}zsh-syntax-highlighting.zsh"
+function load_zsh_plugin {
+  file_path=$1
+  file_name=${file_path##*/}
+  base_dir=${file_path%/*}
+  if [[ ! -f $file_path ]]; then
+    echo "Cloning $file_name..."
+    git clone https://github.com/zsh-users/${file_name/.zsh/} $base_dir
+  fi
+  source $file_path
+}
 
-if [[ ! -f $syn_highlight_file_path ]]; then
-  echo "Cloning zsh-syntax-highlighting..."
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $syn_highlight_dir_path
-fi
-source $syn_highlight_file_path
+load_zsh_plugin "${XDG_DATA_HOME}/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+load_zsh_plugin "${XDG_DATA_HOME}/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-autosuggest_dir_path="${XDG_DATA_HOME}/zsh/zsh-autosuggestions/"
-autosuggest_file_path="${autosuggest_dir_path}zsh-autosuggestions.zsh"
+# Needs to be loaded after zsh-syntax-highlighting...
+load_zsh_plugin "${XDG_DATA_HOME}/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
-if [[ ! -f $autosuggest_file_path ]]; then
-  echo "Cloning zsh-autosuggestions..."
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git $autosuggest_dir_path
-fi
-source $autosuggest_file_path
+# Turn off annoying highlighting
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=none
 
-fpath=($XDG_DATA_HOME/zsh/zsh-completions/src $fpath)
+# Bind arrow keys to history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# fpath=($XDG_DATA_HOME/zsh/zsh-completions/src $fpath)
 
 # --------------------------------
 # Configuration
