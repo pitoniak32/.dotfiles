@@ -2,7 +2,7 @@ local lsp_zero = require("lsp-zero")
 local wk = require("which-key")
 
 lsp_zero.on_attach(function(_, buffnr)
-  wk.register(require("pitoniak32.keymaps").key_maps_lsp, { prefix = "<leader>", buffer = buffnr, silent = true })
+  wk.add(require("pitoniak32.keymaps").key_maps_lsp, { prefix = "<leader>", buffer = buffnr, silent = true })
 end)
 
 lsp_zero.preset("recommended")

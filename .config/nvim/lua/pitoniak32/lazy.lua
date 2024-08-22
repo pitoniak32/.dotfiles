@@ -16,7 +16,7 @@ require("lazy").setup({
     "folke/which-key.nvim",
     config = function()
       local keyconfig = require('pitoniak32.keymaps')
-      require('which-key').register(keyconfig.key_maps_all, keyconfig.options)
+      require('which-key').add(keyconfig.key_maps_all)
     end
   },
   {

@@ -18,74 +18,54 @@ M = {}
 
 -- Find = <leader> f []
 M.key_maps_all = {
-  f = {
-    name = "find",
-    g = { ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", "find git files for project" },
-    f = { ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", "find all files in current directory" },
-    l = { ":lua require('telescope.builtin').live_grep()<CR>", "find grep string in current project files" },
-  },
-  s = {
-    name = "search",
-    h = { ":lua require('telescope.builtin').help_tags()<CR>", "search help tags" },
-    d = { ":lua require('telescope.builtin').diagnostics()<CR>", "search all diagnostics" },
-    b = { ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", "Fuzzily search in current buffer" },
-  },
-  t = {
-    name = "test",
-    f = {":TestFile<CR>", "run all tests in the current file" },
-    n = {":TestNearest<CR>", "run the nearest test to your cursor" },
-    l = {":TestLast<CR>", "rerun the last test that was ran" },
-    v = {":TestVisit<CR>", "visit location of last run test" },
-  },
-  a = {
-    name = "action",
-    m = { ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", "add mark for current buffer" },
-  },
-  j = { ":lua require'harpoon.ui'.nav_file(1)<CR>", "open harpooned file 1" },
-  k = { ":lua require'harpoon.ui'.nav_file(2)<CR>", "open harpooned file 2" },
-  l = { ":lua require'harpoon.ui'.nav_file(3)<CR>", "open harpooned file 3" },
-  [";"] = { ":lua require'harpoon.ui'.nav_file(4)<CR>", "open harpooned file 4" },
+  { "<leader>f", group = "find", mode = "n" },
+  { "<leader>ff", ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", desc = "find all files in current directory" },
+  { "<leader>fg", ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", desc = "find git files for project" },
+  { "<leader>fl", ":lua require('telescope.builtin').live_grep()<CR>", desc = "find grep string in current project files" },
+
+  { "<leader>s", group = "search", mode = "n" },
+  { "<leader>sh", ":lua require('telescope.builtin').help_tags()<CR>", desc = "search help tags" },
+  { "<leader>sd", ":lua require('telescope.builtin').diagnostics()<CR>", desc = "search all diagnostics" },
+  { "<leader>sb", ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", desc = "Fuzzily search in current buffer" },
+
+  { "<leader>t", group = "test", mode = "n" },
+  { "<leader>tf", ":TestFile<CR>", desc = "run all tests in the current file" },
+  { "<leader>tn", ":TestNearest<CR>", desc = "run the nearest test to your cursor" },
+  { "<leader>tl", ":TestLast<CR>", desc = "rerun the last test that was ran" },
+  { "<leader>tv", ":TestVisit<CR>", desc = "visit location of last run test" },
+
+  { "<leader>a", group = "action", mode = "n" },
+  { "<leader>m", ":lua require'harpoon.mark'.add_file(); vim.notify('harpooned '..vim.fn.expand('%:t'))<CR>", desc = "add mark for current buffer" },
+
+  { "<leader>j", ":lua require'harpoon.ui'.nav_file(1)<CR>", desc = "open harpooned file 1", mode = "n" },
+  { "<leader>k", ":lua require'harpoon.ui'.nav_file(2)<CR>", desc = "open harpooned file 2", mode = "n" },
+  { "<leader>l", ":lua require'harpoon.ui'.nav_file(3)<CR>", desc = "open harpooned file 3", mode = "n" },
+  { "<leader>;", ":lua require'harpoon.ui'.nav_file(4)<CR>", desc = "open harpooned file 4", mode = "n" },
 }
 
 M.key_maps_lsp = {
-  a = {
-    name = "action",
-    r = { ":lua vim.lsp.buf.rename()<CR>", "rename lsp symbol under cursor" },
-    f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "format current buffer" },
-    c = { ":lua vim.lsp.buf.code_action()<CR>", "code actions" },
-  },
-  r = {
-    name = "debugger?",
-    d = { "DapToggleBreakpoint<CR>" },
-    x = { "DapTerminate<CR>" },
-    s = { "DapStepOver<CR>" },
-  },
-  o = {
-    name = "open",
-    d = {
-      "<cmd>lua vim.diagnostic.open_float()<CR>",
-      "open diagnostics for symbol under cursor",
-    },
-    h = { ":lua vim.lsp.buf.hover()<CR>", "open hover info for symbol under cursor" },
-    r = { ":lua vim.lsp.buf.references()<CR>", "open references" },
-    s = { ":lua vim.lsp.buf.signature_help()<CR>", "open signature help" },
-  },
-  g = {
-    name = "goto",
-    d = { ":lua vim.lsp.buf.definition()<CR>", "goto definition" },
-    i = { ":lua vim.lsp.buf.implementation()<CR>", "goto implementation" },
-    dn = {
-      ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>",
-      "goto diagnostic next",
-    },
-    dp = {
-      ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>",
-      "goto diagnostic previous",
-    },
-  },
-}
+  { "<leader>a", group = "action", mode = "n" },
+  { "<leader>ar", ":lua vim.lsp.buf.rename()<CR>", desc = "rename lsp symbol under cursor" },
+  { "<leader>af", ":lua vim.lsp.buf.format({ async = true })<CR>", desc = "format current buffer" },
+  { "<leader>ac", ":lua vim.lsp.buf.code_action()<CR>", desc = "code actions" },
 
-M.options = { prefix = "<leader>", silent = true }
+  { "<leader>r", group = "debugger", mode = "n" },
+  { "<leader>d", "DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+  { "<leader>x", "DapTerminate<CR>", desc = "Terminate Dap" },
+  { "<leader>s", "DapStepOver<CR>", desc = "Step Over" },
+
+  { "<leader>o", group = "open", mode = "n" },
+  { "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "open diagnostics for symbol under cursor" },
+  { "<leader>h", ":lua vim.lsp.buf.hover()<CR>", desc = "open hover info for symbol under cursor" },
+  { "<leader>r", ":lua vim.lsp.buf.references()<CR>", desc = "open references" },
+  { "<leader>s", ":lua vim.lsp.buf.signature_help()<CR>", desc = "open signature help" },
+
+  { "<leader>g", group = "goto", mode = "n" },
+  { "<leader>d", ":lua vim.lsp.buf.definition()<CR>", desc = "goto definition" },
+  { "<leader>i", ":lua vim.lsp.buf.implementation()<CR>", desc = "goto implementation" },
+  { "<leader>dn", ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", desc = "goto diagnostic next", },
+  { "<leader>dp", ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", desc = "goto diagnostic previous", },
+}
 
 nnoremap("<space>-", ":lua require'oil'.toggle_float()<CR>", gen_opts)
 
