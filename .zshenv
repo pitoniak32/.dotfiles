@@ -9,9 +9,8 @@ export XDG_CONFIG_DIRS="$XDG_CONFIG_DIRS:/etc/xdg"
 # Zsh config
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export SHELL_SESSION_DISABLE=1
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=1200000
-export SAVEHIST=1000000
+export SAVEHIST=1200000
 
 # Non defaults to clean $HOME
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
