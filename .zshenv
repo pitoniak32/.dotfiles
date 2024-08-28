@@ -12,6 +12,9 @@ export SHELL_SESSION_DISABLE=1
 export HISTSIZE=1200000
 export SAVEHIST=1200000
 
+# load zsh_helpers
+source $ZDOTDIR/.zsh_helpers
+
 # Non defaults to clean $HOME
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"

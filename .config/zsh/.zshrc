@@ -25,6 +25,7 @@ setopt HIST_IGNORE_SPACE
 export HISTORY_IGNORE="*PRIVATE KEY*|*SECRET*"
 
 export HISTFILE="$XDG_STATE_HOME/zsh/.zsh_history"
+ensure_parent_dir $HISTFILE
 
 # --------------------------------
 # Custom scripts
@@ -36,17 +37,6 @@ source $ZDOTDIR/zsh_vimode
 # --------------------------------
 # Plugins
 # --------------------------------
-function load_zsh_plugin {
-  file_path=$1
-  file_name=${file_path##*/}
-  base_dir=${file_path%/*}
-  if [[ ! -f $file_path ]]; then
-    echo "Cloning $file_name..."
-    git clone https://github.com/zsh-users/${file_name/.zsh/} $base_dir
-  fi
-  source $file_path
-}
-
 load_zsh_plugin "${XDG_DATA_HOME}/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 load_zsh_plugin "${XDG_DATA_HOME}/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
