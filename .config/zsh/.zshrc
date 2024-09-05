@@ -1,3 +1,6 @@
+# load zsh_helpers
+source $ZDOTDIR/.zsh_helpers
+
 setopt prompt_subst hist_ignore_all_dups menucomplete share_history nomenucomplete
 
 # This enables arrow keys to use already typed commands to search history
