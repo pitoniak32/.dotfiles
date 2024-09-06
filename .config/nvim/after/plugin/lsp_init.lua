@@ -19,6 +19,13 @@ require("mason-lspconfig").setup({
   },
   handlers = {
     lsp_zero.default_setup,
+    tsserver = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- https://github.com/neovim/nvim-lspconfig/pull/3232
+      require("lspconfig")["ts_ls"].setup({
+        capabilities = capabilities,
+      })
+    end,
     lua_ls = function()
       require("lspconfig").lua_ls.setup({
         on_init = function(client)
@@ -56,7 +63,7 @@ require("mason-lspconfig").setup({
   },
 })
 
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
   init_options = {
     preferences = {
       importModuleSpecifierPreference = "relative",
