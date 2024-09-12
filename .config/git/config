@@ -19,6 +19,9 @@
 [includeIf "hasconfig:remote.*.url:ssh://git@progit.ukg.int:7999/**"]
   path = work_git
 
+[includeIf "gitdir:~/Projects/**"]
+  path = personal_git
+
 [commit]
   gpgSign = true
 [tag]

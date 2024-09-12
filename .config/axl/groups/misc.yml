@@ -1,4 +1,6 @@
 include:  
+  - remote: git@github.com:pitoniak32/tic-tac-toe.git
+    tags: ['react', 'frontend', 'tutorial', 'tic-tac-toe']
   - remote: git@github.com:pitoniak32/authn-ex.git
     tags: ['authn', 'axum', 'rust']
   - remote: git@github.com:pitoniak32/hike-tracker.git

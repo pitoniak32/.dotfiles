@@ -81,6 +81,7 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
 
     export FLYCTL_INSTALL="/home/davidpi/.fly"
     export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:$PATH"
+    export PATH=~/.npm-global/bin:$PATH
 
     if [[ $HOST == "d" ]]; then
       unset DISPLAY
