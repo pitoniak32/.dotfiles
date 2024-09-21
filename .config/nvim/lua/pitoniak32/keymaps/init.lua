@@ -129,7 +129,7 @@ vnoremap("<leader>y", "\"*y", gen_opts)
 nnoremap("<leader>Y", "\"*Y", gen_opts)
 
 -- Quickfix list  
-nnoremap("<C-S-j>", "<cmd>cnext<CR>zz", gen_opts)
-nnoremap("<C-S-k>", "<cmd>cprev<CR>zz", gen_opts)
+nnoremap("<C-j>", "<cmd>cnext<CR>zz", gen_opts)
+nnoremap("<C-k>", "<cmd>cprev<CR>zz", gen_opts)
 
 return M
