@@ -9,3 +9,5 @@
 .config/axl/groups/tch.yml
 .config/axl/groups/scm.yml
 .config/axl/groups/tools.yml
+
+.local/bin/fzf
