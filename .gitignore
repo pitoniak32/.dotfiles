@@ -11,3 +11,4 @@
 .config/axl/groups/tools.yml
 
 .local/bin/fzf
+.local/bin/protoc
