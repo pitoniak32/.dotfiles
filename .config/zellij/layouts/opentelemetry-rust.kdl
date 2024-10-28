@@ -1,0 +1,17 @@
+layout cwd="$HOME/Projects/rust/external/opentelemetry-rust/" {
+  tab name="/" focus=true hide_floating_panes=true {
+    pane split_direction="vertical" {
+      pane command="nvim" start_suspended=true focus=true size="70%"
+      pane name="precommit" command="scripts/precommit.sh" start_suspended=true size="30%"
+    }
+  }
+  tab name="opentelemetry" cwd="opentelemetry" {
+    pane command="nvim" start_suspended=true
+  }
+  tab name="sdk" cwd="opentelemetry-sdk" {
+    pane command="nvim" start_suspended=true
+  }
+  tab name="otlp" cwd="opentelemetry-otlp" {
+    pane command="nvim" start_suspended=true
+  }
+}

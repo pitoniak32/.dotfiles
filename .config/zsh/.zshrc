@@ -77,19 +77,19 @@ eval "$(starship init zsh)"
 
 source <(fzf --zsh)
 
-if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "pop-os" ]]; then
+# fnm
+FNM_PATH="/home/dvd/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/dvd/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
     # Personal Config (Manjaro)
     export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
     export FLYCTL_INSTALL="/home/davidpi/.fly"
     export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
-
-    # fnm
-    FNM_PATH="/home/dvd/.local/share/fnm"
-    if [ -d "$FNM_PATH" ]; then
-      export PATH="/home/dvd/.local/share/fnm:$PATH"
-      eval "`fnm env`"
-    fi
 
     if [[ $HOST == "d" ]]; then
       unset DISPLAY
