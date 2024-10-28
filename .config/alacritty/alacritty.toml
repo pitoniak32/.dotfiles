@@ -37,6 +37,7 @@ multiplier = 3
 
 [window]
 opacity = 1.0
+option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 2
