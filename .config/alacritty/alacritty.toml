@@ -1,4 +1,5 @@
-import = ["/home/davidpi/.config/alacritty/themes/catppuccin-frappe.toml"]
+[general]
+import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [colors]
@@ -9,7 +10,7 @@ blinking = "Off"
 shape = "Block"
 
 [font]
-size = 10
+size = 14
 
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"

@@ -75,39 +75,40 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 
-source <(fzf --zsh)
-
 # fnm
 FNM_PATH="/home/dvd/.local/share/fnm"
+
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/dvd/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
-    # Personal Config (Manjaro)
-    export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
+  source <(fzf --zsh)
 
-    export FLYCTL_INSTALL="/home/davidpi/.fly"
-    export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
+  # Personal Config (Manjaro)
+  export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
 
-    if [[ $HOST == "d" ]]; then
-      unset DISPLAY
-    fi
+  export FLYCTL_INSTALL="/home/davidpi/.fly"
+  export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
+
+  if [[ $HOST == "d" ]]; then
+    unset DISPLAY
+  fi
 fi
 
 if [[ $HOST == "YFCRWDX2QT" ]]; then
-    # Work Machine Config (MacBook Pro M1)
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Work Machine Config (MacBook Pro M1)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  
+  # installed with homebrew
+  source <(fzf --zsh)
 
-    export PATH=$HOME/ukg/local/bin:$PATH
-    export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
-    export QUARK_BANNER_OFF=true
+  export PATH=$HOME/ukg/local/bin:$PATH
+  export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
+  export QUARK_BANNER_OFF=true
 
-    export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.11"
-    if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
-    if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm but disables the auto-use feature for speed reasons
+  export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.11"
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 fi
