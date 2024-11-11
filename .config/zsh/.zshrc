@@ -83,6 +83,14 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+# pnpm
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
   source <(fzf --zsh)
 
