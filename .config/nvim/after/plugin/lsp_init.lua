@@ -12,10 +12,11 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
     "ts_ls",
-    "eslint",
+    "biome",
     "dockerls",
-    "yamlls",
     "nil_ls",
+    "yamlls",
+    "jsonls",
   },
   handlers = {
     lsp_zero.default_setup,
