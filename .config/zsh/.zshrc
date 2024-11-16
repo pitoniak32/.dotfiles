@@ -76,10 +76,9 @@ export GPG_TTY=$(tty)
 eval "$(starship init zsh)"
 
 # fnm
-FNM_PATH="/home/dvd/.local/share/fnm"
-
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/dvd/.local/share/fnm:$PATH"
+FNM_HOME="$XDG_DATA_HOME/fnm"
+if [ -d "$FNM_HOME" ]; then
+  export PATH="$FNM_HOME:$PATH"
   eval "`fnm env`"
 fi
 
