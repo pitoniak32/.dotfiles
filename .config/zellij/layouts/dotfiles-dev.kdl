@@ -1,16 +1,4 @@
 layout cwd="$HOME/.dotfiles/" {
-  default_tab_template {
-    pane size=1 borderless=true {
-        plugin location="zellij:compact-bar"
-    }
-    children
-  }
-  new_tab_template {
-    pane size=1 borderless=true {
-        plugin location="zellij:compact-bar"
-    }
-    pane
-  }
   tab name="/" focus=true {
     pane command="nvim" start_suspended=true
   }

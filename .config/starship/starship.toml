@@ -9,7 +9,7 @@ $directory\
 ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
-right_format = '$nix_shell'
+right_format = '$python'
 
 command_timeout = 1000
 
@@ -18,6 +18,10 @@ add_newline = false
 [nix_shell]
 format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
 symbol = '❄️'
+
+[python]
+format = '[py (\(${pyenv_prefix}(${version}) $virtualenv\))]($style)'
+style = 'green bold'
 
 [time]
 disabled = false
