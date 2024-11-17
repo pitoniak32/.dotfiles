@@ -20,7 +20,7 @@ format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
 symbol = '❄️'
 
 [python]
-format = '[py (\(${pyenv_prefix}(${version}) $virtualenv\))]($style)'
+format = '${symbol}[${pyenv_prefix}(${version})](blue bold) [\($virtualenv\)]($style)'
 style = 'green bold'
 
 [time]
