@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
+# import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [colors]
@@ -12,21 +12,21 @@ shape = "Block"
 [font]
 size = 12
 
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Regular"
+
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"
 style = "Bold"
-
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font Mono"
-style = "Bold Italic"
 
 [font.italic]
 family = "JetBrainsMono Nerd Font Mono"
 style = "Italic"
 
-[font.normal]
+[font.bold_italic]
 family = "JetBrainsMono Nerd Font Mono"
-style = "Regular"
+style = "Bold Italic"
 
 [mouse]
 hide_when_typing = true
