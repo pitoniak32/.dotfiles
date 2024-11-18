@@ -75,10 +75,6 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 
-export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # fnm
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
@@ -102,6 +98,10 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukd
 
   source <(fzf --zsh)
 
+  export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
   if [[ $HOST == "d" ]]; then
     unset DISPLAY
   fi
@@ -123,3 +123,4 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 fi
+
