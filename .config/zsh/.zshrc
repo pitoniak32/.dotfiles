@@ -75,6 +75,8 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 
+eval "$(zoxide init zsh)"
+
 # fnm
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
