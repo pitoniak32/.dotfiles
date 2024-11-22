@@ -77,6 +77,8 @@ eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)"
 
+source <(fzf --zsh)
+
 # fnm
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
@@ -98,8 +100,6 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukd
   export FLYCTL_INSTALL="/home/davidpi/.fly"
   export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
 
-  source <(fzf --zsh)
-
   export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -117,9 +117,6 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
 
   # Work Machine Config (MacBook Pro M1)
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  
-  # installed with homebrew
-  source <(fzf --zsh)
 
   export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.11"
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
