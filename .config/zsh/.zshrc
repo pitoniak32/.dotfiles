@@ -79,6 +79,10 @@ eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 
+export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # fnm
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
@@ -93,6 +97,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
