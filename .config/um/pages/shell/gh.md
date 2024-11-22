@@ -12,5 +12,3 @@
 ## OPTIONS
 
 ## COMMON COMMANDS
-
-`gh repo edit "UKGEPIC/repo" --add-topic "ukgepic-shiftleft"`
