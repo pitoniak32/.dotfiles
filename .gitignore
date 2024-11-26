@@ -1,6 +1,8 @@
 .config/zsh/.zcompdump
 
 .config/nixos/nixos-switch.log
+.config/github-copilot/
+.config/shell_gpt/
 
 .config/axl/work_projects.yml
 .config/axl/groups/cloud-ex.yml
