@@ -1,11 +1,6 @@
+require("luasnip.session.snippet_collection").clear_snippets "typescript"
+
 local ls = require("luasnip")
-
--- local s = ls.snippet
--- local i = ls.insert_node
--- local t = ls.text_node
-
--- Table of loaded snippets was duplicating entries on restart.
-ls.cleanup()
 
 -- Temp expriement. Will be improved with luasnip dynamic nodes.
 -- TODO: add toggle list for async tests
@@ -17,6 +12,3 @@ ls.add_snippets("typescript", {
 	),
 })
 
-ls.add_snippets("lua", {
-	ls.parser.parse_snippet("expand", "--expand to this"),
-})
