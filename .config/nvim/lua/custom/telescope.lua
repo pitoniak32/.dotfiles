@@ -21,12 +21,17 @@ require("telescope").setup {
         return true
       end,
     },
-    find_files = {},
+    find_files = {
+      hidden = true,
+      file_ignore_patterns = { "node_modules", ".git" },
+    },
     git_files = {},
     help_tags = {},
-    live_grep = {},
-    harpoon = {
-      theme = "dropdown",
+    live_grep = {
+      file_ignore_patterns = { "node_modules", ".git" },
+      additional_args = function()
+        return { "--hidden" }
+      end,
     },
     diagnostics = {
       theme = "ivy",
@@ -49,23 +54,16 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "harpoon"
 require("telescope").load_extension "ui-select"
 
---[[   { "<leader>f", group = "find", mode = "n" }, ]]
---[[   { "<leader>ff", ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", desc = "find all files in current directory" }, ]]
---[[   { "<leader>fg", ":lua require('telescope.builtin').git_files({ hidden = true })<CR>", desc = "find git files for project" }, ]]
---[[   { "<leader>fl", ":lua require('telescope.builtin').live_grep()<CR>", desc = "find grep string in current project files" }, ]]
---[[]]
 --[[   { "<leader>s", group = "search", mode = "n" }, ]]
 --[[   { "<leader>sh", ":lua require('telescope.builtin').help_tags()<CR>", desc = "search help tags" }, ]]
 --[[   { "<leader>sd", ":lua require('telescope.builtin').diagnostics()<CR>", desc = "search all diagnostics" }, ]]
 --[[   { "<leader>sb", ":lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", desc = "Fuzzily search in current buffer" }, ]]
-
 local builtin = require "telescope.builtin"
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.git_files)
--- vim.keymap.set("n", "<space>fg", require "custom.telescope.multi-ripgrep")
-vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 vim.keymap.set("n", "<leader>fl", builtin.live_grep)
+vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 
 vim.keymap.set("n", "<leader>sh", builtin.help_tags)
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics)
