@@ -1,34 +1,38 @@
-local actions = require("telescope.actions")
+local actions = require "telescope.actions"
 
-require("telescope").setup({
-	defaults = {
-		prompt_prefix = "  ",
-		selection_caret = "  ",
-		mappings = {
-			i = {
-				["<C-h>"] = "which_key",
-			},
-			n = {
-				["<C-h>"] = "which_key",
-			},
-		},
-	},
-	pickers = {
-		buffers = {
-			attach_mappings = function(_, map)
-				map("i", "<c-b>", actions.delete_buffer)
-				return true
-			end,
-		},
+require("telescope").setup {
+  defaults = {
+    prompt_prefix = "  ",
+    selection_caret = "  ",
+    mappings = {
+      i = {
+        ["<C-h>"] = "which_key",
+      },
+      n = {
+        ["C-d"] = actions.delete_buffer + actions.move_to_top,
+        ["<C-h>"] = "which_key",
+      },
+    },
+  },
+  pickers = {
+    buffers = {
+      attach_mappings = function(_, map)
+        map("i", "<c-b>", actions.delete_buffer)
+        return true
+      end,
+    },
     find_files = {},
     git_files = {},
     help_tags = {},
     live_grep = {},
+    harpoon = {
+      theme = "dropdown",
+    },
     diagnostics = {
       theme = "ivy",
     },
-	},
-	extensions = {
+  },
+  extensions = {
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -38,12 +42,12 @@ require("telescope").setup({
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {},
     },
-	},
-})
+  },
+}
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("harpoon")
-require("telescope").load_extension("ui-select")
+require("telescope").load_extension "fzf"
+require("telescope").load_extension "harpoon"
+require("telescope").load_extension "ui-select"
 
 --[[   { "<leader>f", group = "find", mode = "n" }, ]]
 --[[   { "<leader>ff", ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", desc = "find all files in current directory" }, ]]
