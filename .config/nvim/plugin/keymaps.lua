@@ -42,18 +42,18 @@ set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 
 -- Keep register value when pasting
-set("x", "<leader>p", "\"_dP")
+set("x", "<leader>p", '"_dP')
 
--- Keep register value when deleting 
-set("n", "<leader>d", "\"_d")
-set("v", "<leader>d", "\"_d")
+-- Keep register value when deleting
+set("n", "<leader>d", '"_d')
+set("v", "<leader>d", '"_d')
 
 -- System clipboard copy
-set("n", "<leader>y", "\"*y")
-set("v", "<leader>y", "\"*y")
-set("n", "<leader>Y", "\"*Y")
+set("n", "<leader>y", '"*y')
+set("v", "<leader>y", '"*y')
+set("n", "<leader>Y", '"*Y')
 
--- Quickfix list  
+-- Quickfix list
 set("n", "<C-j>", "<cmd>cnext<CR>zz")
 set("n", "<C-k>", "<cmd>cprev<CR>zz")
 
@@ -79,7 +79,6 @@ set("n", "<C-k>", "<cmd>cprev<CR>zz")
 --[[   end ]]
 --[[ end, { expr = true }) ]]
 
-
 --[[   --[[ { "<leader>t", group = "test", mode = "n" }, ]]
 --[[   --[[ { "<leader>tf", ":TestFile<CR>", desc = "run all tests in the current file" }, ]]
 --[[   --[[ { "<leader>tn", ":TestNearest<CR>", desc = "run the nearest test to your cursor" }, ]]
@@ -88,12 +87,12 @@ set("n", "<C-k>", "<cmd>cprev<CR>zz")
 
 --[[ nnoremap("<space>-", ":lua require'oil'.toggle_float()<CR>", gen_opts) ]]
 
---[[ --[[ nnoremap("<leader>e", vim.cmd.Lex, gen_opts) ]] -- netrw key bind ]]
+--[[ --[[ nnoremap("<leader>e", vim.cmd.Lex, gen_opts) ]]
+-- netrw key bind ]]
 
 --[[ nnoremap("<leader>e", ":NvimTreeToggle<CR>", gen_opts) ]]
 
 --[[ nnoremap("<leader>q", ":Bdelete<CR>", gen_opts) ]]
---[[ nnoremap("<leader>gb", ":GitBlameToggle<CR>", gen_opts) ]]
 --[[ nnoremap("<leader><leader>mc", ":Gvdiffsplit!<CR>", gen_opts) ]]
 --[[ nnoremap("<leader>gt", ":diffget //2|diffupdate<CR>", gen_opts) ]]
 --[[ nnoremap("<leader>gm", ":diffget //3|diffupdate<CR>", gen_opts) ]]
