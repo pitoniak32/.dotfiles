@@ -41,11 +41,15 @@ cmp.setup {
     { name = "buffer" },
   },
   mapping = {
-    ["<C-M-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-    ["<C-M-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    -- To avoid conflict with the `C-n - resize mode`, `C-p - pane mode` for zellij
+    ["<C-S-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-S-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+    -- To preserve the menu formatting if not uising zellij and start using old binds out of habit
+    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ["<C-s>"] = cmp.mapping.complete(),
     ["<C-y>"] = cmp.mapping(
       cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       },
       { "i", "c" }

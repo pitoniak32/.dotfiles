@@ -1,20 +1,16 @@
 return {
-  -- BEGIN lsp-zero
-  "VonHeikemen/lsp-zero.nvim",
-  dependencies = {
-    -- LSP Support
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    "github/copilot.vim",
-  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-
+      { "j-hui/fidget.nvim", opts = {} },
+      { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
+      -- Autoformatting
+      "stevearc/conform.nvim",
+      -- Schema information
+      "b0o/SchemaStore.nvim",
       {
         -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
         -- used for completion, annotations and signatures of Neovim apis
@@ -27,15 +23,6 @@ return {
           },
         },
       },
-
-      { "j-hui/fidget.nvim", opts = {} },
-      { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-
-      -- Autoformatting
-      "stevearc/conform.nvim",
-
-      -- Schema information
-      "b0o/SchemaStore.nvim",
     },
     config = function()
       local capabilities = nil
@@ -69,11 +56,15 @@ return {
         },
         rust_analyzer = true,
         templ = true,
-        cssls = true,
 
-        -- Probably want to disable formatting for this lang server
-        ts_ls = true,
-
+        biome = true,
+        ts_ls = {
+          root_dir = require("lspconfig").util.root_pattern "package.json",
+          single_file = false,
+          server_capabilities = {
+            documentFormattingProvider = false,
+          },
+        },
         jsonls = {
           settings = {
             json = {
@@ -90,7 +81,6 @@ return {
                 enable = false,
                 url = "",
               },
-              schemas = require("schemastore").yaml.schemas(),
             },
           },
         },
@@ -109,7 +99,6 @@ return {
       local ensure_installed = {
         "stylua",
         "lua_ls",
-        -- "tailwind-language-server",
       }
 
       vim.list_extend(ensure_installed, servers_to_install)
@@ -133,25 +122,52 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local bufnr = args.buf
-          local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
+          local client = assert(
+            vim.lsp.get_client_by_id(args.data.client_id),
+            "must have valid client to run LspAttach autocommand callback"
+          )
+
+          local settings = servers[client.name]
+          if type(settings) ~= "table" then
+            settings = {}
+          end
+
+          local builtin = require "telescope.builtin"
 
           vim.keymap.set("n", "<leader>af", vim.lsp.buf.format, { buffer = 0 })
           vim.keymap.set("n", "<leader>ar", vim.lsp.buf.rename, { buffer = 0 })
           vim.keymap.set("n", "<leader>ac", vim.lsp.buf.code_action, { buffer = 0 })
 
-          vim.keymap.set("n", "<leader>od", vim.diagnostic.open_float, { buffer = 0 })
-          vim.keymap.set("n", "<leader>os", vim.lsp.buf.signature_help, { buffer = 0 })
-
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
+          vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
+          vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0 })
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
           vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
+          -- Open Workspace Diagnostics
+          vim.keymap.set("n", "<leader>od", builtin.diagnostics, { buffer = 0 })
+          -- Open Current Buffer Diagnostics
+          vim.keymap.set("n", "<leader>oD", function()
+            builtin.diagnostics { bufnr = 0 }
+          end, { buffer = 0 })
+          vim.keymap.set("n", "<leader>os", vim.lsp.buf.signature_help, { buffer = 0 })
+
           local filetype = vim.bo[bufnr].filetype
           if disable_semantic_tokens[filetype] then
             client.server_capabilities.semanticTokensProvider = nil
+          end
+
+          -- Override server capabilities
+          if settings.server_capabilities then
+            for k, v in pairs(settings.server_capabilities) do
+              if v == vim.NIL then
+                ---@diagnostic disable-next-line: cast-local-type
+                v = nil
+              end
+
+              client.server_capabilities[k] = v
+            end
           end
         end,
       })
@@ -161,7 +177,7 @@ return {
       require("lsp_lines").setup()
       vim.diagnostic.config { virtual_text = true, virtual_lines = false }
 
-      vim.keymap.set("", "<leader>l", function()
+      vim.keymap.set("", "<leader>ol", function()
         local config = vim.diagnostic.config() or {}
         if config.virtual_text then
           vim.diagnostic.config { virtual_text = false, virtual_lines = true }

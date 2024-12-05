@@ -17,10 +17,10 @@ return {
     vim.keymap.set("n", "<leader>m", function()
       harpoon:list():add()
       -- harpooned o--file-->
-      vim.notify("harpooned o--" .. vim.fn.expand "%:t" .. "-->")
+      vim.notify("*THWIP!* o--" .. vim.fn.expand "%:t" .. "-->")
     end)
 
-    for idx, key in ipairs { "j", "k", "l", ";" } do
+    for idx, key in ipairs { "h", "j", "k", "l", ";", "'" } do
       vim.keymap.set("n", string.format("<leader>%s", key), function()
         harpoon:list():select(idx)
       end)
