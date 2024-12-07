@@ -1,7 +1,7 @@
 return {
   {
     -- Trying out `mini.nvim` status line
-    enable = false,
+    enabled = false,
     "tjdevries/express_line.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
