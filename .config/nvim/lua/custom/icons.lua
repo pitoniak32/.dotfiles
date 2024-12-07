@@ -7,7 +7,8 @@ if vim.fn.has "mac" == 1 then
   -- elseif vim.fn.has "mac" == 1 then
   return {
     kind = {
-      Text = "", Method = "m",
+      Text = "",
+      Method = "m",
       Function = "",
       -- Constructor = "",
       -- Method = "",

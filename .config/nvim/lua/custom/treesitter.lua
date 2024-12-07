@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-configs.setup({
+configs.setup {
   ensure_installed = { "vimdoc", "bash", "typescript", "javascript", "lua", "rust", "nix" },
   sync_install = false,
   auto_install = true,
@@ -28,4 +28,4 @@ configs.setup({
   playground = {
     enable = true,
   },
-})
+}

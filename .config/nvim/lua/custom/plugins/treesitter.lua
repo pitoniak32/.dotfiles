@@ -2,7 +2,7 @@ return {
   -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   build = function()
-    pcall(require('nvim-treesitter.install').update({ with_sync = true }))
+    pcall(require("nvim-treesitter.install").update { with_sync = true })
   end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -10,6 +10,6 @@ return {
     "romgrk/nvim-treesitter-context",
   },
   config = function()
-    require("custom.treesitter")
-  end
+    require "custom.treesitter"
+  end,
 }
