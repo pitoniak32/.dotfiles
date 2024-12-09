@@ -7,6 +7,9 @@ alias k='kubectl'
 #
 alias epyenv= 'eval "$(pyenv init -)"'
 
+alias wttr='curl wttr.in/kgon'
+alias moon='curl wttr.in/moon'
+
 function egcloud() {
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
