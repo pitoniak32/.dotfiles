@@ -11,6 +11,7 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
+zmodload zsh/zprof
 zmodload zsh/complist
 # autoload -Uz compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION && compinit
 
@@ -79,15 +80,15 @@ eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 
+# see ./zsh_aliases for the eval code
 export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # fnm
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
   export PATH="$FNM_HOME:$PATH"
-  eval "`fnm env`"
+  alias efnm="eval \"`fnm env`\""
 fi
 
 # pnpm
@@ -98,19 +99,14 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# see ./zsh_aliases for the eval code
 export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
-if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" || $HOST == "Davids-MacBook-Pro.local" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
   export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
-
-  export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
-  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
 
   if [[ $HOST == "d" ]]; then
     unset DISPLAY
@@ -123,3 +119,15 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
   export QUARK_BANNER_OFF=true
 fi
+
+# ❯ for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done
+#         1.31 real         0.12 user         0.23 sys
+#         1.22 real         0.12 user         0.23 sys
+#         1.21 real         0.11 user         0.23 sys
+#         1.20 real         0.11 user         0.22 sys
+#         1.22 real         0.12 user         0.23 sys
+#         1.22 real         0.12 user         0.23 sys
+#         1.21 real         0.12 user         0.23 sys
+#         1.19 real         0.11 user         0.22 sys
+#         1.20 real         0.11 user         0.22 sys
+#         1.19 real         0.11 user         0.22 sys

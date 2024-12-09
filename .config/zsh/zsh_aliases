@@ -4,6 +4,13 @@
 alias g='git'
 alias k='kubectl'
 # alias kexp=yq eval -i ".users[].user.auth-provider.config.expiry = "2020-01-01T12:00"' ~/.kube/config
+#
+alias epyenv= 'eval "$(pyenv init -)"'
+
+function egcloud() {
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
+}
 
 function kns() {
   echo "printing current k8 namespace:"

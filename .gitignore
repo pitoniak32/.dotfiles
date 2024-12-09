@@ -1,11 +1,3 @@
-.config/zsh/.zcompdump
-
-.config/nixos/nixos-switch.log
-.config/github-copilot/
-.config/shell_gpt/
-.config/gcloud/
-.config/gh/
-
 .config/axl/work_projects.yml
 .config/axl/groups/cloud-ex.yml
 .config/axl/groups/quark.yml
@@ -13,6 +5,15 @@
 .config/axl/groups/tch.yml
 .config/axl/groups/scm.yml
 .config/axl/groups/tools.yml
+
+.config/github-copilot/
+.config/gcloud/
+.config/gh/
+.config/nixos/nixos-switch.log
+.config/shell_gpt/
+.config/tmux/plugins/
+
+.config/zsh/.zcompdump
 
 .local/bin/fzf
 .local/bin/protoc
