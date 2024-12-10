@@ -80,29 +80,32 @@ eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 
-# see ./zsh_aliases for the eval code
-export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+function epyenv() {
+  export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+}
 
-# fnm
+function egcloud() {
+  # requires that pyenv has been evaluated before this runs.
+  export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
+  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
+}
+
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
   export PATH="$FNM_HOME:$PATH"
-  alias efnm="eval \"`fnm env`\""
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
-# pnpm
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
-# see ./zsh_aliases for the eval code
-export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
-
-if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" || $HOST == "Davids-MacBook-Pro.local" ]]; then
+if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" || $HOST == "dvd.local" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
@@ -118,16 +121,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export PATH=$HOME/ukg/local/bin:$PATH
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
   export QUARK_BANNER_OFF=true
-fi
 
-# ❯ for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done
-#         1.31 real         0.12 user         0.23 sys
-#         1.22 real         0.12 user         0.23 sys
-#         1.21 real         0.11 user         0.23 sys
-#         1.20 real         0.11 user         0.22 sys
-#         1.22 real         0.12 user         0.23 sys
-#         1.22 real         0.12 user         0.23 sys
-#         1.21 real         0.12 user         0.23 sys
-#         1.19 real         0.11 user         0.22 sys
-#         1.20 real         0.11 user         0.22 sys
-#         1.19 real         0.11 user         0.22 sys
+  epyenv
+  egcloud
+fi

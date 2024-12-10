@@ -20,6 +20,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # Source cargo env
 . "$CARGO_HOME/env"
 
-if [[  $HOST == "YFCRWDX2QT" || $HOST == "Davids-MacBook-Pro.local" ]]; then
+# If running on mac startup brew
+if [[ $(uname) == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
