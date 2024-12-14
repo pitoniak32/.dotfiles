@@ -13,7 +13,7 @@ bindkey "^[[B" down-line-or-beginning-search
 
 zmodload zsh/zprof
 zmodload zsh/complist
-# autoload -Uz compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION && compinit
+autoload -Uz compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION && compinit
 
 autoload -U colors && colors
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
@@ -76,9 +76,9 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 
-eval "$(zoxide init zsh)"
-
 source <(fzf --zsh)
+
+eval "$(zoxide init zsh)"
 
 function epyenv() {
   export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
