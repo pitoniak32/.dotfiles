@@ -1,6 +1,0 @@
-tags: ['clis']
-include:
-  - remote: git@github.com:pitoniak32/axolotl_git.git
-  - remote: git@github.com:pitoniak32/cidr_calc.git
-  - remote: git@github.com:pitoniak32/fitff.git
-

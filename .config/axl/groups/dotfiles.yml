@@ -1,7 +1,0 @@
-tags: ['dotfiles']
-include:  
-  - remote: git@github.com:pitoniak32/.dotfiles.git
-  - remote: git@github.com:pitoniak32/.ansible.git
-    tags: ['ansible']
-  - remote: git@github.com:pitoniak32/.ansible-vault-vars.git
-    tags: ['ansible']
