@@ -7,6 +7,7 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
+      { "saghen/blink.cmp" },
       -- Autoformatting
       "stevearc/conform.nvim",
       -- Schema information
@@ -26,9 +27,11 @@ return {
     },
     config = function()
       local capabilities = nil
-      if pcall(require, "cmp_nvim_lsp") then
-        capabilities = require("cmp_nvim_lsp").default_capabilities()
-      end
+      -- if pcall(require, "cmp_nvim_lsp") then
+      --   capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- end
+
+      capabilities = require("blink.cmp").get_lsp_capabilities()
 
       local lspconfig = require "lspconfig"
 
