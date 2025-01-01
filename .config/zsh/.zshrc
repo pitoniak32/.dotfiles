@@ -74,6 +74,8 @@ gpg-connect-agent /bye
 # Set an environment variable to tell GPG the current terminal.
 export GPG_TTY=$(tty)
 
+eval "$(direnv hook zsh)"
+
 eval "$(starship init zsh)"
 
 source <(fzf --zsh)
