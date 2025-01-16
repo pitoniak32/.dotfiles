@@ -88,12 +88,12 @@ function epyenv() {
   eval "$(pyenv init -)"
 }
 
-function egcloud() {
-  # requires that pyenv has been evaluated before this runs.
-  export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
-  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
-  if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
-}
+# function egcloud() {
+#   # requires that pyenv has been evaluated before this runs.
+#   export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
+#   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
+#   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
+# }
 
 FNM_HOME="$XDG_DATA_HOME/fnm"
 if [ -d "$FNM_HOME" ]; then
@@ -124,6 +124,6 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
   export QUARK_BANNER_OFF=true
 
-  epyenv
-  egcloud
+  # epyenv
+  # egcloud
 fi
