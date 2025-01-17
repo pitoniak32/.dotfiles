@@ -15,13 +15,17 @@ command_timeout = 1000
 
 add_newline = false
 
+[character]
+success_symbol = '[❯](bold bright-green)'
+error_symbol = '[❯](bold bright-red)'
+
 [nix_shell]
 format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
 symbol = '❄️'
 
 [python]
 format = '${symbol}[${pyenv_prefix}(${version})](blue bold) [\($virtualenv\)]($style)'
-style = 'green bold'
+style = 'bright-green bold'
 
 [time]
 disabled = false
@@ -33,10 +37,11 @@ format = '[\[](bold black)$symbol[+](bold cyan)[$toolchain](green)[\]](bold blac
 
 [status]
 format = '[\[](bold black)[$status]($style)[\]](bold black)'
+style = 'bold bright-red'
 disabled = false
 
 [username]
-style_user = 'cyan'
+style_user = 'bright-cyan'
 style_root = 'red'
 format = '[$user]($style)'
 disabled = false
@@ -44,11 +49,11 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = '[$hostname](cyan)'
+format = '[$hostname](bright-cyan)'
 disabled = false
 
 [directory]
-format = '[$path](cyan)'
+format = '[$path](bright-cyan)'
 
 [git_status]
 format = '([[\(](bold black)$all_status$ahead_behind[\)](bold black)]($style) )'
