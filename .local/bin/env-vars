@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ENV_VAR="Hello, World!"
+
+T1=${ENV_VAR:0:5}
+T1=${ENV_VAR::5} # same as :1:5
+echo $T1
+
+# from end
+T1=${ENV_VAR:5}
+echo $T1
+
+# defaulting empty
+T1=${EMPTY_VAR:-"test"}
+echo $T1
+
+# remove substring shortest
+T1=${ENV_VAR#"He"}
+echo $T1
+
+# remove substring longest
+T1=${ENV_VAR##"He"}
+echo $T1
+
+# replace substring
+T1=${ENV_VAR//"Hello"/"Goodbye"}
+echo $T1
+
