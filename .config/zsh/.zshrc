@@ -112,6 +112,7 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukd
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
   export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
+  export NNN_PLUG='o:fzopen;x:!chmod +x "$nnn"*;'
 
   if [[ $HOST == "d" ]]; then
     unset DISPLAY

@@ -18,3 +18,4 @@
 .local/bin/fzf
 .local/bin/protoc
 .local/bin/gh
+.local/bin/nnn
