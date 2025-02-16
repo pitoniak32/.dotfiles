@@ -7,6 +7,9 @@
 [includeIf "gitdir:~/.dotfiles/**"]
   path = personal_git
 
+[includeIf "hasconfig:remote.*.url:git@github.com:ukgepic/**"]
+  path = work_git
+
 [includeIf "hasconfig:remote.*.url:git@github.com:UKGEPIC/**"]
   path = work_git
 

@@ -1,7 +1,12 @@
 local set = vim.keymap.set
 local k = vim.keycode
-local f = require "custom.f"
-local fn = f.fn
+
+local fn = function(f, ...)
+  local args = { ... }
+  return function(...)
+    return f(unpack(args), ...)
+  end
+end
 
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
 set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
