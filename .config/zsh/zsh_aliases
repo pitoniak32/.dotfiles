@@ -33,6 +33,8 @@ alias dcs='docker compose stop'
 alias dcd='docker compose down'
 alias rm='rm -I'
 
+function pbexp() { export "$1"=$(pbpaste) }
+
 alias ..="cd .."
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
