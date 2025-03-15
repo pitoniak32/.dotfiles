@@ -19,3 +19,6 @@
 .local/bin/protoc
 .local/bin/gh
 .local/bin/nnn
+.local/bin/gcloud
+.local/bin/mynewcli
+.local/bin/gsutil
