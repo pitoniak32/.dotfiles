@@ -19,7 +19,7 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 ls.add_snippets("go", {
   s(
-    { trig = "ier", dscr = "Snippet for if err != nil." },
+    { trig = "ier", dscr = "Snippet for 'if err != nil'" },
     fmt( -- The snippet code actually looks like the equation environment it produces.
       [[
         if err != nil {
@@ -27,7 +27,7 @@ ls.add_snippets("go", {
         }
       ]],
       -- The insert node is placed in the <> angle brackets
-      { i(1, "nil") },
+      { i(1, "err") },
       -- This is where I specify that angle brackets are used as node positions.
       { delimiters = "<>" }
     )

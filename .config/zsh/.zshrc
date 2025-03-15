@@ -108,7 +108,6 @@ if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukd
   export PATH="/usr/local/go/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
   export NNN_PLUG='o:fzopen;x:!chmod +x "$nnn"*;'
 
-  export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
