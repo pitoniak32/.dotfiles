@@ -4,6 +4,8 @@ auto-update = check
 quick-terminal-position = center
 unfocused-split-opacity = 0.8
 
+command = /opt/homebrew/bin/fish --login --interactive
+
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = ctrl+a>r=reload_config
 
