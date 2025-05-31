@@ -1,5 +1,6 @@
 # Fish Options
 set fish_greeting
+set -g fish_key_bindings fish_vi_key_bindings
 
 # XDG standards
 set -Ux XDG_CONFIG_HOME $HOME/.config
@@ -93,3 +94,4 @@ switch $hostname
         unset DISPLAY
     end
 end
+
