@@ -1,4 +1,4 @@
-theme = catppuccin-macchiato
+theme = catppuccin-mocha
 font-family = "JetBrains Mono"
 auto-update = check
 quick-terminal-position = center
