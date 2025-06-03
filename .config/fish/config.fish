@@ -48,19 +48,6 @@ direnv hook fish | source
 fzf --fish | source
 zoxide init fish | source
 
-# function epyenv() {
-#   export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
-#   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-#   eval "$(pyenv init -)"
-# }
-
-# function egcloud() {
-#   # requires that pyenv has been evaluated before this runs.
-#   export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
-#   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
-#   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
-# }
-
 set FNM_HOME $XDG_DATA_HOME/fnm
 if test -d $FNM_HOME
     fish_add_path $FNM_HOME
@@ -79,8 +66,9 @@ switch $hostname
     test -d "$PYENV_ROOT/bin"; and fish_add_path $PYENV_ROOT/bin
 
     set -Ux CLOUDSDK_PYTHON $XDG_DATA_HOME/.pyenv/shims/python3.11
-    # test -f "$XDG_DATA_HOME/google-cloud-sdk/path.fish.inc" && source "$XDG_DATA_HOME/google-cloud-sdk/path.fish.inc"
-    # test -f "$XDG_DATA_HOME/google-cloud-sdk/completion.fish.inc" && source "$XDG_DATA_HOME/google-cloud-sdk/completion.fish.inc"
+    test -f "$XDG_DATA_HOME/google-cloud-sdk/path.bash.inc" && bass source "$XDG_DATA_HOME/google-cloud-sdk/path.bash.inc"
+    test -f "$XDG_DATA_HOME/google-cloud-sdk/completion.bash.inc" && bass source "$XDG_DATA_HOME/google-cloud-sdk/completion.bash.inc"
+
   case '*'
     set -Ux XDG_PROJECT_HOME $HOME/Projects
     set -Ux AXL_PROJECTS_CONFIG_PATH $XDG_CONFIG_HOME/axl/personal_projects.yml
