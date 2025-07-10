@@ -5,8 +5,8 @@ quick-terminal-position = center
 unfocused-split-opacity = 0.8
 
 # mac, and ubunutu files are gitignored. Add file based on OS to use fish.
-# ubuntu - /usr/bin/fish --login --interactive
-# mac    - /opt/homebrew/bin/fish --login --interactive
+# ubuntu - command = /usr/bin/fish --login --interactive
+# mac    - command = /opt/homebrew/bin/fish --login --interactive
 config-file=?mac
 config-file=?ubuntu
 
