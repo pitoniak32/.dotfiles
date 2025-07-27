@@ -24,7 +24,6 @@ set -Ux EDITOR nvim
 set -Ux VISUAL $EDITOR
 set -Ux AXL_DEFAULT_MULTIPLEXER tmux
 
-
 # If running on mac startup brew
 test (uname) = Darwin; and /opt/homebrew/bin/brew shellenv | source
 
@@ -76,6 +75,7 @@ switch $hostname
     set -Ux NNN_PLUG 'o:fzopen;x:!chmod +x "$nnn"*;'
 
     fish_add_path $FLYCTL_INSTALL/bin /opt/nvim-linux64/bin $HOME/.npm-global/bin
+    test (uname) = Darwin; and fish_add_path /opt/homebrew/opt/postgresql@17/bin
 
     switch $hostname
       case d
