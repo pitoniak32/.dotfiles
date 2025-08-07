@@ -32,6 +32,11 @@ end, { expr = true })
 set("n", "]d", fn(vim.diagnostic.jump, { count = 1, float = true }))
 set("n", "[d", fn(vim.diagnostic.jump, { count = -1, float = true }))
 
+set("n", "<leader>cp", function()
+  vim.cmd [[let @+=expand('%:p')]]
+  print "Copied file path to clipboard"
+end, { desc = "Copy file path to clipboard" })
+
 -- These mappings control the size of splits (height/width)
 set("n", "<M-l>", "<c-w>5<")
 set("n", "<M-h>", "<c-w>5>")

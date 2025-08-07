@@ -38,5 +38,6 @@ switch $hostname
   case YFCRWDX2QT
     abbr -a 'td-serve' 'bass source ./scripts/init-td && npx @techdocs/cli serve --no-docker'
     abbr -a 'ncu' 'npx npm-check-updates -ui --timeout=1000000000'
+    abbr -a 'claude' 'npx -y @anthropic-ai/claude-code'
   case '*'
 end

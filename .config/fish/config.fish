@@ -14,9 +14,8 @@ set -Ux --path XDG_CONFIG_DIRS $XDG_CONFIG_DIRS /etc/xdg
 set -Ux STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
 
 set -Ux GOPATH $HOME/go
-set -Ux GOROOT /usr/local/go
 set -Ux GOBIN $GOPATH/bin
-fish_add_path --prepend $GOPATH $GOPATH/bin $GOROOT/bin
+fish_add_path --prepend $GOPATH $GOPATH/bin
 
 fish_add_path $HOME/.local/bin/
 
