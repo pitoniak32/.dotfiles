@@ -4,6 +4,9 @@ auto-update = check
 quick-terminal-position = center
 unfocused-split-opacity = 0.8
 
+# https://ghostty.org/docs/help/terminfo
+shell-integration-features = ssh-terminfo
+
 # mac, and ubunutu files are gitignored. Add file based on OS to use fish.
 # ubuntu - command = /usr/bin/fish --login --interactive
 # mac    - command = /opt/homebrew/bin/fish --login --interactive
@@ -33,3 +36,4 @@ keybind = ctrl+a>ctrl+k=resize_split:up,100
 keybind = ctrl+a>ctrl+l=resize_split:right,100
 keybind = ctrl+a>x=close_surface
 keybind = ctrl+a>enter=toggle_split_zoom
+keybind = shift+enter=text:\x1b\r

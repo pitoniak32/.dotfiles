@@ -1,0 +1,74 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$status\
+[\\[](bold black)\
+$directory\
+[\\]](bold black)\
+([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
+$character"""
+
+right_format = '$python'
+
+command_timeout = 1000
+
+add_newline = false
+
+[character]
+success_symbol = '[❯](bold bright-green)'
+error_symbol = '[❯](bold bright-red)'
+
+[nix_shell]
+format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
+symbol = '❄️'
+
+[python]
+format = '${symbol}[${pyenv_prefix}(${version})](blue bold) [\($virtualenv\)]($style)'
+style = 'bright-green bold'
+
+[time]
+disabled = false
+use_12hr = true
+format = '[\[](bold black)[$time]($style)[\]](bold black)'
+
+[rust]
+format = '[\[](bold black)$symbol[+](bold cyan)[$toolchain](green)[\]](bold black)'
+
+[status]
+format = '[\[](bold black)[$status]($style)[\]](bold black)'
+style = 'bold bright-red'
+disabled = false
+
+[username]
+style_user = 'bright-cyan'
+style_root = 'red'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$hostname](bright-cyan)'
+disabled = false
+
+[directory]
+format = '[$path](bright-cyan)'
+
+[git_status]
+format = '([[\(](bold black)$all_status$ahead_behind[\)](bold black)]($style) )'
+modified = '[$count!](bold bright-yellow)'
+ahead = '[$count⇡](bold bright-yellow)'
+diverged = '[⇕](bold bright-red)[⇡${ahead_count}⇣${behind_count}](bold bright-blue)'
+untracked = '[$count?](bold bright-purple)'
+renamed = '[$count»](bold bright-purple)'
+staged = '[$count+](bold bright-green)'
+disabled = true
+
+[git_branch]
+style = 'bold bright-purple'
+format = '[$symbol](bold bright-green) [$branch(:$remote_branch)]($style)'
+symbol = ''
+# truncation_length = 16
+truncation_symbol = '…'
+disabled = true

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Usage: dotenv-gsm [<dotenv>]
+#
+# Loads a ".env.gsm" file and fetches values from Google Secret Manager
+dotenv_gsm() {
+  local path=${1:-}
+  if [[ -z $path ]]; then
+    path=$PWD/.env
+  elif [[ -d $path ]]; then
+    path=$path/.env
+  fi
+  watch_file "$path"
+  if ! [[ -f $path ]]; then
+    log_error ".env at $path not found"
+    return 1
+  fi
+  if has dotenv-gsm; then
+    eval "$("$direnv" dotenv bash "$@" | LOG_LEVEL=error dotenv-gsm -)"
+  else
+    log_error "ERROR: ensure you have 'dotenv-gsm' installed, and its available on your path!"
+    return 1
+  fi
+}

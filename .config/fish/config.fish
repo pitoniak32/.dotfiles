@@ -72,9 +72,11 @@ switch $hostname
     set -Ux AXL_PROJECTS_CONFIG_PATH $XDG_CONFIG_HOME/axl/personal_projects.yml
     set -Ux FLYCTL_INSTALL $HOME/.fly
     set -Ux NNN_PLUG 'o:fzopen;x:!chmod +x "$nnn"*;'
+    set -Ux BUN_INSTALL "$HOME/.bun"
 
-    fish_add_path $FLYCTL_INSTALL/bin /opt/nvim-linux64/bin $HOME/.npm-global/bin
+    fish_add_path $FLYCTL_INSTALL/bin /opt/nvim-linux64/bin $HOME/.npm-global/bin "$BUN_INSTALL/bin"
     test (uname) = Darwin; and fish_add_path /opt/homebrew/opt/postgresql@17/bin
+
 
     switch $hostname
       case d

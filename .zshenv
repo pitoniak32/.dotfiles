@@ -39,3 +39,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# bun completions
+[ -s "/Users/dvd/.bun/_bun" ] && source "/Users/dvd/.bun/_bun"
+
+. "$HOME/.local/share/../bin/env"
