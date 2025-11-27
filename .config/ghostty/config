@@ -14,26 +14,30 @@ config-file=?mac
 config-file=?ubuntu
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
-keybind = ctrl+a>r=reload_config
+keybind = ctrl+b>r=reload_config
 
-keybind = ctrl+a>c=new_tab
-keybind = ctrl+a>n=next_tab
-keybind = ctrl+a>p=previous_tab
-keybind = ctrl+a>1=goto_tab:1
-keybind = ctrl+a>2=goto_tab:2
-keybind = ctrl+a>3=goto_tab:3
-keybind = ctrl+a>4=goto_tab:4
+# Commented to not conflict with tmux
+#
+# keybind = ctrl+a>c=new_tab
+# keybind = ctrl+a>n=next_tab
+# keybind = ctrl+a>p=previous_tab
+# keybind = ctrl+a>1=goto_tab:1
+# keybind = ctrl+a>2=goto_tab:2
+# keybind = ctrl+a>3=goto_tab:3
+# keybind = ctrl+a>4=goto_tab:4
+# 
+# keybind = ctrl+a>-=new_split:down
+# keybind = ctrl+a>;=new_split:right
+# keybind = ctrl+a>h=goto_split:left
+# keybind = ctrl+a>j=goto_split:bottom
+# keybind = ctrl+a>k=goto_split:top
+# keybind = ctrl+a>l=goto_split:right
+# keybind = ctrl+a>ctrl+h=resize_split:left,100
+# keybind = ctrl+a>ctrl+j=resize_split:down,100
+# keybind = ctrl+a>ctrl+k=resize_split:up,100
+# keybind = ctrl+a>ctrl+l=resize_split:right,100
+# keybind = ctrl+a>x=close_surface
+# keybind = ctrl+a>enter=toggle_split_zoom
 
-keybind = ctrl+a>-=new_split:down
-keybind = ctrl+a>;=new_split:right
-keybind = ctrl+a>h=goto_split:left
-keybind = ctrl+a>j=goto_split:bottom
-keybind = ctrl+a>k=goto_split:top
-keybind = ctrl+a>l=goto_split:right
-keybind = ctrl+a>ctrl+h=resize_split:left,100
-keybind = ctrl+a>ctrl+j=resize_split:down,100
-keybind = ctrl+a>ctrl+k=resize_split:up,100
-keybind = ctrl+a>ctrl+l=resize_split:right,100
-keybind = ctrl+a>x=close_surface
-keybind = ctrl+a>enter=toggle_split_zoom
 keybind = shift+enter=text:\x1b\r
+
