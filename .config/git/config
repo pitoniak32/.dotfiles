@@ -19,6 +19,9 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:UKG-Sandbox/**"]
   path = work_git
 
+[core]
+  excludesFile = ~/.gitignore_global
+
 [commit]
   gpgSign = true
 [tag]

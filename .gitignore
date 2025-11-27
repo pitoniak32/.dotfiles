@@ -13,6 +13,8 @@
 .config/shell_gpt/
 .config/tmux/plugins/
 
+.config/configstore/
+
 .config/zsh/.zcompdump
 
 .config/fish/fish_variables

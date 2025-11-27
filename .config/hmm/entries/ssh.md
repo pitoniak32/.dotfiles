@@ -1,5 +1,4 @@
 # ssh
 
-```
-ssh -o IdentitiesOnly=yes -i ~/.ssh/ssh_key.pem username@ip
-```
+use `ssh -o IdentitiesOnly=yes -i ~/.ssh/<keyfile> <username>@<ip>`
+
