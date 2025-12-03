@@ -31,3 +31,7 @@
 
 [include]
   path = aliases
+[core]
+	pager = diffr | less -R
+[interactive]
+	difffilter = diffr

@@ -21,7 +21,10 @@
   ac  = commit -am
   pf  = push --force-with-lease
   fa  = fetch --all
+  fo  = fetch origin
+  foco  = "!f() { git fetch origin $1 && git checkout $1; }; f"
   lo  = log --oneline
   r   = restore
   a   = add .
   fu  = "!f() { git commit --fixup $1 && git rebase -i --autosquash $1~; }; f"
+

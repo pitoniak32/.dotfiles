@@ -6,7 +6,6 @@ $status\
 [\\[](bold black)\
 $directory\
 [\\]](bold black)\
-([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 $character"""
 
 right_format = '$python'
@@ -55,20 +54,3 @@ disabled = false
 [directory]
 format = '[$path](bright-cyan)'
 
-[git_status]
-format = '([[\(](bold black)$all_status$ahead_behind[\)](bold black)]($style) )'
-modified = '[$count!](bold bright-yellow)'
-ahead = '[$count⇡](bold bright-yellow)'
-diverged = '[⇕](bold bright-red)[⇡${ahead_count}⇣${behind_count}](bold bright-blue)'
-untracked = '[$count?](bold bright-purple)'
-renamed = '[$count»](bold bright-purple)'
-staged = '[$count+](bold bright-green)'
-disabled = true
-
-[git_branch]
-style = 'bold bright-purple'
-format = '[$symbol](bold bright-green) [$branch(:$remote_branch)]($style)'
-symbol = ''
-# truncation_length = 16
-truncation_symbol = '…'
-disabled = true

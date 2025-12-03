@@ -70,3 +70,4 @@ format = '[$symbol](bold bright-green) [$branch(:$remote_branch)]($style)'
 symbol = ''
 # truncation_length = 16
 truncation_symbol = '…'
+

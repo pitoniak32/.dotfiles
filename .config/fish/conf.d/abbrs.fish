@@ -38,6 +38,8 @@ switch $hostname
   case YFCRWDX2QT
     abbr -a 'td-serve' 'bass source ./scripts/init-td && npx @techdocs/cli serve --no-docker'
     abbr -a 'ncu' 'npx npm-check-updates -ui --timeout=1000000000'
-    abbr -a 'claude' 'npx -y @anthropic-ai/claude-code'
+    abbr -a 'claude' 'pnpx @anthropic-ai/claude-code'
+    abbr -a --set-cursor 'giam' 'gcloud projects get-iam-policy % --flatten="bindings[].members[]" --filter="bindings.role:roles/secretmanager" --format="table(bindings.role, bindings.members)"'
   case '*'
 end
+
