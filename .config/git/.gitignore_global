@@ -4,3 +4,6 @@
 .tool-versions
 
 **/.claude/settings.local.json
+
+**/gha-creds**.json
+
