@@ -15,6 +15,7 @@ end
 # kubectl
 abbr -a kns 'kubectl config view --minify --output "jsonpath={..namespace}"; echo'
 abbr -a knss 'kubectl config set-context --current --namespace'
+abbr -a kgi 'kubectl get deployment -o jsonpath=\'{.spec.template.spec.containers[*].image}\''
 
 # helm
 abbr -a helm-login 'gcloud auth print-access-token | helm registry login -u oauth2accesstoken --password-stdin https://us-docker.pkg.dev'
