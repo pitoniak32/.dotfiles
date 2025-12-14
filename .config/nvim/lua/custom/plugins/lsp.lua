@@ -33,8 +33,6 @@ return {
 
       capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      local lspconfig = require "lspconfig"
-
       local servers = {
         bashls = true,
         gopls = {
@@ -59,15 +57,8 @@ return {
         },
         rust_analyzer = true,
         templ = true,
-
         biome = true,
-        ts_ls = {
-          root_dir = require("lspconfig").util.root_pattern "package.json",
-          single_file = false,
-          server_capabilities = {
-            documentFormattingProvider = false,
-          },
-        },
+        ts_ls = true,
         jsonls = {
           settings = {
             json = {
@@ -115,7 +106,8 @@ return {
           capabilities = capabilities,
         }, config)
 
-        lspconfig[name].setup(config)
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
       end
 
       local disable_semantic_tokens = {
