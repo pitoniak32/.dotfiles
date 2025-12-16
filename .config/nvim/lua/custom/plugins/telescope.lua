@@ -33,12 +33,12 @@ return {
           },
           find_files = {
             hidden = true,
-            file_ignore_patterns = { "node_modules", ".git/" },
+            file_ignore_patterns = { "dist", "node_modules", ".git/" },
           },
           git_files = {},
           help_tags = {},
           live_grep = {
-            file_ignore_patterns = { "node_modules", ".git/" },
+            file_ignore_patterns = { "dist", "node_modules", ".git/" },
             additional_args = function()
               return { "--hidden" }
             end,
