@@ -30,3 +30,4 @@ ubuntu
 .local/bin/gcloud
 .local/bin/mynewcli
 .local/bin/gsutil
+.local/bin/dotenv-gsm-py

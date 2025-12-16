@@ -16,7 +16,7 @@ dotenv_gsm() {
     return 1
   fi
   if has dotenv-gsm; then
-    eval "$("$direnv" dotenv bash "$@" | LOG_LEVEL=error dotenv-gsm -)"
+    eval "$("$direnv" dotenv bash "$@" | LOG_LEVEL=error dotenv-gsm-py -)"
   else
     log_error "ERROR: ensure you have 'dotenv-gsm' installed, and its available on your path!"
     return 1

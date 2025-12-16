@@ -1,0 +1,138 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#   "google-cloud-secret-manager"
+# ]
+# ///
+
+import os
+import sys
+import re
+import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Dict
+
+from google.cloud import secretmanager
+
+
+# ---- Version info (mirror Go behavior) ----
+VersionInfo = {
+    "version": "dev",
+}
+
+
+# ---- Logging setup (LOG_LEVEL env var) ----
+def setup_logging():
+    level_name = os.getenv("LOG_LEVEL", "INFO").upper()
+    level = getattr(logging, level_name, logging.INFO)
+
+    logging.basicConfig(
+        level=level,
+        format="%(levelname)s %(message)s",
+    )
+
+
+log = logging.getLogger(__name__)
+
+
+Env = Dict[str, str]
+
+
+# ---- Parsing ----
+def parse_export_string(input_str: str) -> Env:
+    """
+    Matches: export KEY=$'VALUE';
+    Returns a map of VALUE -> VALUE (same as Go code)
+    """
+    pattern = re.compile(r"export\s+(\w+)=\$'([^']*)';")
+    matches = pattern.findall(input_str)
+
+    result: Env = {}
+    for _, value in matches:
+        result[value] = value
+
+    return result
+
+
+# ---- Secret fetching ----
+def fetch_secret(client: secretmanager.SecretManagerServiceClient, key: str, secret_id: str):
+    if "versions/" not in secret_id:
+        log.debug("adding '/versions/latest' to secret", extra={"key": key, "secretId": secret_id})
+        secret_id = f"{secret_id}/versions/latest"
+
+    log.debug("fetching gsm secret", extra={"key": key, "secretId": secret_id})
+
+    response = client.access_secret_version(name=secret_id)
+    return key, secret_id, response.payload.data.decode("utf-8")
+
+
+def fetch_secrets(secrets: Env) -> Env:
+    client = secretmanager.SecretManagerServiceClient()
+
+    results: Env = {}
+    errors = []
+
+    with ThreadPoolExecutor() as executor:
+        futures = [
+            executor.submit(fetch_secret, client, key, secret_id)
+            for key, secret_id in secrets.items()
+        ]
+
+        for future in as_completed(futures):
+            try:
+                key, secret_id, value = future.result()
+                log.debug("setting secret", extra={"key": key, "secretId": secret_id})
+                results[key] = value
+            except Exception as e:
+                errors.append(e)
+
+    if errors:
+        for err in errors:
+            log.error("accessing secret failed", exc_info=err)
+        sys.exit(1)
+
+    return results
+
+
+# ---- Main ----
+def main():
+    setup_logging()
+
+    log.debug("version info", extra={"details": VersionInfo})
+
+    if len(sys.argv) == 2 and sys.argv[1] in {"--version", "version"}:
+        print(repr(VersionInfo))
+        sys.exit(0)
+
+    if len(sys.argv) > 1 and sys.argv[1] == "-":
+        log.debug("reading input from stdin")
+        environment_string = sys.stdin.read()
+    elif len(sys.argv) > 1 and "export " in sys.argv[1]:
+        log.debug("reading input from first arg")
+        environment_string = sys.argv[1]
+    else:
+        print("Usage: direnv-gsm [ - | <exports string> ]", file=sys.stderr)
+        sys.exit(1)
+
+    newenv = parse_export_string(environment_string)
+
+    for key, value in newenv.items():
+        if "projects/" not in value:
+            log.error(
+                "found non GSM secretId value... ensure you only use gsm paths in this file... exiting",
+                extra={"key": key, "value": value},
+            )
+            sys.exit(1)
+
+    secrets = fetch_secrets(newenv)
+
+    for key, value in secrets.items():
+        environment_string = environment_string.replace(key, value)
+        log.debug("replaced all instances of key with secret value", extra={"key": key})
+
+    print(environment_string)
+
+
+if __name__ == "__main__":
+    main()
