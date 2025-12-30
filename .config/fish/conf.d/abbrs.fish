@@ -21,10 +21,11 @@ abbr -a kgi 'kubectl get deployment -o jsonpath=\'{.spec.template.spec.container
 abbr -a helm-login 'gcloud auth print-access-token | helm registry login -u oauth2accesstoken --password-stdin https://us-docker.pkg.dev'
 
 #docker
-abbr -a dka 'docker kill $(docker ps -q)'
+abbr -a dka 'docker kill (docker ps -q)'
 abbr -a dcu 'docker compose up -d --wait'
 abbr -a dcs 'docker compose stop'
 abbr -a dcd 'docker compose down'
+abbr -a drunit 'docker run --rm -it --entrypoint /bin/sh (pbpaste)'
 
 # general
 function multicd
@@ -37,8 +38,8 @@ abbr -a moon 'curl wttr.in/moon'
 
 switch $hostname
   case YFCRWDX2QT
-    abbr -a 'td-serve' 'bass source ./scripts/init-td && npx @techdocs/cli serve --no-docker'
-    abbr -a 'ncu' 'npx npm-check-updates -ui --timeout=1000000000'
+    abbr -a 'tdserve' 'uv run --with="mkdocs-techdocs-core,click==8.2.1" pnpx @techdocs/cli serve --no-docker'
+    abbr -a 'ncu' 'pnpx npm-check-updates -ui --timeout=1000000000'
     abbr -a 'claude' 'pnpx @anthropic-ai/claude-code'
     abbr -a --set-cursor 'giam' 'gcloud projects get-iam-policy % --flatten="bindings[].members[]" --filter="bindings.role:roles/secretmanager" --format="table(bindings.role, bindings.members)"'
   case '*'

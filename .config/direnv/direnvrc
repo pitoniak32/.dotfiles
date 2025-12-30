@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Usage: dotenv-gsm [<dotenv>]
+# Usage: dotenv_gsm [<dotenv>]
 #
 # Loads a ".env.gsm" file and fetches values from Google Secret Manager
 dotenv_gsm() {
@@ -16,7 +16,7 @@ dotenv_gsm() {
     return 1
   fi
   if has dotenv-gsm; then
-    eval "$("$direnv" dotenv bash "$@" | LOG_LEVEL=error dotenv-gsm-py -)"
+    eval "$("$direnv" dotenv bash "$@" | LOG_LEVEL=error dotenv-gsm -)"
   else
     log_error "ERROR: ensure you have 'dotenv-gsm' installed, and its available on your path!"
     return 1

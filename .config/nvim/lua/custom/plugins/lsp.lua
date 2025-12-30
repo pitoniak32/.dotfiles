@@ -12,6 +12,7 @@ return {
       "stevearc/conform.nvim",
       -- Schema information
       "b0o/SchemaStore.nvim",
+      "towolf/vim-helm",
       {
         -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
         -- used for completion, annotations and signatures of Neovim apis
@@ -67,10 +68,14 @@ return {
             },
           },
         },
-
+        helm_ls = true,
         yamlls = {
           settings = {
             yaml = {
+              format = {
+                enable = false,
+                singleQuote = true,
+              },
               schemaStore = {
                 enable = false,
                 url = "",
