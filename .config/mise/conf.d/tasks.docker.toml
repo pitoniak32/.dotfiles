@@ -1,0 +1,31 @@
+[tasks.'dcu']
+description = "Spin up compose services in current directory"
+dir = "{{cwd}}"
+usage = '''
+flag "-w --no-wait" default="false" help="Skip waiting for services to be running|healthy. Implies detached mode."
+'''
+run = '''
+#!/usr/bin/env bash
+
+cmd_flags=()
+[[ $usage_no_wait == false   ]] && cmd_flags+=(--wait)
+
+{
+  set -x
+  docker compose up $@ "${cmd_flags[@]}"
+}
+'''
+
+[tasks.dcs]
+description = "Stop compose services in current directory"
+run = 'docker compose stop $@'
+dir = "{{cwd}}"
+
+[tasks.dcd]
+description = "Stop and remove compose containers / networks in current directory"
+run = 'docker compose down "$@"'
+dir = "{{cwd}}"
+
+[tasks.dka]
+description = "Kill all docker containers"
+run = 'docker kill $(docker ps -q)'

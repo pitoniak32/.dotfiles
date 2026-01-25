@@ -1,7 +1,0 @@
-# --------------------------------
-# Desktop machine configuration
-# --------------------------------
-export PROJ_DIR=$HOME/Documents/
-
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'

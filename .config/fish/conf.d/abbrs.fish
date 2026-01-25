@@ -40,7 +40,6 @@ switch $hostname
   case YFCRWDX2QT
     abbr -a 'tdserve' 'uv run --with="mkdocs-techdocs-core,click==8.2.1" pnpx @techdocs/cli serve --no-docker'
     abbr -a 'ncu' 'pnpx npm-check-updates -ui --timeout=1000000000'
-    abbr -a 'claude' 'pnpx @anthropic-ai/claude-code'
     abbr -a --set-cursor 'giam' 'gcloud projects get-iam-policy % --flatten="bindings[].members[]" --filter="bindings.role:roles/secretmanager" --format="table(bindings.role, bindings.members)"'
   case '*'
 end

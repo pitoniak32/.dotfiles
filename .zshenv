@@ -20,13 +20,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # Source cargo env
 . "$CARGO_HOME/env"
 
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
 # If running on mac startup brew
 if [[ $(uname) == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -40,7 +33,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# bun completions
-[ -s "/Users/dvd/.bun/_bun" ] && source "/Users/dvd/.bun/_bun"
-
-. "$HOME/.local/share/../bin/env"
+# possibly added by uv
+. "$HOME/.local/bin/env"

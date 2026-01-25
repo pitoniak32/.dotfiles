@@ -13,10 +13,6 @@ set -Ux --path XDG_CONFIG_DIRS $XDG_CONFIG_DIRS /etc/xdg
 # Non defaults to clean $HOME
 set -Ux STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
 
-set -Ux GOPATH $HOME/go
-set -Ux GOBIN $GOPATH/bin
-fish_add_path --prepend $GOPATH $GOPATH/bin
-
 fish_add_path $HOME/.local/bin/
 
 set -Ux EDITOR nvim
@@ -45,12 +41,6 @@ set -gx GPG_TTY (tty)
 direnv hook fish | source
 fzf --fish | source
 zoxide init fish | source
-
-set FNM_HOME $XDG_DATA_HOME/fnm
-if test -d $FNM_HOME
-    fish_add_path $FNM_HOME
-    fnm env --use-on-cd --shell fish | source
-end
 
 switch $hostname
   case YFCRWDX2QT
@@ -84,3 +74,4 @@ switch $hostname
     end
 end
 
+/Users/dvd/.local/bin/mise activate fish | source
