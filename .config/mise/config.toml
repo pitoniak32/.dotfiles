@@ -1,3 +1,6 @@
+[settings]
+experimental = true
+
 [tools]
 fnox = "latest"
 go = "1.25.6"
@@ -8,30 +11,36 @@ description = 'install / upgrade development tools'
 run = '''
 #!/usr/bin/env bash
 
-set -x
-
 packages=(
-  zsh # updated version of shell
+  zsh    # updated version of shell
   jq 
   yq
+  fx     # terminal JSON viewer
   htop
-  fzf
-  nmap
+  tree
   stow
   tmux
-  gh
-  kind
-  k9s
+  fzf    # TUI fuzzy searcher
+  nmap
+  telnet
+  gh     # the github CLI
+  kind   # kubernetes in docker
+  k9s    # TUI for kubernetes
   helm
+  dive   # inspect docker images interactively
 )
-
-brew install "${packages[@]}"
+(
+  set -x
+  brew install "${packages[@]}"
+)
 
 head_packages=(
   neovim
 )
-
-brew install --HEAD "${head_packages[@]}"
+(
+  set -x
+  brew install --HEAD "${head_packages[@]}"
+)
 
 if ! command -v cargo-binstall >/dev/null 2>&1; then
   curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
@@ -47,7 +56,10 @@ crates=(
   presenterm      # markdown presentations
   diffr           # pretty diffs
 )
-cargo binstall --no-confirm "${crates[@]}"
+(
+  set -x
+  cargo binstall --no-confirm "${crates[@]}"
+)
 '''
 
 [tasks.tdserve]
