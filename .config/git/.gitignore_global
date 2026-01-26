@@ -2,8 +2,12 @@
 .*.swp
 .DS_Store
 .tool-versions
+.config/zsh/.zcompdump
+.config/nixos/nixos-switch.log
 
 **/.claude/settings.local.json
 
 **/gha-creds**.json
+
+**/.mise.local.toml
 

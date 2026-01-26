@@ -1,10 +1,10 @@
 [includeIf "gitdir:~/.dotfiles/**"]
   path = personal_git
 
-[includeIf "gitdir:~/code/**"]
+[includeIf "gitdir:/tmp/**"]
   path = personal_git
 
-[includeIf "gitdir:/tmp/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:pitoniak32/**"]
   path = personal_git
 
 [includeIf "hasconfig:remote.*.url:git@github.com:sales-path/**"]
@@ -19,8 +19,15 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:UKG-Sandbox/**"]
   path = work_git
 
+[include]
+  path = aliases
+
 [core]
-  excludesFile = ~/.gitignore_global
+  excludesFile = ~/.config/git/.gitignore_global
+  pager = diffr | less -R
+
+[interactive]
+	difffilter = diffr
 
 [commit]
   gpgSign = true
@@ -28,10 +35,3 @@
   gpgSign = true
 [init]
   defaultBranch = main
-
-[include]
-  path = aliases
-[core]
-	pager = diffr | less -R
-[interactive]
-	difffilter = diffr

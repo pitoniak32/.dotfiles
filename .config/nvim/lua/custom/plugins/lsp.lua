@@ -9,7 +9,7 @@ return {
       { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
       { "saghen/blink.cmp" },
       -- Autoformatting
-      "stevearc/conform.nvim",
+      -- "stevearc/conform.nvim",
       -- Schema information
       "b0o/SchemaStore.nvim",
       "towolf/vim-helm",
@@ -58,7 +58,7 @@ return {
         },
         rust_analyzer = true,
         templ = true,
-        biome = true,
+        -- biome = true,
         ts_ls = true,
         jsonls = {
           settings = {
