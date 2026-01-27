@@ -2,65 +2,52 @@
 
 #MISE description='install / upgrade development tools'
 
-#USAGE flag "--no-brew" default=#false
-#USAGE flag "--no-cargo" default=#false
-
 packages=(
-  zsh # updated version of shell
+  zsh   # updated version of shell
   jq 
   yq
+  fx    # TUI JSON viewer
   htop
-  fzf
-  nmap
+  tree
   stow
   tmux
+  fzf
+  nmap
+  telnet
   gh
-  kind
-  k9s
+  kind  # kubernetes in docker
+  k9s   # TUI for k8s
   helm
+  dive  # inspect docker images interactively
 )
-
-if [[ ! "$usage_no_brew" == "true" ]]; then
-  (
-    set -x
-    brew install "${packages[@]}"
-  )
-else
-  echo "Skipping brew"
-fi
+(
+  set -x
+  brew install "${packages[@]}"
+)
 
 head_packages=(
   neovim
 )
-if [[ ! "$usage_no_brew" == "true" ]]; then
-  (
-    set -x
-    brew install --HEAD "${head_packages[@]}"
-  )
-else
-  echo "Skipping brew HEAD"
+(
+  set -x
+  brew install --HEAD "${head_packages[@]}"
+)
+
+if ! command -v cargo-binstall >/dev/null 2>&1; then
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 fi
 
-if [[ ! "$usage_no_cargo" == "true" ]]; then
-
-  if ! command -v cargo-binstall >/dev/null 2>&1; then
-    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-  fi
-
-  crates=(
-    cargo-binstall  # upgrade if already installed
-    starship        # pretty prompt
-    eza             # pretty ls
-    bat             # pretty cat
-    ripgrep         # faster grep
-    zoxide          # ergonomic cd
-    presenterm      # markdown presentations
-    diffr           # pretty diffs
-  )
-  (
-    set -x
-    cargo binstall --no-confirm "${crates[@]}"
-  )
-else
-  echo "Skipping cargo"
-fi
+crates=(
+  cargo-binstall  # upgrade when already installed
+  starship        # pretty prompt
+  eza             # pretty ls
+  bat             # pretty cat
+  ripgrep         # faster grep
+  zoxide          # ergonomic cd
+  presenterm      # markdown presentations
+  diffr           # pretty diffs
+)
+(
+  set -x
+  cargo binstall --no-confirm "${crates[@]}"
+)
