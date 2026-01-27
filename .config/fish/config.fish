@@ -50,10 +50,6 @@ switch $hostname
     set -Ux AXL_PROJECTS_CONFIG_PATH $XDG_CONFIG_HOME/axl/work_projects.yml
     set -Ux QUARK_BANNER_OFF true
 
-    set -Ux PYENV_ROOT $XDG_DATA_HOME/.pyenv
-    test -d "$PYENV_ROOT/bin"; and fish_add_path $PYENV_ROOT/bin
-
-    set -Ux CLOUDSDK_PYTHON $XDG_DATA_HOME/.pyenv/shims/python3.11
     test -f "$XDG_DATA_HOME/google-cloud-sdk/path.bash.inc" && bass source "$XDG_DATA_HOME/google-cloud-sdk/path.bash.inc"
     test -f "$XDG_DATA_HOME/google-cloud-sdk/completion.bash.inc" && bass source "$XDG_DATA_HOME/google-cloud-sdk/completion.bash.inc"
 

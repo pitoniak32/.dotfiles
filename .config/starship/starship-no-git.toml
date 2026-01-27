@@ -8,8 +8,6 @@ $directory\
 [\\]](bold black)\
 $character"""
 
-right_format = '$python'
-
 command_timeout = 1000
 
 add_newline = false
@@ -21,10 +19,6 @@ error_symbol = '[❯](bold bright-red)'
 [nix_shell]
 format = '[\[](bold black)[$symbol $state]($style)[\]](bold black)'
 symbol = '❄️'
-
-[python]
-format = '${symbol}[${pyenv_prefix}(${version})](blue bold) [\($virtualenv\)]($style)'
-style = 'bright-green bold'
 
 [time]
 disabled = false

@@ -41,7 +41,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
   export QUARK_BANNER_OFF=true
 
-  export CLOUDSDK_PYTHON="$XDG_DATA_HOME/.pyenv/shims/python3.11"
+  export CLOUDSDK_PYTHON="/usr/local/bin/python3"
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 fi
