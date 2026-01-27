@@ -1,4 +1,0 @@
-[tasks.ncu]
-description = "Check for any npm packages with updates in current directory"
-run = "pnpx npm-check-updates -ui --timeout=1000000000"
-dir = "{{cwd}}"

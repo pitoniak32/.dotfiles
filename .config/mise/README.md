@@ -4,6 +4,11 @@ Please read the docs for a complete explanation: https://mise.jdx.dev/getting-st
 
 ## Quick Tips
 
+To get the recommended tools installed use:
+```bash
+mise run setup-tools
+```
+
 If there is a task that you need to make changes for, you can use this command:
 ```bash
 mise tasks edit <TASK>

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+#MISE description = "Spin up compose services in current directory"
+#MISE dir = "{{cwd}}"
+
+#USAGE flag "-w --no-wait" default="false" help="Skip waiting for services to be running|healthy. Implies detached mode."
+
+cmd_flags=()
+[[ $usage_no_wait == false   ]] && cmd_flags+=(--wait)
+(
+  set -x
+  docker compose up $@ "${cmd_flags[@]}"
+)

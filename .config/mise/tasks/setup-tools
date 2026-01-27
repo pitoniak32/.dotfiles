@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+#MISE description='install / upgrade development tools'
+
+#USAGE flag "--no-brew" default=#false
+#USAGE flag "--no-cargo" default=#false
+
+packages=(
+  zsh # updated version of shell
+  jq 
+  yq
+  htop
+  fzf
+  nmap
+  stow
+  tmux
+  gh
+  kind
+  k9s
+  helm
+)
+
+if [[ ! "$usage_no_brew" == "true" ]]; then
+  (
+    set -x
+    brew install "${packages[@]}"
+  )
+else
+  echo "Skipping brew"
+fi
+
+head_packages=(
+  neovim
+)
+if [[ ! "$usage_no_brew" == "true" ]]; then
+  (
+    set -x
+    brew install --HEAD "${head_packages[@]}"
+  )
+else
+  echo "Skipping brew HEAD"
+fi
+
+if [[ ! "$usage_no_cargo" == "true" ]]; then
+
+  if ! command -v cargo-binstall >/dev/null 2>&1; then
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+  fi
+
+  crates=(
+    cargo-binstall  # upgrade if already installed
+    starship        # pretty prompt
+    eza             # pretty ls
+    bat             # pretty cat
+    ripgrep         # faster grep
+    zoxide          # ergonomic cd
+    presenterm      # markdown presentations
+    diffr           # pretty diffs
+  )
+  (
+    set -x
+    cargo binstall --no-confirm "${crates[@]}"
+  )
+else
+  echo "Skipping cargo"
+fi

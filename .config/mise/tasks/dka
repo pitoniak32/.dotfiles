@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+#MISE description = "Kill all docker containers"
+
+docker kill $(docker ps -q)

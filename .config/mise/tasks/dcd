@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+#MISE description = "Stop and remove compose containers / networks in current directory"
+#MISE dir = "{{cwd}}"
+
+docker compose down "$@"

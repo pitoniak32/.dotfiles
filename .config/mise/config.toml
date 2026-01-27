@@ -3,96 +3,15 @@ experimental = true
 
 [tools]
 fnox = "latest"
-go = "1.25.6"
 usage = "latest"
-
-[tasks.setup-tools]
-description = 'install / upgrade development tools'
-run = '''
-#!/usr/bin/env bash
-
-packages=(
-  zsh    # updated version of shell
-  jq 
-  yq
-  fx     # terminal JSON viewer
-  htop
-  tree
-  stow
-  tmux
-  fzf    # TUI fuzzy searcher
-  nmap
-  telnet
-  gh     # the github CLI
-  kind   # kubernetes in docker
-  k9s    # TUI for kubernetes
-  helm
-  dive   # inspect docker images interactively
-)
-(
-  set -x
-  brew install "${packages[@]}"
-)
-
-head_packages=(
-  neovim
-)
-(
-  set -x
-  brew install --HEAD "${head_packages[@]}"
-)
-
-if ! command -v cargo-binstall >/dev/null 2>&1; then
-  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-fi
-
-crates=(
-  cargo-binstall  # upgrade if already installed
-  starship        # pretty prompt
-  eza             # pretty ls
-  bat             # pretty cat
-  ripgrep         # faster grep
-  zoxide          # ergonomic cd
-  presenterm      # markdown presentations
-  diffr           # pretty diffs
-)
-(
-  set -x
-  cargo binstall --no-confirm "${crates[@]}"
-)
-'''
 
 [tasks.tdserve]
 run = "uv run --with='mkdocs-techdocs-core,click==8.2.1' pnpx @techdocs/cli serve --no-docker"
 
 [tasks.kns]
-run = '''
-#!/usr/bin/env bash
-
-(
-  set -x
-  kubectl config view --minify --output 'jsonpath={..namespace}'
-)
-'''
+run = "kubectl config view --minify --output 'jsonpath={..namespace}'"
 
 # # MOVE TO MISE
 [tasks.knss]
-run = '''
-#!/usr/bin/env bash
-
-(
-  set -x
-  kubectl config view --minify --output 'jsonpath={..namespace}'
-  kubectl config set-context --current --namespace "$@"
-)
-
-echo "test"
-'''
-
-# # MOVE TO MISE
-# alias ll='eza -la'
-# alias dka='docker kill $(docker ps -q)'
-# alias dcu='docker compose up -d --wait'
-# alias dcs='docker compose stop'
-# alias dcd='docker compose down'
-
+usage = 'arg "<namespace>"'
+run = "kubectl config set-context --current --namespace '$usage_namespace'"
