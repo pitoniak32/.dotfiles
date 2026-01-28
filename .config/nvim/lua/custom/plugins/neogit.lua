@@ -8,7 +8,7 @@ return {
   config = function()
     local neogit = require "neogit"
     vim.keymap.set("n", "<leader>gs", function()
-      neogit.open { kind = "vsplit" }
+      neogit.open { kind = "floating" }
     end)
   end,
 }

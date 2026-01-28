@@ -16,10 +16,11 @@ export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$PATH
 export AXL_DEFAULT_MULTIPLEXER=tmux
 
-eval "$(starship init zsh)"
 source <(fzf --zsh)
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"
+eval "$(fnox activate zsh)"
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
