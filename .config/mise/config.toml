@@ -5,8 +5,15 @@ experimental = true
 fnox = "latest"
 usage = "latest"
 
-[tasks.tdserve]
-run = "uv run --with='mkdocs-techdocs-core,click==8.2.1' pnpx @techdocs/cli serve --no-docker"
+[tasks.claude]
+description = "claude"
+quiet = true
+dir = "{{cwd}}"
+run = '''
+export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
+
+mise exec claude@latest -- claude
+'''
 
 [tasks.kns]
 run = "kubectl config view --minify --output 'jsonpath={..namespace}'"

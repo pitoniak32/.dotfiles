@@ -1,2 +1,5 @@
 [profiles.local.providers]
 keychain = { type = "keychain", service = "fnox" }
+
+[profiles.local.secrets]
+ANTHROPIC_AUTH_TOKEN = { provider = "keychain", value = "ANTHROPIC_AUTH_TOKEN" }
