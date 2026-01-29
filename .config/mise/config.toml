@@ -9,16 +9,11 @@ usage = "latest"
 description = "claude"
 quiet = true
 dir = "{{cwd}}"
-run = '''
-export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
-
-mise exec claude@latest -- claude
-'''
+run = 'mise exec claude@latest -- claude'
 
 [tasks.kns]
 run = "kubectl config view --minify --output 'jsonpath={..namespace}'"
 
-# # MOVE TO MISE
 [tasks.knss]
 usage = 'arg "<namespace>"'
 run = "kubectl config set-context --current --namespace '$usage_namespace'"
