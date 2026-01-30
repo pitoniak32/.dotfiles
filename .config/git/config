@@ -1,6 +1,9 @@
 [includeIf "gitdir:~/.dotfiles/**"]
   path = personal_git
 
+[includeIf "gitdir:~/code/personal/**"]
+  path = personal_git
+
 [includeIf "gitdir:/tmp/**"]
   path = personal_git
 
