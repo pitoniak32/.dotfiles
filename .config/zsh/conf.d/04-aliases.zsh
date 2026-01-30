@@ -11,6 +11,7 @@ alias ll='eza -la'
 alias rm='rm -I'
 alias ..='cd ..'
 alias mr='mise run'
+alias mx='mise exec'
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
   alias pbcopy='xclip -selection clipboard'
