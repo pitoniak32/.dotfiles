@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 wiki_path="/Users/davidpi/vimwiki/"
 selected_name=$(basename "$wiki_path")
 tmux_running=$(pgrep tmux)

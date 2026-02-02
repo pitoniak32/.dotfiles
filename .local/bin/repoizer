@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 CHOICE=$(curl -s https://api.github.com/orgs/$1/repos | jq '.[].html_url' | fzf)
 open -u "${CHOICE//\"}"

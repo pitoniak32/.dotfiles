@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 path=".git/config"
 
 # if a path is passed as a parameter append it.

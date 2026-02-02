@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 git clone --bare https://github.com/pitoniak32/.dotfiles.git $HOME/.dotfiles
 mkdir -p .config-backup

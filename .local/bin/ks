@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 sessions_to_kill=$(tmux ls | cut -d':' -f1 | fzf -m --reverse)
 
 sessions_array=($sessions_to_kill)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 not_in_zellij() {
   [[ -z "$ZELLIJ" ]]
