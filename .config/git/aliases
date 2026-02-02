@@ -15,6 +15,7 @@
   c   = commit
   ca  = commit --amend --no-edit
   cb  = checkout -b
+  cbs  = "!f() { git checkout -b $1 && git shove ; }; f" 
   co  = checkout
   cl  = config --global --list --includes
   ds  = diff --staged
