@@ -31,3 +31,6 @@ ubuntu
 .local/bin/mynewcli
 .local/bin/gsutil
 .local/bin/dotenv-gsm-py
+
+.claude/*
+!.claude/CLAUDE.md
