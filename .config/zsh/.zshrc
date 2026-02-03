@@ -16,18 +16,12 @@ export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$PATH
 export AXL_DEFAULT_MULTIPLEXER=tmux
 
-source <(fzf --zsh)
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(mise activate zsh)"
-eval "$(fnox activate zsh)"
-export FNOX_AGE_KEY_FILE="$HOME/.ssh/id_ed25519_personal_nopass"
-
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
   export PATH="$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
+  export MISE_ENV="personal"
 
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
@@ -42,8 +36,16 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export PATH=$HOME/ukg/local/bin:$PATH
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/work_projects.yml
   export QUARK_BANNER_OFF=true
+  export MISE_ENV="work"
 
   export CLOUDSDK_PYTHON="/usr/local/bin/python3"
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi
 fi
+
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(mise activate zsh)"
+eval "$(fnox activate zsh)"
+export FNOX_AGE_KEY_FILE="$HOME/.ssh/id_ed25519_personal_nopass"

@@ -1,0 +1,7 @@
+[tasks.claude]
+description = "claude"
+quiet = true
+dir = "{{cwd}}"
+run = '''
+ANTHROPIC_MODEL="opusplan" claude
+'''
