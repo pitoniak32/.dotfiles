@@ -16,7 +16,7 @@ export VISUAL=$EDITOR
 export PATH=$HOME/.local/bin:$PATH
 export AXL_DEFAULT_MULTIPLEXER=tmux
 
-if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
+if [[ $HOST == "jawnix" || $HOST == "dvd.local" || $HOST == "d" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
