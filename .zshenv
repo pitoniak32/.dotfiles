@@ -32,6 +32,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# possibly added by uv
-. "$HOME/.local/bin/env"
