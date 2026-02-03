@@ -1,6 +1,7 @@
 [env]
 DAGGER_NO_NAG="1"
 DO_NOT_TRACK="1"
+NODE_EXTRA_CA_CERTS="{{env.HOME}}/ukg/certs/ukg.pem"
 
 [tasks.claude]
 description = "litellm - claude"

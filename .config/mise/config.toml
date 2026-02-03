@@ -1,9 +1,15 @@
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
 fnox = "latest"
 usage = "latest"
+
+[tasks.ncu]
+description = "Check for any npm packages with updates in current directory"
+dir = "{{cwd}}"
+run = 'npx --yes npm-check-updates -ui --timeout=1000000000'
 
 [tasks.kns]
 run = "kubectl config view --minify --output 'jsonpath={..namespace}'"

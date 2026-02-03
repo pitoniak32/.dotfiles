@@ -3,29 +3,22 @@
 #   path = .gitconfig_alias
 
 [alias]
-  prunec = !git fetch --prune && git prune -v
-  croma = !git co master && git roma 
-  crom  = !git co main && git rom
-  roma = !git fetch origin master && git reset --hard origin/master
-  rom  = !git fetch origin main && git reset --hard origin/main
-  shove  = push -u origin HEAD
-  acap = !git a && git ca && git pf
-  tci = "!git commit --allow-empty -m 'trigger ci'"
   s   = status
-  c   = commit
-  ca  = commit --amend --no-edit
-  cb  = checkout -b
-  cbs  = "!f() { git checkout -b $1 && git shove ; }; f" 
-  co  = checkout
-  cl  = config --global --list --includes
-  ds  = diff --staged
-  ac  = commit -am
-  pf  = push --force-with-lease
-  fa  = fetch --all
-  fo  = fetch origin
-  foco  = "!f() { git fetch origin $1 && git checkout $1; }; f"
-  lo  = log --oneline
-  r   = restore
   a   = add .
+  c   = commit
+  lo  = log --oneline
+  ca  = commit --amend --no-edit
+  pf  = push --force-with-lease
+  ds  = diff --staged
+  cb  = checkout -b
+  shove  = push -u origin HEAD
+  fa  = fetch --all
+  cc  = "!f() { git fetch origin $1 && git checkout -B $1 origin/$1 }"
+  ccm  = cc main
+  ccma  = cc master
+  cbs  = "!f() { git checkout -b $1 && git shove ; }; f" 
+  prunec = !git fetch --prune && git prune -v
   fu  = "!f() { git commit --fixup $1 && git rebase -i --autosquash $1~; }; f"
-
+  cfglist  = config --global --list --includes
+  foco  = "!f() { git fetch origin $1 && git checkout $1; }; f"
+  tci = "!git commit --allow-empty -m 'trigger ci'"
