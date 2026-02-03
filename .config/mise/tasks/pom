@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#USAGE arg "[split]" help="provide work/break e.g. 25m/5m"
+
+split="$usage_split"
+
+if [ -z "$split" ]; then
+    split=$(gum choose "25m/5m" "50m/10m" "all done" --header "Choose a pomodoro split.")
+fi
+
+if [[ "$split" == "all done" ]]; then
+  exit 0
+elif [[ "$split" =~ / ]]; then
+  work="${split%/*}"
+  break="${split#*/}"
+else
+  echo "Invalid format"
+  exit 1
+fi
+
+timer "$work" && terminal-notifier -message 'Pomodoro' \
+    -title 'Work Timer is up! Take a Break 😊' \
+    -sound Submarine
+
+gum confirm "Ready for a break?" && \
+timer "$break" && terminal-notifier -message 'Pomodoro' \
+    -title 'Break is over! Get back to work 😬' \
+    -sound Submarine \
+    || mise run pom

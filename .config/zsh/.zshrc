@@ -21,7 +21,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"
 eval "$(fnox activate zsh)"
-export FNOX_AGE_KEY=$(cat ~/.config/fnox/age.txt | grep "AGE-SECRET-KEY")
+export FNOX_AGE_KEY_FILE="$HOME/.ssh/id_ed25519_personal_nopass"
 
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" || $HOST == "mukduk" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"

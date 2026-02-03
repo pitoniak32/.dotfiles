@@ -1,5 +1,9 @@
+[providers]
+age = { type = "age", recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaTlyxXm70BwPmWMWixnRiuY8W5OYhAdnkBFMAtXsUu davidpitoniak32@gmail.com"] }
+
 [profiles.local.providers]
 keychain = { type = "keychain", service = "fnox" }
 
 [profiles.local.secrets]
+JIRA_AUTH_TOKEN = { provider = "keychain", value = "JIRA_AUTH_TOKEN" }
 ANTHROPIC_AUTH_TOKEN = { provider = "keychain", value = "ANTHROPIC_AUTH_TOKEN" }

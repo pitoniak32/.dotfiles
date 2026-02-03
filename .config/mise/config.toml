@@ -10,9 +10,7 @@ description = "claude"
 quiet = true
 dir = "{{cwd}}"
 run = '''
-export ANTHROPIC_MODEL="opusplan"
-
-mise exec claude@latest --  claude
+ANTHROPIC_MODEL="opusplan" claude
 '''
 
 [tasks.kns]
