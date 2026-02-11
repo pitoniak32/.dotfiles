@@ -2,37 +2,6 @@
 
 #MISE description='install / upgrade development tools'
 
-packages=(
-  zsh   # updated version of shell
-  jq 
-  yq
-  fx    # TUI JSON viewer
-  htop
-  tree
-  stow
-  tmux
-  fzf
-  nmap
-  telnet
-  gh
-  kind  # kubernetes in docker
-  k9s   # TUI for k8s
-  helm
-  dive  # inspect docker images interactively
-)
-(
-  set -x
-  brew install "${packages[@]}"
-)
-
-head_packages=(
-  neovim
-)
-(
-  set -x
-  brew install --HEAD "${head_packages[@]}"
-)
-
 if ! command -v cargo-binstall >/dev/null 2>&1; then
   curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 fi
