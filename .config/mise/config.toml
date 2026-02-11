@@ -17,3 +17,27 @@ run = "kubectl config view --minify --output 'jsonpath={..namespace}'"
 [tasks.knss]
 usage = 'arg "<namespace>"'
 run = "kubectl config set-context --current --namespace '$usage_namespace'"
+
+[tasks.setup-tools]
+description = "install / upgrade development tools"
+run = '''
+if ! command -v cargo-binstall >/dev/null 2>&1; then
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+fi
+
+crates=(
+  cargo-binstall  # upgrade when already installed
+  starship        # pretty prompt
+  eza             # pretty ls
+  bat             # pretty cat
+  ripgrep         # faster grep
+  zoxide          # ergonomic cd
+  presenterm      # markdown presentations
+  diffr           # pretty diffs
+  porsmo          # pomodoro timer
+)
+(
+  set -x
+  cargo binstall --no-confirm "${crates[@]}"
+)
+'''
