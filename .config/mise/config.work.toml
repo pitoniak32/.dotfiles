@@ -7,37 +7,66 @@ NODE_EXTRA_CA_CERTS="{{env.HOME}}/ukg/certs/ukg.pem"
 description = "litellm - claude"
 quiet = true
 dir = "{{cwd}}"
-usage = '''
-flag "--jira-mcp-up" default=#false
-flag "--jira-mcp-down" default=#false
-'''
 run = '''
 export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS="1"
 export CLAUDE_CODE_USE_VERTEX="0"
-export NODE_EXTRA_CA_CERTS="$HOME/ukg/certs/ukg.pem"
+export ENABLE_TOOL_SEARCH="0"
+export NODE_USE_SYSTEM_CA=1
+
 export ANTHROPIC_BASE_URL="https://sdlc-llm.ukg.int"
 export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
 
+export JIRA_MCP_AUTH_TOKEN="$(fnox get --profile=local JIRA_AUTH_TOKEN)"
+
 export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-5"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-4-5"
-export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-5"
-export ANTHROPIC_MODEL="opusplan"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-6[1m]"
+export ANTHROPIC_MoDEL="claude-opus-4-6[1m]"
 
-if [[ "${usage_jira_mcp_up}" == "true" ]]; then
-  claude mcp add jira \
-    --transport http \
-    --scope user \
-    https://sdlc-mcp.ukg.int:8080/mcp/ \
-    --header "Authorization: Token $(fnox get JIRA_AUTH_TOKEN --profile=local)" 2>&1 | sed 's/\(Token \)[^"]*"/\1***"/g'
-elif [[ "${usage_jira_mcp_down}" == "true" ]]; then
-  claude mcp remove jira
-else
-  claude
-fi
+claude
 '''
 
 [tasks.jctx]
 description = "put ticket number onto clipboard"
 quiet = true
-run = 'jctx --token="$(fnox get --profile=local JIRA_AUTH_TOKEN)" | pbcopy'
+run = 'jctx --token="$(fnox get --profile=local JIRA_AUTH_TOKEN)"'
 
+[tasks.docker-build]
+quiet = true
+usage = '''
+arg <image-tag>
+'''
+run = '''
+export ARTIFACTORY_AUTH_TOKEN="$(fnox get ARTIFACTORY_AUTH_TOKEN)"
+(
+  set -x
+  docker build --secret id=artifactory_auth_token,env=ARTIFACTORY_AUTH_TOKEN . -t "$usage_image_tag"
+)
+'''
+
+[tasks.docker-build-fnd]
+quiet = true
+run = '''
+export NAMESPACE="gears-tools"
+export NAMESPACE_AIRLOCK_NAME="gsm"
+export NAMESPACE_GSM_PROJECT_ID="d-ulti-devx-quark-system-8bc7"
+export NAMESPACE_GSM_CREDENTIALS_FILE_PATH="${HOME}/.config/gcloud/application_default_credentials.json"
+
+export ARTIFACTORY_AUTH_TOKEN="secrets.gsm::gt_artifactory_npm_auth_token"
+
+export GAR_ACCESS_TOKEN="$(gcloud auth print-access-token)"
+
+(
+  set -x
+
+  ../quark-foundry/bin/dev tanagra:deploy:docker-image \
+    --template_type=app \
+    --project_dir= \
+    --environment_json='{}' \
+    --docker_host=unix:///var/run/docker.sock \
+    --registry_hostname=us-docker.pkg.dev \
+    --registry_project_root=d-ulti-cs-gar-27fb/shift-left/images \
+    --registry_username=oauth2accesstoken \
+    --registry_password="${GAR_ACCESS_TOKEN}"
+)
+'''
