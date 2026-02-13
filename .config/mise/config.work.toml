@@ -23,7 +23,7 @@ export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-4-5"
 export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-6[1m]"
 export ANTHROPIC_MoDEL="claude-opus-4-6[1m]"
 
-claude
+claude "$@"
 '''
 
 [tasks.jctx]

@@ -38,6 +38,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
   export QUARK_BANNER_OFF=true
   export MISE_ENV="work"
 
+
   export CLOUDSDK_PYTHON="/usr/local/bin/python3"
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"; fi

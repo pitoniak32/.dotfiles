@@ -3,8 +3,10 @@ experimental = true
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
-fnox = "latest"
 usage = "latest"
+fnox  = "latest"
+age   = "latest"
+yq    = "latest"
 
 [tasks.ncu]
 description = "Check for any npm packages with updates in current directory"
