@@ -14,7 +14,12 @@ alias ..='cd ..'
 alias mr='mise run'
 alias mx='mise exec'
 
+if [[ $(uname) == "Darwin" ]]; then
+  alias cmdc='pbcopy'
+  alias cmdv='pbpaste'
+fi
+
 if [[ $HOST == "jawnix" || $HOST == "lemurpro" || $HOST == "d" ]]; then
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
+  alias cmdc='xclip -selection clipboard'
+  alias cmdv='xclip -selection clipboard -o'
 fi
