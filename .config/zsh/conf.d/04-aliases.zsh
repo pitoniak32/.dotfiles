@@ -2,6 +2,7 @@
 # Aliases
 # --------------------------------
 alias g='git'
+alias ggc='git a && g c "."' # a quick "stash" for current changes
 alias k='kubectl'
 
 alias wttr='curl wttr.in/kgon'
