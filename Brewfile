@@ -58,30 +58,30 @@ brew "k9s"
 
 # Cask - Homebrew package definition that installs pre-compiled binaries built and signed by upstream
 
-cask "kitty" # for using presenterm with larger text
-cask "dozer"
-cask "wizcli"
-cask "windows-app"
+# cask "kitty"     # for using presenterm with larger text
+# cask "dozer"     # hide all the extra status icons
+# cask "wizcli"
+# cask "windows-app"
 
 # Tap - directory (and usually Git repository) of formulae, casks and/or external commands
 
 # tap "env0/terratag"
 # tap "koekeishiya/formulae"
 # tap "nikitabobko/tap"
-tap "hashicorp/tap"
-tap "launchdarkly/tap"
-tap "kreuzwerker/taps"
+# tap "hashicorp/tap"
+# tap "launchdarkly/tap"
+# tap "kreuzwerker/taps"
 
-brew "act"
-brew "git-filter-repo"
-brew "postgresql@17"
-brew "redis"
-brew "mongosh"
-brew "kreuzwerker/taps/m1-terraform-provider-helper"
-brew "pre-commit"
-brew "terminal-notifier"
-brew "yamllint"
-brew "jfrog-cli"
+# brew "act"
+# brew "git-filter-repo"
+# brew "postgresql@17"
+# brew "redis"
+# brew "mongosh"
+# brew "kreuzwerker/taps/m1-terraform-provider-helper"
+# brew "pre-commit"
+# brew "terminal-notifier"
+# brew "yamllint"
+# brew "jfrog-cli"
 
 # Maybe junk?
 
