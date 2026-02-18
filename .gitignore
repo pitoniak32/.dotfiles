@@ -12,6 +12,7 @@
 .config/nixos/nixos-switch.log
 .config/shell_gpt/
 .config/tmux/plugins/
+.config/jj/repos/
 
 .config/configstore/
 
