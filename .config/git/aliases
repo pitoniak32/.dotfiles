@@ -15,7 +15,7 @@
   swc     = switch -c
   shove   = push -u origin HEAD
   fa      = fetch --all
-  cc      = "!f() { git fetch origin $1 && git switch -f -B $1 origin/$1; }; f"
+  cc      = "!f() { git fetch origin $1 && git switch -C $1 origin/$1; }; f"
   ccm     = cc main
   ccma    = cc master
   cbs     = "!f() { git switch -c $1 && git shove ; }; f" 
