@@ -45,6 +45,7 @@ if [[ $HOST == "YFCRWDX2QT" ]]; then
 fi
 
 source <(fzf --zsh)
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"

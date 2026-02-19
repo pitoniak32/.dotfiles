@@ -8,3 +8,5 @@ email = "davidpitoniak32@gmail.com"
 behavior = "own"
 backend = "gpg"
 key = "1C0FB72620F12C792A015A38F37BD0CEA2ADFAA9"
+
+[aliases]
