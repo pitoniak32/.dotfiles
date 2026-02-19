@@ -37,6 +37,7 @@ crates=(
   presenterm      # markdown presentations
   diffr           # pretty diffs
   porsmo          # pomodoro timer
+  atuin           # better shell history
 )
 (
   set -x
