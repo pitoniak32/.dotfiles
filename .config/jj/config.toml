@@ -9,4 +9,15 @@ behavior = "own"
 backend = "gpg"
 key = "1C0FB72620F12C792A015A38F37BD0CEA2ADFAA9"
 
+
 [aliases]
+
+# https://danverbraganza.com/writings/most-frequent-jj-commands
+
+# It updates the closest bookmark ancestor to point to the current revision, giving me an easy command to type before I jj git push
+# tug- updates the bookmark to the previous revision, while tug updates it to the current one.
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
+tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+
+# jj mine prints out the bookmarks/branches that I am currently working on, when I want to take stock and switch between them.
+mine = ["bookmark", "list", "-r", "mine()"]
