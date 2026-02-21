@@ -22,11 +22,12 @@ run = "kubectl config set-context --current --namespace '$usage_namespace'"
 
 [tasks.setup-tools]
 description = "install / upgrade development tools"
+quiet = true
+usage = '''
+flag "-i --install" help="install crates with cargo-binstall"
+flag "-u --update" help="install updates with cargo-update"
+'''
 run = '''
-if ! command -v cargo-binstall >/dev/null 2>&1; then
-  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-fi
-
 crates=(
   cargo-binstall  # upgrade when already installed
   starship        # pretty prompt
@@ -38,9 +39,28 @@ crates=(
   diffr           # pretty diffs
   porsmo          # pomodoro timer
   atuin           # better shell history
+  jj-cli          # vcs "git frontend" (it's a very nice.)
 )
-(
-  set -x
-  cargo binstall --no-confirm "${crates[@]}"
-)
+
+if [[ "$usage_install" == "true" ]];  then
+  if ! command -v cargo-binstall >/dev/null 2>&1; then
+    cargo install cargo-binstall
+  fi
+
+  (
+    set -x
+    cargo binstall --no-confirm "${crates[@]}"
+  )
+fi
+
+if [[ "$usage_update" == "true" ]];  then
+  if ! command -v cargo-update >/dev/null 2>&1; then
+    cargo install cargo-update
+  fi
+
+  (
+    set -x
+    cargo install-update "${crates[@]}"
+  )
+fi
 '''
