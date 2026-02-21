@@ -3,12 +3,10 @@
 
 format = """
 $status\
-[\\[](bold black)\
-$directory\
-[\\]](bold black)\
-([\\[](bold black)$custom$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
-([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
+[\\[](bold black)$directory[\\]](bold black)\
 $character"""
+
+# ([\\[](bold black)$git_status$git_branch$git_commit$git_state$git_metrics[\\]](bold black))\
 
 right_format = '$python'
 
@@ -56,18 +54,7 @@ disabled = false
 [directory]
 format = '[$path](bright-cyan)'
 
-[git_commit]
-disabled = true
-
-[custom.git_commit]
-when = "! jj --ignore-working-copy root"
-command = "starship module git_commit"
-style = ""
-description = "Only show git_commit if we're not in a jj repo"
-
-
 [git_status]
-disabled = true # for jj
 format = '([[\(](bold black)$all_status$ahead_behind[\)](bold black)]($style) )'
 modified = '[$count!](bold bright-yellow)'
 ahead = '[$count⇡](bold bright-yellow)'
@@ -76,56 +63,9 @@ untracked = '[$count?](bold bright-purple)'
 renamed = '[$count»](bold bright-purple)'
 staged = '[$count+](bold bright-green)'
 
-[custom.git_status]
-when = "! jj --ignore-working-copy root"
-command = "starship module git_status"
-style = "" # This disables the default "(bold green)" style
-description = "Only show git_status if we're not in a jj repo"
-
-[git_metrics]
-disabled = true
-
-[custom.git_metrics]
-when = "! jj --ignore-working-copy root"
-command = "starship module git_metrics"
-description = "Only show git_metrics if we're not in a jj repo"
-style = ""
-
 [git_branch]
-disabled = true # for jj
 style = 'bold bright-purple'
 format = '[$symbol](bold bright-green) [$branch(:$remote_branch)]($style)'
 symbol = ''
 # truncation_length = 16
 truncation_symbol = '…'
-# custom module for jj status
-
-[custom.git_branch]
-when = "! jj --ignore-working-copy root"
-command = "starship module git_branch"
-description = "Only show git_branch if we're not in a jj repo"
-style = ""
-
-[custom.jj]
-description = "The current jj status"
-when = "jj --ignore-working-copy root"
-command = '''
-jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-  separate(" ",
-    change_id.shortest(4),
-    bookmarks,
-    "|",
-    concat(
-      if(conflict, "💥"),
-      if(divergent, "🚧"),
-      if(hidden, "👻"),
-      if(immutable, "🔒"),
-    ),
-    raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
-    raw_escape_sequence("\x1b[1;32m") ++ coalesce(
-      truncate_end(29, description.first_line(), "…"),
-      "(no description set)",
-    ) ++ raw_escape_sequence("\x1b[0m"),
-  )
-'
-'''
