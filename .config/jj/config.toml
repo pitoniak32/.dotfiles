@@ -9,7 +9,9 @@ behavior = "own"
 backend = "gpg"
 key = "1C0FB72620F12C792A015A38F37BD0CEA2ADFAA9"
 
-
+[ui]
+diff-editor = ":builtin"
+ 
 [aliases]
 
 # https://danverbraganza.com/writings/most-frequent-jj-commands
