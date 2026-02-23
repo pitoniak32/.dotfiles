@@ -11,8 +11,18 @@ key = "1C0FB72620F12C792A015A38F37BD0CEA2ADFAA9"
 
 [ui]
 diff-editor = ":builtin"
+default-command = "st"
+
+# not sure yet, taken from chriskrycho
+log-word-wrap = true
+diff-instructions = false
  
 [aliases]
+
+# taken from chriskrycho
+# l = ["log", "-r", "trunk()::"]
+l = ["log"]
+lall = ["log", "-r", "..all()"]
 
 # https://danverbraganza.com/writings/most-frequent-jj-commands
 
@@ -23,3 +33,11 @@ tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
 # jj mine prints out the bookmarks/branches that I am currently working on, when I want to take stock and switch between them.
 mine = ["bookmark", "list", "-r", "mine()"]
+
+[revset-aliases]
+integration = 'description("[integration]") | description("[integration merge]")'
+wip = 'description(regex:"^\\[(wip|WIP|todo|TODO|spike)\\]|(wip|WIP|todo|TODO|spike):?")'
+testing = '(description(regex:"^testing:"))'
+
+[git]
+private-commits = 'wip | testing | integration'
