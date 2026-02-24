@@ -11,6 +11,7 @@ cask "bitwarden"
 cask "font-jetbrains-mono-nerd-font"
 cask "google-chrome"
 cask "goreleaser/tap/goreleaser"
+cask "handy" # speech to text transcription
 
 # install newer version than /bin/zsh
 brew "zsh"
