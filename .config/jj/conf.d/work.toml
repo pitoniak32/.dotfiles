@@ -1,7 +1,0 @@
---when.repositories = ["~/code/work/"]
-
-[user]
-email = "david.pitoniak@ukg.com"
-
-[signing]
-key = "406253E0BAA61F247A8F6276B5D483BF8505D875" 
