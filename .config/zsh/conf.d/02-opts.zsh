@@ -22,6 +22,9 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 
+# Allow comments in shell commands
+setopt INTERACTIVE_COMMENTS
+
 # Ignore all commands from history that match the patterns
 export HISTORY_IGNORE="*PRIVATE KEY*|*SECRET*"
 

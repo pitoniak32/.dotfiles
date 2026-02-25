@@ -8,20 +8,10 @@ description = "litellm - claude"
 quiet = true
 dir = "{{cwd}}"
 run = '''
-export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS="1"
-export CLAUDE_CODE_USE_VERTEX="0"
-export ENABLE_TOOL_SEARCH="0"
 export NODE_USE_SYSTEM_CA=1
 
-export ANTHROPIC_BASE_URL="https://sdlc-llm.ukg.int"
 export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
-
 export JIRA_MCP_AUTH_TOKEN="$(fnox get --profile=local JIRA_AUTH_TOKEN)"
-
-export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-4-5"
-export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-5"
-export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-6[1m]"
-export ANTHROPIC_MODEL="claude-opus-4-6[1m]"
 
 claude "$@"
 '''
