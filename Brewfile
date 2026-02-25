@@ -24,6 +24,7 @@ brew "fx"
 brew "gh"
 brew "glow" # Render markdown on the CLI, with pizzazz!
 brew "gum"  # A tool for glamorous shell scripts.
+brew "vhs"  # A tool to record cli commands
 brew "caarlos0/tap/timer"
 
 brew "stow" # used to symlink .dotfiles

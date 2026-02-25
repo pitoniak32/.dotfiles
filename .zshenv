@@ -22,7 +22,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # If running on mac startup brew
 if [[ $(uname) == "Darwin" ]]; then
-  export HOMEBREW_BUNDLE_FILE="~/dotfiles/Brewfile.$(hostname -s)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
