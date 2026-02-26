@@ -6,7 +6,7 @@ email = "davidpitoniak32@gmail.com"
 
 [ui]
 diff-editor = ":builtin"
-default-command = "log"
+default-command = "st"
 # not sure yet, taken from chriskrycho
 log-word-wrap = true
 diff-instructions = false
@@ -30,7 +30,8 @@ integration = 'description("[integration]") | description("[integration merge]")
 # taken from chriskrycho
 # l = ["log", "-r", "trunk()::"]
 l = ["log"]
-lall = ["log", "-r", "..all()"]
+gf = ["git", "fetch"]
+lal = ["log", "-r", "..all()"]
 
 # https://danverbraganza.com/writings/most-frequent-jj-commands
 
