@@ -6,7 +6,6 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
       "williamboman/mason.nvim",
-      "microsoft/vscode-js-debug",
     },
     config = function()
       local dap = require "dap"
