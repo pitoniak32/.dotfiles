@@ -7,4 +7,6 @@ keychain = { type = "keychain", service = "fnox" }
 [profiles.local.secrets]
 JIRA_AUTH_TOKEN = { provider = "keychain", value = "JIRA_AUTH_TOKEN" }
 ANTHROPIC_AUTH_TOKEN = { provider = "keychain", value = "ANTHROPIC_AUTH_TOKEN" }
+LITELLM_USER_ID = { provider = "keychain", value = "LITELLM_USER_ID" }
+LITELLM_TEAM_ID = { provider = "keychain", value = "LITELLM_TEAM_ID" }
 TESTING = { provider = "keychain", value = "TESTING" }

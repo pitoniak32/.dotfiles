@@ -10,8 +10,8 @@ dir = "{{cwd}}"
 run = '''
 export NODE_USE_SYSTEM_CA=1
 
-export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
 export JIRA_MCP_AUTH_TOKEN="$(fnox get --profile=local JIRA_AUTH_TOKEN)"
+export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
 
 claude "$@"
 '''

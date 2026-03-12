@@ -31,6 +31,8 @@ integration = 'description("[integration]") | description("[integration merge]")
 # l = ["log", "-r", "trunk()::"]
 l = ["log"]
 gf = ["git", "fetch"]
+bm = ["bookmark", "move"]
+bmb = ["bookmark", "move", "--allow-backwards"]
 lal = ["log", "-r", "..all()"]
 
 # https://danverbraganza.com/writings/most-frequent-jj-commands
