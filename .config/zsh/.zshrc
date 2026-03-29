@@ -20,7 +20,7 @@ if [[ $HOST == "jawnix" || $HOST == "dvd.local" || $HOST == "d" ]]; then
   export XDG_PROJECT_HOME="$HOME/Projects"
   export AXL_PROJECTS_CONFIG_PATH=$XDG_CONFIG_HOME/axl/personal_projects.yml
   export FLYCTL_INSTALL="/home/davidpi/.fly"
-  export PATH="$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
+  export PATH="/Users/dvd/.opencode/bin:$FLYCTL_INSTALL/bin:/opt/nvim-linux64/bin:$HOME/.npm-global/bin:$PATH"
   export MISE_ENV="personal"
 
   if [ -f "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"; fi
