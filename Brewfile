@@ -20,6 +20,7 @@ brew "neovim", args: ["HEAD"]
 brew "fzf"
 brew "mise"
 brew "jq"
+brew "yq"
 brew "fx"
 brew "gh"
 brew "glow" # Render markdown on the CLI, with pizzazz!
@@ -28,6 +29,7 @@ brew "vhs"  # A tool to record cli commands
 brew "caarlos0/tap/timer"
 
 brew "stow" # used to symlink .dotfiles
+brew "sesh" # tmux session picker
 brew "cmake"
 brew "htop"
 brew "pandoc"
@@ -36,9 +38,11 @@ brew "telnet"
 brew "nmap"
 brew "curl"
 brew "wget"
+brew "taplo" # TOML toolkit for schema validation in .toml
 brew "tmux"
 brew "tree"
 brew "sl"      # steam locomotive
+brew "minicom" # TUI for serial communications
 brew "coreutils"
 brew "gettext" # GNU Gettext library and tools that are required for internationalization and localization
 brew "gdb"
