@@ -30,6 +30,7 @@ brew "caarlos0/tap/timer"
 
 brew "stow" # used to symlink .dotfiles
 brew "sesh" # tmux session picker
+brew "crane"
 brew "cmake"
 brew "htop"
 brew "pandoc"
