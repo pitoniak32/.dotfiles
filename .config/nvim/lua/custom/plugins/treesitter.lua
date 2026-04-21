@@ -16,6 +16,7 @@ return {
         "rust",
         "go",
         -- other
+        "templ",
         "bash",
         "just",
         "markdown",
