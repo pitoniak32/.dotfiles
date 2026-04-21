@@ -8,7 +8,7 @@ alias k='kubectl'
 alias wttr='curl wttr.in/kgon'
 alias moon='curl wttr.in/moon'
 
-alias ll='eza -la'
+alias ll='eza -laa'
 alias rm='rm -I'
 alias ..='cd ..'
 alias mr='mise run'
