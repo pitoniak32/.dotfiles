@@ -32,6 +32,15 @@ o.splitright = true
 o.splitbelow = false
 o.gdefault = true
 
+o.listchars = {
+  tab = '» ',
+  trail = '·',
+  nbsp = '␣',
+  eol = '↲',
+  extends = '›',
+  precedes = '‹',
+}
+
 o.formatoptions = o.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.
