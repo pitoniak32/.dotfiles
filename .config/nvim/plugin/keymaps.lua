@@ -63,6 +63,11 @@ set("n", "<leader>y", '"*y')
 set("v", "<leader>y", '"*y')
 set("n", "<leader>Y", '"*Y')
 
+set("n", "<leader>cp", function()
+  vim.fn.setreg("+", vim.api.nvim_buf_get_name(0))
+end)
+
+
 -- Quickfix list
 set("n", "<C-j>", "<cmd>cnext<CR>zz")
 set("n", "<C-k>", "<cmd>cprev<CR>zz")
