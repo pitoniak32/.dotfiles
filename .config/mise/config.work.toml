@@ -1,3 +1,6 @@
+[settings.node]
+mirror_url = "https://ukgartifactory.pe.jfrog.io/artifactory/nodejs-org-dist/"
+
 [env]
 DAGGER_NO_NAG="1"
 DO_NOT_TRACK="1"
@@ -9,9 +12,9 @@ quiet = true
 dir = "{{cwd}}"
 run = '''
 export NODE_USE_SYSTEM_CA=1
+export NODE_EXTRA_CA_CERTS="$HOME/ukg/certs/ukg.pem"
 
 export JIRA_MCP_AUTH_TOKEN="$(fnox get --profile=local JIRA_AUTH_TOKEN)"
-export ANTHROPIC_AUTH_TOKEN="$(fnox get --profile=local ANTHROPIC_AUTH_TOKEN)"
 export ENGPORTAL_USER_EMAIL="david.pitoniak@ukg.com"
 
 claude "$@"

@@ -2,9 +2,13 @@
 
 [[wildcard]]
 pattern = "~/code/**/*"
-startup_command = "jj log"
+startup_command = "jj git fetch && jj log"
 
 [[session]]
 name = "dotfiles"
 path = "~/.dotfiles/"
 startup_command = "nvim"
+
+[[session]]
+name = "k9s"
+path = "~/"

@@ -1,6 +1,9 @@
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = [
+  "node",
+  "python",
+]
 
 [tools]
 usage = "latest"
