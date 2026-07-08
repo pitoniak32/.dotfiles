@@ -5,12 +5,9 @@
   path = personal_git
 
 [includeIf "gitdir:/tmp/**"]
-  path = personal_git
+  path = work_git
 
 [includeIf "hasconfig:remote.*.url:git@github.com:pitoniak32/**"]
-  path = personal_git
-
-[includeIf "hasconfig:remote.*.url:git@github.com:sales-path/**"]
   path = personal_git
 
 [includeIf "hasconfig:remote.*.url:git@github.com:ukgepic/**"]
