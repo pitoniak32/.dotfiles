@@ -13,8 +13,10 @@ cask "google-chrome"
 cask "goreleaser/tap/goreleaser"
 cask "handy" # speech to text transcription
 
-# install newer version than /bin/zsh
+# newer than /bin/zsh
 brew "zsh"
+# newer than /usr/bin/git
+brew "git"
 
 brew "neovim", args: ["HEAD"]
 brew "fzf"
