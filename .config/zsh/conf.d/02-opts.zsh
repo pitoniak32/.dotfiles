@@ -15,19 +15,8 @@ autoload -Uz compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION && compinit
 autoload -U colors && colors
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
+# Try using only atuin history
+unset HISTFILE
 
 # Allow comments in shell commands
 setopt INTERACTIVE_COMMENTS
-
-# Ignore all commands from history that match the patterns
-export HISTORY_IGNORE="*PRIVATE KEY*|*SECRET*"
-
-export HISTFILE="$XDG_STATE_HOME/zsh/.zsh_history"
-ensure_parent_dir $HISTFILE
-
