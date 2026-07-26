@@ -1,14 +1,13 @@
 return {
   -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  branch = "main",
   build = ":TSUpdate",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/nvim-treesitter-context",
-  },
   config = function()
     require("nvim-treesitter").setup {
       ensure_installed = {
+        "community",
         -- programming
         "typescript",
         "javascript",
@@ -26,8 +25,7 @@ return {
         "yaml",
         "vimdoc",
         "hcl",
-      },
-      auto_install = false,
+      }
     }
   end,
 }
