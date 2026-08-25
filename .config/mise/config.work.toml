@@ -37,30 +37,3 @@ export ARTIFACTORY_AUTH_TOKEN="$(fnox get ARTIFACTORY_AUTH_TOKEN)"
   docker build --secret id=artifactory_auth_token,env=ARTIFACTORY_AUTH_TOKEN . -t "$usage_image_tag"
 )
 '''
-
-[tasks.docker-build-fnd]
-quiet = true
-run = '''
-export NAMESPACE="gears-tools"
-export NAMESPACE_AIRLOCK_NAME="gsm"
-export NAMESPACE_GSM_PROJECT_ID="d-ulti-devx-quark-system-8bc7"
-export NAMESPACE_GSM_CREDENTIALS_FILE_PATH="${HOME}/.config/gcloud/application_default_credentials.json"
-
-export ARTIFACTORY_AUTH_TOKEN="secrets.gsm::gt_artifactory_npm_auth_token"
-
-export GAR_ACCESS_TOKEN="$(gcloud auth print-access-token)"
-
-(
-  set -x
-
-  ../quark-foundry/bin/dev tanagra:deploy:docker-image \
-    --template_type=app \
-    --project_dir= \
-    --environment_json='{}' \
-    --docker_host=unix:///var/run/docker.sock \
-    --registry_hostname=us-docker.pkg.dev \
-    --registry_project_root=d-ulti-cs-gar-27fb/shift-left/images \
-    --registry_username=oauth2accesstoken \
-    --registry_password="${GAR_ACCESS_TOKEN}"
-)
-'''

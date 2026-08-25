@@ -10,5 +10,12 @@ path = "~/.dotfiles/"
 startup_command = "nvim"
 
 [[session]]
+name = "gcloud_tunnel"
+path = "~/"
+startup_command = "mr start_tunnel"
+
+[[session]]
 name = "k9s"
 path = "~/"
+startup_command = "k9s"
+
