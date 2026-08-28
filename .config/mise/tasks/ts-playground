@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+#MISE description = "Pick or create a scratch TS package, open it in a tmux window"
+
+set -euo pipefail
+
+REPO_ROOT="$HOME/code/work/ts-playground"
+PACKAGES_DIR="$REPO_ROOT/packages"
+SESSION="ts-playground"
+NEW_LABEL="+ New package"
+
+for cmd in gum tmux pnpm; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "error: '$cmd' is required but not found on PATH" >&2
+    exit 1
+  fi
+done
+
+list_packages() {
+  find "$PACKAGES_DIR" -mindepth 1 -maxdepth 1 -type d ! -name '_template' -exec basename {} \; | sort
+}
+
+choice="$( { echo "$NEW_LABEL"; list_packages; } | gum choose --header "ts-playground" )"
+
+if [[ -z "$choice" ]]; then
+  echo "no selection made" >&2
+  exit 1
+fi
+
+if [[ "$choice" == "$NEW_LABEL" ]]; then
+  name="$(gum input --placeholder "package name (kebab-case)")"
+  if [[ -z "$name" ]]; then
+    echo "no name given" >&2
+    exit 1
+  fi
+  if [[ ! "$name" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+    echo "error: '$name' must be kebab-case (lowercase letters, digits, hyphens)" >&2
+    exit 1
+  fi
+  if [[ -d "$PACKAGES_DIR/$name" ]]; then
+    echo "error: package '$name' already exists" >&2
+    exit 1
+  fi
+
+  pkg_dir="$PACKAGES_DIR/$name"
+  cp -R "$PACKAGES_DIR/_template" "$pkg_dir"
+  sed -i '' "s/__NAME__/$name/g" "$pkg_dir/package.json" "$pkg_dir/index.ts"
+
+  echo "scaffolded $pkg_dir, running pnpm install..."
+  (cd "$REPO_ROOT" && pnpm install)
+
+  pkg="$name"
+else
+  pkg="$choice"
+fi
+
+pkg_dir="$PACKAGES_DIR/$pkg"
+
+if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+  tmux new-session -d -s "$SESSION" -n "$pkg" -c "$pkg_dir"
+  tmux split-window -v -p 20 -t "$SESSION:$pkg" -c "$pkg_dir"
+  tmux select-pane -t "$SESSION:$pkg.0"
+  tmux send-keys -t "$SESSION:$pkg.0" "$EDITOR" C-m
+  tmux select-pane -t "$SESSION:$pkg.0"
+elif tmux list-windows -t "$SESSION" -F '#W' | grep -qx "$pkg"; then
+  tmux select-window -t "$SESSION:$pkg"
+else
+  tmux new-window -t "$SESSION" -n "$pkg" -c "$pkg_dir"
+  tmux split-window -v -p 20 -t "$SESSION:$pkg" -c "$pkg_dir"
+  tmux select-pane -t "$SESSION:$pkg.0"
+  tmux send-keys -t "$SESSION:$pkg.0" "$EDITOR" C-m
+  tmux select-pane -t "$SESSION:$pkg.0"
+fi
+
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "$SESSION:$pkg"
+else
+  tmux attach -t "$SESSION:$pkg"
+fi
