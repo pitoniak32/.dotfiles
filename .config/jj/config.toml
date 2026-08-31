@@ -29,6 +29,7 @@ integration = 'description("[integration]") | description("[integration merge]")
 
 # taken from chriskrycho
 # l = ["log", "-r", "trunk()::"]
+ae = ["abandon", "empty() & main..@"]
 l = ["log"]
 gf = ["git", "fetch"]
 bm = ["bookmark", "move"]

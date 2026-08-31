@@ -3,6 +3,7 @@ font-family = "JetBrains Mono"
 auto-update = check
 quick-terminal-position = center
 unfocused-split-opacity = 0.8
+bell-features = system
 
 # https://ghostty.org/docs/help/terminfo
 shell-integration-features = ssh-terminfo
