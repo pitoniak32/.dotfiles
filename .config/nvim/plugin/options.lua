@@ -6,7 +6,8 @@ o.inccommand = "split"
 o.smartcase = true
 o.ignorecase = true
 
-o.conceallevel = 2
+-- was used for obsidian.nvim
+-- o.conceallevel = 2
 o.tabstop = 2
 o.softtabstop = 2
 o.shiftwidth = 2

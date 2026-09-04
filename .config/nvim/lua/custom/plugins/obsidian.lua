@@ -15,6 +15,8 @@ return {
     "nvim-telescope/telescope.nvim"
   },
   opts = {
+    disable_frontmatter = true,
+    ui = { enable = false },
     workspaces = {
       {
         name = "Synced",
