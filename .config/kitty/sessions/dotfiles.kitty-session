@@ -1,0 +1,7 @@
+cd ~/.dotfiles/
+
+launch --title "nvim" /opt/homebrew/bin/zsh -i -c 'nvim'
+focus
+
+launch --title "shell" /opt/homebrew/bin/zsh -i
+resize_window shorter 16

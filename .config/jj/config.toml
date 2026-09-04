@@ -19,7 +19,7 @@ key = "1C0FB72620F12C792A015A38F37BD0CEA2ADFAA9"
 [git]
 sign-on-push = true
 track-bookmarks = ["main"]
-private-commits = "wip | testing | integration"
+# private-commits = "wip | testing | integration"
 
 [revset-aliases]
 wip = 'description(regex:"^\\[(wip|WIP|todo|TODO|spike)\\]|(wip|WIP|todo|TODO|spike):?")'
