@@ -9,6 +9,7 @@ jj bookmark advance
 ```
 
 ## See the "evo"lution of a change
+This is how you can see previous commits that a change pointed to
 
 ```bash
 jj evolog -r change-id
@@ -34,6 +35,7 @@ J         J
 ```bash
 jj abandon K::
 ```
+
 
 
 

@@ -12,6 +12,7 @@ age   = "latest"
 yq    = "latest"
 "github:anomalyco/opencode" = "latest"
 cue = "latest"
+node = "24.16.0"
 
 [tasks.ncu]
 description = "Check for any npm packages with updates in current directory"

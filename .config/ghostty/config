@@ -2,6 +2,7 @@ theme = catppuccin-frappe
 font-family = "JetBrains Mono"
 auto-update = check
 quick-terminal-position = center
+quick-terminal-size = 64%,64%
 unfocused-split-opacity = 0.8
 bell-features = system
 

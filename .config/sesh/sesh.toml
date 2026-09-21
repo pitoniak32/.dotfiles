@@ -2,7 +2,11 @@
 
 [[wildcard]]
 pattern = "~/code/**/*"
-startup_command = "jj git fetch && jj log"
+startup_command = "jj git fetch --tracked && jj log"
+
+[[session]]
+name = "quark"
+path = "~/code/work/quark/"
 
 [[session]]
 name = "dotfiles"

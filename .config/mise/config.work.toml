@@ -23,7 +23,11 @@ claude "$@"
 [tasks.jctx]
 description = "put ticket number onto clipboard"
 quiet = true
-run = 'jctx --token="$(fnox get --profile=local JIRA_AUTH_TOKEN)"'
+run = '''
+JIRA_AUTH_TOKEN="$(fnox get --profile=local JIRA_AUTH_TOKEN)"
+
+jctx --token="$JIRA_AUTH_TOKEN"
+'''
 
 [tasks.docker-build]
 quiet = true
