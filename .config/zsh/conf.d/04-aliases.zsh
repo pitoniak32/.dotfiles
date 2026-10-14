@@ -8,6 +8,9 @@ alias k='kubectl'
 alias wttr='curl wttr.in/kgon'
 alias moon='curl wttr.in/moon'
 
+alias IST='TZ=Asia/Kolkata date'
+alias ET='TZ=America/New_York date'
+
 alias ll='eza -laa'
 alias rm='rm -I'
 alias ..='cd ..'
